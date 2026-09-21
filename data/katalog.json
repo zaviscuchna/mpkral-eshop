@@ -731,6 +731,7 @@
     "nazev": "tmavě modrá (navy)",
     "id": "tmave-modra-navy",
     "fotky": {
+     "detail": "img/produkty/plast-tmave-modry-detail.jpg",
      "přední": "img/produkty/plast-tmave-modry-predni.jpg",
      "zadní": "img/produkty/plast-tmave-modry-zadni.jpg"
     },
@@ -796,6 +797,7 @@
     "nazev": "oranžová s černým spodním dílem a manžetami",
     "id": "oranzova-s-cernym-spodnim-dilem-a-manzetami",
     "fotky": {
+     "detail": "img/produkty/reflex-bluza2-damska-cerny-spodek-detail.jpg",
      "přední": "img/produkty/reflex-bluza2-damska-cerny-spodek-predni.jpg"
     },
     "hlavni": "img/produkty/reflex-bluza2-damska-cerny-spodek-predni.jpg",
@@ -821,6 +823,7 @@
     "nazev": "oranžová se šedým spodním dílem",
     "id": "oranzova-se-sedym-spodnim-dilem",
     "fotky": {
+     "detail": "img/produkty/reflex-bluza2-oranzovo-seda-detail.jpg",
      "přední": "img/produkty/reflex-bluza2-oranzovo-seda-predni.jpg",
      "zadní": "img/produkty/reflex-bluza2-oranzovo-seda-zadni.jpg"
     },
@@ -1199,7 +1202,8 @@
     "id": "vystrazna-oranzova-se-stribrnymi-pruhy",
     "fotky": {
      "detail": "img/produkty/reflex-vesta2-detail.jpg",
-     "přední": "img/produkty/reflex-vesta2-predni.jpg"
+     "přední": "img/produkty/reflex-vesta2-predni.jpg",
+     "zadní": "img/produkty/reflex-vesta2-zadni.jpg"
     },
     "hlavni": "img/produkty/reflex-vesta2-predni.jpg",
     "vzornik": "img/vzorniky/reflex-vesta2-predni.jpg",

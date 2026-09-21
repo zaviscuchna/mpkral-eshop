@@ -1,0 +1,43 @@
+{
+ "rady": {
+  "King": "Nejžádanější řada. Robustní střih s barevným dílem, drží tvar i po sezóně praní.",
+  "Riedl": "Modernější střih s výstražnými prvky a zesíleními na exponovaných místech.",
+  "Klasik": "Osvědčený bavlněný střih bez ozdob. Kdo chce monterky jako dřív, bere tuhle řadu.",
+  "Polar": "Zateplená řada pro chladné provozy a venkovní práci.",
+  "Reflexní": "Výstražné oděvy podle EN ISO 20471. Fotografie dokončujeme."
+ },
+ "pripravujeme": [
+  {
+   "nazev": "Reflexní řada",
+   "detail": "18 střihů · EN ISO 20471",
+   "stav": "Fotografie dokončujeme"
+  },
+  {
+   "nazev": "Zimní kombinéza King",
+   "detail": "5 barev · zateplená",
+   "stav": "Fotografie dokončujeme"
+  }
+ ],
+ "profese": [
+  {
+   "nazev": "Stavba",
+   "co": "kombinéza, kalhoty do pasu, bunda"
+  },
+  {
+   "nazev": "Zemědělství",
+   "co": "laclové kalhoty, blůza, plášť"
+  },
+  {
+   "nazev": "Dílna a servis",
+   "co": "kalhoty King, bunda King, kraťasy"
+  },
+  {
+   "nazev": "Potravinářství",
+   "co": "plášť, souprava, blůza"
+  },
+  {
+   "nazev": "Údržba a sklad",
+   "co": "monterková souprava, kalhoty Klasik"
+  }
+ ]
+}

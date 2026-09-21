@@ -1,0 +1,634 @@
+/* ==========================================================================
+   M+P Král — náčrt e-shopu
+   Editorial: velká verzálková typografie, serifový deck, produkty volně
+   na ploše bez rámečků, hodně vzduchu, popisky verzálkami.
+   ========================================================================== */
+
+:root {
+  --papir: #f2f0eb;
+  --bila: #ffffff;
+  --inkoust: #111110;
+  --ocel: #706d66;
+  --linka: #d6d1c7;
+  --oranzova: #d8431a;
+  --oranzova-tmava: #b2360f;
+  --zelena: #1f5d4c;
+  --navy: #1d2f4d;
+  --karta-jas: 1;
+
+  --sirka: 1440px;
+  --gutter: 40px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --papir: #131311;
+    --inkoust: #efece4;
+    --ocel: #9b978d;
+    --linka: #34322c;
+    --oranzova: #ff6b3d;
+    --oranzova-tmava: #ff8a63;
+    --zelena: #4f9b83;
+    --navy: #22354f;
+    --karta-jas: 0.9;
+  }
+}
+:root[data-theme="dark"] {
+  --papir: #131311;
+  --inkoust: #efece4;
+  --ocel: #9b978d;
+  --linka: #34322c;
+  --oranzova: #ff6b3d;
+  --oranzova-tmava: #ff8a63;
+  --zelena: #4f9b83;
+  --navy: #22354f;
+  --karta-jas: 0.9;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--papir);
+  color: var(--inkoust);
+  font-family: Archivo, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-underline-offset: 3px; }
+
+.obal { max-width: var(--sirka); margin: 0 auto; padding-inline: 40px; }
+@media (max-width: 900px) { .obal { padding-inline: 24px; } }
+@media (max-width: 560px) { .obal { padding-inline: 16px; } }
+
+/* ---------------------------------------------------------------- písmo */
+.mono {
+  font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  font-size: 13px;
+  line-height: 1.45;
+}
+.mono-popisek {
+  font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ocel);
+}
+.kurziva { font-family: "EB Garamond", Georgia, serif; font-style: italic; }
+.nadlinka {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ocel);
+  margin: 0 0 28px;
+}
+.zastupne { border-bottom: 1px dotted var(--linka); cursor: help; }
+
+/* ---------------------------------------------------------------- lišta + hlavička */
+.dilenska-lista {
+  background: var(--inkoust);
+  color: var(--papir);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 8px 0;
+  text-align: center;
+}
+.dilenska-lista .kratce { display: none; }
+@media (max-width: 720px) {
+  .dilenska-lista .dlouze { display: none; }
+  .dilenska-lista .kratce { display: inline; }
+}
+
+.hlavicka {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: var(--papir);
+  border-bottom: 1px solid var(--linka);
+}
+.hlavicka .radek { display: flex; align-items: center; gap: 28px; padding-block: 16px; }
+.hlavicka .radek > * { min-width: 0; }
+
+.znacka { text-decoration: none; flex: none; }
+.znacka b {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+.znacka span {
+  display: block;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ocel);
+  margin-top: 4px;
+}
+
+.navigace { display: flex; gap: 22px; flex-wrap: wrap; flex: 1; margin: 0; padding: 0; list-style: none; }
+.navigace a {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ocel);
+  white-space: nowrap;
+  padding-bottom: 3px;
+  border-bottom: 1px solid transparent;
+  transition: color 120ms, border-color 120ms;
+}
+.navigace a:hover, .navigace a.aktivni { color: var(--inkoust); border-bottom-color: var(--inkoust); }
+
+.hledani {
+  flex: none;
+  border: 0;
+  border-bottom: 1px solid var(--linka);
+  background: transparent;
+  color: var(--inkoust);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 7px 2px;
+  width: 200px;
+  border-radius: 0;
+}
+.hledani:focus { outline: none; border-bottom-color: var(--inkoust); }
+
+.sanon-tlacitko {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  background: transparent;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0;
+}
+.sanon-pocet {
+  background: var(--oranzova);
+  color: #fff;
+  font-size: 10px;
+  border-radius: 999px;
+  padding: 2px 7px;
+  min-width: 20px;
+  text-align: center;
+}
+.hamburger { display: none; }
+
+@media (max-width: 1180px) { .hledani { width: 130px; } .navigace { gap: 14px; } }
+@media (max-width: 980px) {
+  .navigace, .hledani { display: none; }
+  .navigace.otevrena {
+    display: flex; flex-direction: column; width: 100%; gap: 0; order: 10;
+    border-top: 1px solid var(--linka); padding-top: 10px;
+  }
+  .navigace.otevrena a { padding: 12px 0; border-bottom: none; font-size: 13px; }
+  .hlavicka .radek { flex-wrap: wrap; gap: 16px; }
+  .hamburger {
+    display: inline-flex; margin-left: auto; border: 0; background: transparent;
+    color: var(--inkoust); font-family: "IBM Plex Mono", monospace; font-size: 11px;
+    letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; padding: 0;
+  }
+}
+@media (max-width: 560px) { .znacka span { display: none; } }
+
+/* ---------------------------------------------------------------- hero */
+.hero { padding: 100px 0 64px; max-width: 1180px; }
+.hero h1 {
+  margin: 0;
+  font-size: clamp(50px, 9.6vw, 132px);
+  font-weight: 700;
+  /* verzalky s hacky a carkami potrebuji vic prostoru, jinak
+     hacek z dalsiho radku koliduje s pismenem nad nim */
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+}
+.deck {
+  font-family: "EB Garamond", Georgia, serif;
+  font-size: clamp(22px, 2.6vw, 34px);
+  line-height: 1.3;
+  max-width: 24ch;
+  margin: 40px 0;
+}
+@media (max-width: 900px) { .hero { padding: 56px 0 40px; } .deck { max-width: none; } }
+
+/* full-bleed pás s produktem */
+.pas { padding: 0 0 96px; }
+.pas-fotka {
+  position: relative;
+  background: var(--bila);
+  filter: brightness(var(--karta-jas));
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pas-fotka img { height: 92%; width: auto; object-fit: contain; }
+.pas-popisek {
+  position: absolute;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #6d6a63;
+}
+.pas-popisek.vlevo { top: 24px; left: 28px; }
+.pas-popisek.vpravo { top: 24px; right: 28px; text-align: right; }
+.pas-popisek.dole { bottom: 24px; left: 28px; }
+@media (max-width: 720px) {
+  .pas { padding-bottom: 56px; }
+  .pas-fotka { aspect-ratio: 4 / 5; }
+  .pas-popisek.vpravo { top: auto; bottom: 46px; right: 16px; }
+  .pas-popisek.vlevo { left: 16px; top: 16px; }
+  .pas-popisek.dole { left: 16px; bottom: 16px; }
+}
+
+/* ---------------------------------------------------------------- sekce a kóty */
+.sekce { padding-block: 96px; }
+@media (max-width: 900px) { .sekce { padding-block: 56px; } }
+
+.kota { position: relative; border-top: 1px solid var(--inkoust); margin-bottom: 44px; }
+.kota-cislo {
+  position: absolute; top: 14px; left: 0;
+  font-family: "IBM Plex Mono", monospace; font-size: 11px;
+  letter-spacing: 0.12em; color: var(--ocel);
+}
+.kota-vpravo {
+  position: absolute; top: 14px; right: 0;
+  font-family: "IBM Plex Mono", monospace; font-size: 11px;
+  letter-spacing: 0.12em; color: var(--ocel);
+}
+.kota h2 {
+  margin: 44px 0 0;
+  font-size: clamp(30px, 4.4vw, 58px);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+  max-width: 18ch;
+}
+.kota p {
+  font-family: "EB Garamond", Georgia, serif;
+  font-size: 20px;
+  line-height: 1.45;
+  margin: 18px 0 0;
+  max-width: 46ch;
+}
+.zdvojena-linka { border-top: 1px solid var(--linka); border-bottom: 1px solid var(--linka); height: 3px; }
+
+/* ---------------------------------------------------------------- tlačítka */
+.tl {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+  text-decoration: none; border-radius: 0; padding: 15px 26px;
+  border: 1px solid transparent; cursor: pointer;
+  transition: background 140ms, color 140ms, border-color 140ms;
+}
+.tl-hlavni { background: var(--inkoust); color: var(--papir); border-color: var(--inkoust); }
+.tl-hlavni:hover { background: var(--oranzova); border-color: var(--oranzova); color: #fff; }
+.tl-obrys { background: transparent; color: var(--inkoust); border-color: var(--inkoust); }
+.tl-obrys:hover { background: var(--inkoust); color: var(--papir); }
+.tl-plna { width: 100%; }
+.tlacitka { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* ---------------------------------------------------------------- tři čísla */
+.cisla {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gutter);
+  border-top: 1px solid var(--inkoust); padding-top: 28px;
+}
+.cisla b {
+  display: block;
+  font-size: clamp(44px, 6vw, 84px);
+  font-weight: 700; line-height: 0.9; letter-spacing: -0.03em;
+}
+.cisla span { display: block; margin-top: 14px; }
+@media (max-width: 760px) { .cisla { grid-template-columns: 1fr; gap: 28px; } }
+
+/* ---------------------------------------------------------------- produkty */
+.produkty { display: grid; gap: var(--gutter) 28px; }
+.produkty.po-trech { grid-template-columns: repeat(3, 1fr); }
+.produkty.po-ctyrech { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 1100px) { .produkty.po-trech, .produkty.po-ctyrech { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 620px) { .produkty.po-trech, .produkty.po-ctyrech { grid-template-columns: 1fr; } }
+
+.produkt { display: flex; flex-direction: column; min-width: 0; }
+.produkt-fotka {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 5;
+  background: var(--bila);
+  filter: brightness(var(--karta-jas));
+  overflow: hidden;
+}
+.produkt-fotka img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: contain; padding: 8%;
+  transition: opacity 260ms ease, transform 500ms ease;
+}
+.produkt-fotka img.skryta { opacity: 0; }
+.produkt:hover .produkt-fotka img { transform: scale(1.03); }
+
+.znacka-pohledu {
+  position: absolute; top: 12px; right: 12px;
+  font-family: "IBM Plex Mono", monospace; font-size: 10px;
+  letter-spacing: 0.1em; text-transform: uppercase; color: #8a867e;
+}
+.prepinac-pohledu { position: absolute; left: 12px; bottom: 12px; display: none; gap: 12px; }
+.prepinac-pohledu button {
+  font-family: "IBM Plex Mono", monospace; font-size: 10px; letter-spacing: 0.1em;
+  text-transform: uppercase; border: 0; background: transparent; color: #8a867e;
+  padding: 6px 0; cursor: pointer; border-bottom: 1px solid transparent;
+}
+.prepinac-pohledu button.aktivni { color: #111; border-bottom-color: #111; }
+@media (hover: none) { .prepinac-pohledu { display: flex; } }
+
+.produkt-telo { padding: 16px 2px 0; display: flex; flex-direction: column; gap: 10px; }
+.produkt-hlava { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.produkt-nazev { margin: 0; font-size: 17px; font-weight: 600; line-height: 1.25; letter-spacing: -0.01em; }
+.produkt-nazev a { text-decoration: none; }
+.produkt-nazev a:hover { text-decoration: underline; }
+.produkt-rada {
+  font-family: "IBM Plex Mono", monospace; font-size: 10px;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--ocel); flex: none;
+}
+.produkt-mono, .produkt-rozsah {
+  font-family: "IBM Plex Mono", monospace; font-size: 11px;
+  letter-spacing: 0.06em; color: var(--ocel); margin: 0;
+  overflow-wrap: break-word;
+}
+
+.vzorniky { display: flex; gap: 7px; flex-wrap: wrap; margin: 0; padding: 0; list-style: none; }
+.vzornik {
+  display: inline-block; width: 30px; height: 30px; padding: 0;
+  border: 1px solid var(--linka); border-radius: 0;
+  background: var(--papir); background-size: cover; background-position: center;
+  cursor: pointer; transition: outline-color 120ms;
+  outline: 1px solid transparent; outline-offset: 2px;
+}
+.vzornik.aktivni { outline-color: var(--inkoust); }
+.vzornik-maly { width: 24px; height: 24px; }
+
+.rozpis-v-karte { display: none; padding-top: 6px; }
+.rozpis-v-karte.otevreny { display: block; }
+
+/* ---------------------------------------------------------------- rozpis velikostí */
+.vel-mrizka {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(68px, 1fr));
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.vel-bunka { display: grid; gap: 4px; min-width: 0; }
+.vel-bunka span {
+  font-family: "IBM Plex Mono", monospace; font-size: 10px;
+  letter-spacing: 0.08em; color: var(--ocel); text-align: center;
+}
+.vel-bunka input {
+  width: 100%; height: 40px; text-align: center;
+  font-family: "IBM Plex Mono", monospace; font-size: 14px;
+  border: 1px solid var(--linka); border-radius: 0;
+  background: var(--papir); color: var(--inkoust);
+}
+.vel-bunka input:focus { outline: none; border-color: var(--inkoust); }
+
+.velikosti-seznam { display: none; }
+.velikost-radek {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 10px 0; border-bottom: 1px solid var(--linka);
+}
+.velikost-radek b { font-size: 18px; font-weight: 600; }
+.stepper { display: flex; align-items: center; gap: 6px; }
+.stepper button {
+  width: 44px; height: 44px; border: 1px solid var(--linka); background: transparent;
+  color: var(--inkoust); font-size: 20px; border-radius: 0; cursor: pointer;
+}
+.stepper output {
+  min-width: 44px; text-align: center;
+  font-family: "IBM Plex Mono", monospace; font-size: 16px;
+}
+@media (max-width: 768px) {
+  .vel-mrizka { display: none; }
+  .velikosti-seznam { display: block; }
+}
+
+.souhrn-kusu {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  padding: 12px 0; margin-bottom: 10px;
+  border-top: 1px solid var(--linka);
+  font-family: "IBM Plex Mono", monospace; font-size: 11px;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--ocel);
+}
+
+/* ---------------------------------------------------------------- sticky lišta */
+.lista-sanonu {
+  position: sticky; top: 76px; z-index: 40;
+  background: var(--papir); border-bottom: 1px solid var(--linka);
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 14px 0; margin-bottom: 36px;
+  font-family: "IBM Plex Mono", monospace; font-size: 11px;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--ocel);
+}
+
+/* ---------------------------------------------------------------- kategorie / řady */
+.kategorie-mrizka {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+  background: var(--linka); border: 1px solid var(--linka);
+}
+.kategorie-karta { display: block; padding: 28px 24px; text-decoration: none; background: var(--papir); transition: background 140ms; }
+.kategorie-karta:hover { background: var(--bila); }
+.kategorie-karta.vse { background: var(--inkoust); color: var(--papir); }
+.kategorie-karta.vse .kod, .kategorie-karta.vse .mono-popisek { color: rgba(242,240,235,.7); }
+.kategorie-karta.vse:hover { background: var(--oranzova); color: #fff; }
+.kategorie-karta.vse:hover .kod, .kategorie-karta.vse:hover .mono-popisek { color: rgba(255,255,255,.85); }
+.kategorie-karta .kod { font-family: "IBM Plex Mono", monospace; font-size: 10px; letter-spacing: 0.12em; color: var(--ocel); }
+.kategorie-karta h3 { margin: 16px 0 10px; font-size: 22px; font-weight: 600; line-height: 1.15; letter-spacing: -0.015em; }
+@media (max-width: 1100px) { .kategorie-mrizka { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .kategorie-mrizka { grid-template-columns: 1fr; } }
+
+.rady-mrizka { display: grid; grid-template-columns: repeat(5, 1fr); gap: 28px; }
+.rada-karta { border-top: 1px solid var(--inkoust); padding-top: 18px; }
+.rada-karta h3 { margin: 0 0 10px; font-size: 24px; font-weight: 700; letter-spacing: -0.02em; text-transform: uppercase; }
+.rada-karta.pripravujeme .ramecek { aspect-ratio: auto; min-height: 96px; }
+.rada-karta p { margin: 0 0 16px; font-family: "EB Garamond", Georgia, serif; font-size: 17px; line-height: 1.4; }
+@media (max-width: 1100px) { .rady-mrizka { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .rady-mrizka { grid-template-columns: 1fr; } }
+
+.pripravujeme .ramecek {
+  aspect-ratio: 4 / 5;
+  min-height: 0; display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: 20px;
+  background-image: repeating-linear-gradient(45deg, transparent 0 13px, var(--linka) 13px 14px);
+}
+.pripravujeme .ramecek div { background: var(--papir); padding: 12px 16px; }
+
+/* ---------------------------------------------------------------- detail */
+.detail-layout { display: grid; grid-template-columns: 1.25fr 1fr; gap: 64px; align-items: start; }
+.detail-galerie { position: sticky; top: 100px; }
+.detail-hlavni { background: var(--bila); filter: brightness(var(--karta-jas)); }
+.detail-hlavni .ramecek { aspect-ratio: 4 / 5; position: relative; }
+.detail-hlavni img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 6%; transition: opacity 200ms; }
+.nahledy { display: flex; gap: 12px; margin-top: 14px; flex-wrap: wrap; }
+.nahled { width: 84px; border: none; background: none; padding: 0; cursor: pointer; }
+.nahled .ramecek { aspect-ratio: 1; background: var(--bila); filter: brightness(var(--karta-jas)); }
+.nahled img { width: 100%; height: 100%; object-fit: contain; padding: 8%; }
+.nahled span { display: block; margin-top: 6px; }
+.nahled.aktivni .ramecek { outline: 1px solid var(--inkoust); outline-offset: 2px; }
+
+.detail-info h1 {
+  margin: 0 0 14px;
+  font-size: clamp(30px, 3.6vw, 48px);
+  font-weight: 700; line-height: 1.08; letter-spacing: -0.03em; text-transform: uppercase;
+}
+.detail-info .technicky {
+  font-family: "IBM Plex Mono", monospace; font-size: 11px;
+  letter-spacing: 0.08em; color: var(--ocel); margin: 0 0 26px;
+  overflow-wrap: break-word;
+}
+.detail-info .popis { font-family: "EB Garamond", Georgia, serif; font-size: 20px; line-height: 1.45; max-width: 48ch; }
+
+.boxy {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin-top: 36px;
+  background: var(--linka); border: 1px solid var(--linka);
+}
+.box { padding: 20px; background: var(--papir); }
+.box h3 {
+  margin: 0 0 10px; font-family: "IBM Plex Mono", monospace; font-size: 10px;
+  font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ocel);
+}
+.box p { margin: 0; font-size: 15px; }
+.odznak {
+  display: inline-block; font-family: "IBM Plex Mono", monospace; font-size: 10px;
+  letter-spacing: 0.1em; border: 1px solid currentColor; border-radius: 0;
+  padding: 4px 9px; margin: 2px 5px 2px 0;
+}
+@media (max-width: 980px) {
+  .detail-layout { grid-template-columns: 1fr; gap: 36px; }
+  .detail-galerie { position: static; }
+  .boxy { grid-template-columns: 1fr; }
+}
+
+.lupa { position: fixed; inset: 0; z-index: 100; background: rgba(17,17,16,.94); display: none; align-items: center; justify-content: center; padding: 24px; }
+.lupa.otevrena { display: flex; }
+.lupa img { max-width: min(92vw, 1000px); max-height: 88vh; background: #fff; }
+
+/* ---------------------------------------------------------------- navy blok */
+.navy-blok { background: var(--navy); color: #f2f0eb; padding-block: 96px; }
+.navy-blok .kota { border-color: rgba(242,240,235,.4); }
+.navy-blok .kota-cislo, .navy-blok .kota-vpravo { color: rgba(242,240,235,.7); }
+.navy-blok .kota p { color: rgba(242,240,235,.9); }
+.navy-dva { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+@media (max-width: 980px) { .navy-dva { grid-template-columns: 1fr; gap: 32px; } .navy-blok { padding-block: 56px; } }
+
+/* ---------------------------------------------------------------- kroky */
+.kroky { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.krok { border-top: 1px solid var(--inkoust); padding-top: 18px; }
+.krok .cislo { font-family: "IBM Plex Mono", monospace; font-size: 10px; letter-spacing: 0.14em; color: var(--ocel); }
+.krok h3 { margin: 14px 0 8px; font-size: 22px; font-weight: 600; letter-spacing: -0.015em; }
+.krok p { margin: 0; font-family: "EB Garamond", Georgia, serif; font-size: 17px; line-height: 1.4; }
+.kroky.ctyri { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 1100px) { .kroky.ctyri { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 900px) { .kroky { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .kroky, .kroky.ctyri { grid-template-columns: 1fr; } }
+
+/* ---------------------------------------------------------------- katalog */
+.katalog-layout { display: grid; grid-template-columns: 220px 1fr; gap: 56px; align-items: start; }
+.filtry { position: sticky; top: 104px; }
+.filtr-skupina { margin-bottom: 28px; }
+.filtr-skupina h3 {
+  margin: 0 0 12px; font-family: "IBM Plex Mono", monospace; font-size: 10px;
+  font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ocel);
+}
+.filtr-skupina label { display: flex; align-items: center; gap: 9px; font-size: 15px; padding: 4px 0; cursor: pointer; }
+.filtry-tlacitko { display: none; }
+@media (max-width: 980px) {
+  .katalog-layout { grid-template-columns: 1fr; gap: 24px; }
+  .filtry { position: static; display: none; }
+  .filtry.otevrene { display: block; }
+  .filtry-tlacitko { display: inline-flex; }
+}
+
+/* ---------------------------------------------------------------- formulář */
+.formular { display: grid; gap: 18px; }
+.pole { display: grid; gap: 6px; }
+.pole label {
+  font-family: "IBM Plex Mono", monospace; font-size: 10px;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--ocel);
+}
+.pole input, .pole textarea, .pole select {
+  font: inherit; font-size: 15px; padding: 11px 0;
+  border: 0; border-bottom: 1px solid var(--linka); border-radius: 0;
+  background: transparent; color: var(--inkoust); width: 100%;
+}
+.pole input:focus, .pole textarea:focus, .pole select:focus { outline: none; border-bottom-color: var(--inkoust); }
+.pole textarea { min-height: 90px; resize: vertical; }
+.dva-sloupce { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+@media (max-width: 620px) { .dva-sloupce { grid-template-columns: 1fr; } }
+
+.hladiny { width: 100%; border-collapse: collapse; max-width: 680px; }
+.hladiny th, .hladiny td { border-bottom: 1px solid var(--linka); padding: 14px 16px 14px 0; text-align: left; }
+.hladiny th {
+  font-family: "IBM Plex Mono", monospace; font-size: 10px; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--ocel);
+  border-bottom-color: var(--inkoust);
+}
+.hladiny td { font-size: 16px; }
+
+/* ---------------------------------------------------------------- šanon */
+.sanon-polozka {
+  display: grid; grid-template-columns: 96px 1fr auto; gap: 20px;
+  padding: 22px 0; align-items: start; border-bottom: 1px solid var(--linka);
+}
+.sanon-polozka .mini { width: 96px; aspect-ratio: 1; background: var(--bila); filter: brightness(var(--karta-jas)); }
+.sanon-polozka .mini img { width: 100%; height: 100%; object-fit: contain; padding: 8%; }
+@media (max-width: 620px) { .sanon-polozka { grid-template-columns: 64px 1fr; } .sanon-polozka .mini { width: 64px; } }
+.prazdno { padding: 64px 0; text-align: center; color: var(--ocel); }
+
+/* ---------------------------------------------------------------- patička */
+.paticka { border-top: 1px solid var(--inkoust); padding: 56px 0 40px; margin-top: 64px; }
+.paticka-mrizka { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.paticka h3 {
+  margin: 0 0 14px; font-family: "IBM Plex Mono", monospace; font-size: 10px;
+  font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ocel);
+}
+.paticka ul { list-style: none; margin: 0; padding: 0; }
+.paticka li { padding: 4px 0; font-size: 15px; }
+.paticka a { text-decoration: none; }
+.paticka a:hover { text-decoration: underline; }
+.disclaimer {
+  margin-top: 44px; padding-top: 20px; border-top: 1px solid var(--linka);
+  font-family: "IBM Plex Mono", monospace; font-size: 10px;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--ocel); line-height: 1.8;
+}
+@media (max-width: 760px) { .paticka-mrizka { grid-template-columns: 1fr; gap: 28px; } }
+
+/* ---------------------------------------------------------------- tisk */
+@media print {
+  .dilenska-lista, .hlavicka, .paticka, .lista-sanonu, .tl, .filtry, .hamburger { display: none !important; }
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .obal { max-width: none; padding: 0; }
+  .tisk-hlavicka { display: block !important; margin-bottom: 20pt; }
+  table { width: 100%; }
+  a { text-decoration: none; color: #000; }
+}
+.tisk-hlavicka { display: none; }

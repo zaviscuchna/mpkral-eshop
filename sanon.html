@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Šanon poptávky — M+P Král</title>
+<meta name="description" content="Rozpracovaná poptávka.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="dilenska-lista">
+  <div class="obal">
+    <span class="dlouze">Šijeme ve Střížovické 419, Kunžak · od roku 1992 · 1 300 vlastních střihů</span>
+    <span class="kratce">Kunžak · od 1992 · 1 300 střihů</span>
+  </div>
+</div>
+<header class="hlavicka">
+  <div class="obal radek">
+    <a class="znacka" href="index.html"><b>M+P Král</b><span>Výroba pracovních oděvů</span></a>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">Menu</button>
+    <ul class="navigace" id="navigace"><li><a href="katalog.html#0" class="">Kombinézy</a></li><li><a href="katalog.html#1" class="">Kalhoty</a></li><li><a href="katalog.html#2" class="">Laclové kalhoty</a></li><li><a href="katalog.html#3" class="">Bundy a blůzy</a></li><li><a href="katalog.html#4" class="">Kraťasy</a></li><li><a href="katalog.html#5" class="">Pláště</a></li><li><a href="katalog.html#6" class="">Soupravy</a></li></ul>
+    <input class="hledani" type="search" placeholder="Hledat řadu nebo produkt" id="hledani" aria-label="Hledat">
+    <a class="sanon-tlacitko" href="sanon.html">Šanon <span class="sanon-pocet" data-sanon-pocet>0</span></a>
+  </div>
+</header>
+<main class="obal sekce">
+  <div class="tisk-hlavicka">
+    <h1 style="margin:0">Poptávka — M+P Král</h1>
+    <p class="mono">Střížovická 419, 378 62 Kunžak · Výroba pracovních oděvů</p>
+  </div>
+  <div class="kota">
+  <span class="kota-cislo">01</span><span class="kota-vpravo">bez registrace</span>
+  <div><h2>Šanon poptávky</h2><p>Rozpis zůstává uložený ve vašem prohlížeči. Můžete ho vytisknout a přiložit k interní objednávce.</p></div>
+</div>
+  <div id="sanon-obsah"></div>
+  <div class="tlacitka" style="margin-top:24px">
+    <button type="button" class="tl tl-obrys" onclick="window.print()">Vytisknout poptávku</button>
+    <button type="button" class="tl tl-obrys" data-vyprazdnit>Vyprázdnit šanon</button>
+  </div>
+
+  <section class="sekce" id="odeslat">
+    <div class="kota">
+  <span class="kota-cislo">02</span><span class="kota-vpravo">odpovídáme do 2 dnů</span>
+  <div><h2>Odeslat poptávku</h2></div>
+</div>
+    <form class="formular" data-poptavka style="max-width:640px">
+      <div class="dva-sloupce">
+        <div class="pole"><label for="s-firma">Firma</label><input id="s-firma" required></div>
+        <div class="pole"><label for="s-ico">IČO</label><input id="s-ico" inputmode="numeric"></div>
+      </div>
+      <div class="dva-sloupce">
+        <div class="pole"><label for="s-osoba">Kontaktní osoba</label><input id="s-osoba" required></div>
+        <div class="pole"><label for="s-tel">Telefon</label><input id="s-tel" type="tel"></div>
+      </div>
+      <div class="dva-sloupce">
+        <div class="pole"><label for="s-mail">E-mail</label><input id="s-mail" type="email" required></div>
+        <div class="pole"><label for="s-obj">Číslo vaší objednávky</label><input id="s-obj"></div>
+      </div>
+      <div class="pole"><label for="s-pozn">Poznámka</label><textarea id="s-pozn"></textarea></div>
+      <p class="mono" style="color:var(--ocel);margin:0">Ceny uvádíme bez DPH.</p>
+      <button type="submit" class="tl tl-hlavni">Odeslat poptávku</button>
+      <p class="mono" style="color:var(--ocel);margin:0">(náčrt — formulář zatím neodesílá)</p>
+    </form>
+  </section>
+</main><footer class="paticka">
+  <div class="obal">
+    <div class="zdvojena-linka" style="margin-bottom:32px"></div>
+    <div class="paticka-mrizka">
+      <div><h3>Kategorie</h3><ul><li><a href="katalog.html#0">Kombinézy</a></li><li><a href="katalog.html#1">Kalhoty</a></li><li><a href="katalog.html#2">Laclové kalhoty</a></li><li><a href="katalog.html#3">Bundy a blůzy</a></li><li><a href="katalog.html#4">Kraťasy</a></li><li><a href="katalog.html#5">Pláště</a></li><li><a href="katalog.html#6">Soupravy</a></li></ul></div>
+      <div><h3>Řady</h3><ul><li>King</li><li>Klasik</li><li>Riedl</li><li>Polar</li><li>Reflexní</li></ul></div>
+      <div>
+        <h3>Kontakt</h3>
+        <ul>
+          <li>M+P Král — Petr Král</li>
+          <li>Střížovická 419, 378 62 Kunžak</li>
+          <li>okres Jindřichův Hradec</li>
+          <li><span class="zastupne" title="zástupný údaj — doplní M+P Král">tel. 384 000 000</span></li>
+          <li><span class="zastupne" title="zástupný údaj — doplní M+P Král">po–pá 7:00–15:30</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="disclaimer">
+      Technické údaje (materiál, gramáž, čísla střihů, normy, lhůty) jsou v tomto náčrtu zástupné.<br>
+      Šijeme <span class="kurziva">od roku 1992</span>.
+    </p>
+  </div>
+</footer>
+<script src="js/app.js"></script>
+</body>
+</html>

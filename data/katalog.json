@@ -1,0 +1,778 @@
+[
+ {
+  "varianty": [
+   {
+    "nazev": "černá s neonově žlutozelenými díly",
+    "id": "cerna-s-neonove-zlutozelenymi-dily",
+    "fotky": {
+     "přední": "img/produkty/riedl-bluza-cerno-neonova-predni.jpg"
+    },
+    "hlavni": "img/produkty/riedl-bluza-cerno-neonova-predni.jpg",
+    "vzornik": "img/vzorniky/riedl-bluza-cerno-neonova-predni.jpg",
+    "strih": "103/R"
+   }
+  ],
+  "nazev": "Blůza Riedl",
+  "id": "bluza-riedl",
+  "znacka": "Riedl",
+  "kategorie": "Bundy a blůzy",
+  "predmet": "blůza (horní díl)",
+  "material": "65 % PES / 35 % BA",
+  "gramaz": "245 g/m²",
+  "velikosti": "46–66",
+  "popis": "Horní díl s košilovým límcem a úpletovými manžetami. Zesílené průramky, náprsní kapsy s klopou, kapsa na tužky na levém rukávu. Přední zapínání na kryté zipy, dolní kraj stahovaný pruženkou.",
+  "pouziti": "dílna, servis, technika",
+  "norma": "EN ISO 13688"
+ },
+ {
+  "varianty": [
+   {
+    "nazev": "modro-černá",
+    "id": "modro-cerna",
+    "fotky": {
+     "detail": "img/produkty/bunda-king-modro-cerna-detail.jpg",
+     "přední": "img/produkty/bunda-king-modro-cerna-predni.jpg",
+     "zadní": "img/produkty/bunda-king-modro-cerna-zadni.jpg"
+    },
+    "hlavni": "img/produkty/bunda-king-modro-cerna-predni.jpg",
+    "vzornik": "img/vzorniky/bunda-king-modro-cerna-predni.jpg",
+    "strih": "106/K"
+   },
+   {
+    "nazev": "zeleno-černá",
+    "id": "zeleno-cerna",
+    "fotky": {
+     "detail": "img/produkty/bunda-king-zeleno-cerna-detail.jpg",
+     "přední": "img/produkty/bunda-king-zeleno-cerna-predni.jpg",
+     "zadní": "img/produkty/bunda-king-zeleno-cerna-zadni.jpg"
+    },
+    "hlavni": "img/produkty/bunda-king-zeleno-cerna-predni.jpg",
+    "vzornik": "img/vzorniky/bunda-king-zeleno-cerna-predni.jpg",
+    "strih": "109/K"
+   },
+   {
+    "nazev": "černo-oranžová reflexní",
+    "id": "cerno-oranzova-reflexni",
+    "fotky": {
+     "detail": "img/produkty/bunda-king-cerno-oranzova-detail.jpg",
+     "přední": "img/produkty/bunda-king-cerno-oranzova-predni.jpg",
+     "zadní": "img/produkty/bunda-king-cerno-oranzova-zadni.jpg"
+    },
+    "hlavni": "img/produkty/bunda-king-cerno-oranzova-predni.jpg",
+    "vzornik": "img/vzorniky/bunda-king-cerno-oranzova-predni.jpg",
+    "strih": "112/K"
+   },
+   {
+    "nazev": "černo-červená",
+    "id": "cerno-cervena",
+    "fotky": {
+     "detail": "img/produkty/bunda-king-cerno-cervena-detail.jpg",
+     "přední": "img/produkty/bunda-king-cerno-cervena-predni.jpg",
+     "zadní": "img/produkty/bunda-king-cerno-cervena-zadni.jpg"
+    },
+    "hlavni": "img/produkty/bunda-king-cerno-cervena-predni.jpg",
+    "vzornik": "img/vzorniky/bunda-king-cerno-cervena-predni.jpg",
+    "strih": "115/K"
+   },
+   {
+    "nazev": "šedo-oranžová",
+    "id": "sedo-oranzova",
+    "fotky": {
+     "detail": "img/produkty/bunda-king-sedo-oranzova-detail.jpg",
+     "přední": "img/produkty/bunda-king-sedo-oranzova-predni.jpg",
+     "zadní": "img/produkty/bunda-king-sedo-oranzova-zadni.jpg"
+    },
+    "hlavni": "img/produkty/bunda-king-sedo-oranzova-predni.jpg",
+    "vzornik": "img/vzorniky/bunda-king-sedo-oranzova-predni.jpg",
+    "strih": "118/K"
+   }
+  ],
+  "nazev": "Bunda King",
+  "id": "bunda-king",
+  "znacka": "King",
+  "kategorie": "Bundy a blůzy",
+  "predmet": "bunda (horní díl)",
+  "material": "65 % PES / 35 % BA",
+  "gramaz": "260 g/m²",
+  "velikosti": "46–66",
+  "popis": "Horní díl s košilovým límcem a úpletovými manžetami. Zesílené průramky, náprsní kapsy s klopou, kapsa na tužky na levém rukávu. Přední zapínání na kryté zipy, dolní kraj stahovaný pruženkou.",
+  "pouziti": "stavba, dílna, servis",
+  "norma": "EN ISO 13688"
+ },
+ {
+  "varianty": [
+   {
+    "nazev": "antracitová se žlutozelenými prvky",
+    "id": "antracitova-se-zlutozelenymi-prvky",
+    "fotky": {
+     "detail": "img/produkty/riedl-kalhoty-pas-cerno-zlute-detail.jpg",
+     "přední": "img/produkty/riedl-kalhoty-pas-cerno-zlute-predni.jpg",
+     "zadní": "img/produkty/riedl-kalhoty-pas-cerno-zlute-zadni.jpg"
+    },
+    "hlavni": "img/produkty/riedl-kalhoty-pas-cerno-zlute-predni.jpg",
+    "vzornik": "img/vzorniky/riedl-kalhoty-pas-cerno-zlute-predni.jpg",
+    "strih": "121/R"
+   },
+   {
+    "nazev": "černá s červeno-oranžovými prvky",
+    "id": "cerna-s-cerveno-oranzovymi-prvky",
+    "fotky": {
+     "detail": "img/produkty/riedl-kalhoty-pas-cerno-oranzove-detail.jpg",
+     "zadní": "img/produkty/riedl-kalhoty-pas-cerno-oranzove-zadni.jpg"
+    },
+    "hlavni": "img/produkty/riedl-kalhoty-pas-cerno-oranzove-detail.jpg",
+    "vzornik": "img/vzorniky/riedl-kalhoty-pas-cerno-oranzove-detail.jpg",
+    "strih": "124/R"
+   }
+  ],
+  "nazev": "Kalhoty do pasu Riedl",
+  "id": "kalhoty-do-pasu-riedl",
+  "znacka": "Riedl",
+  "kategorie": "Kalhoty",
+  "predmet": "kalhoty do pasu",
+  "material": "65 % PES / 35 % BA",
+  "gramaz": "245 g/m²",
+  "velikosti": "46–66",
+  "popis": "Kalhoty do pasu s poutky na opasek a nakládanými stehenními kapsami. Rozkrok řešený klínem kvůli dřepu, zadní sed zvýšený. Kolenní díl připravený na vsazení chráničů.",
+  "pouziti": "dílna, servis, technika",
+  "norma": "EN ISO 13688"
+ },
+ {
+  "varianty": [
+   {
+    "nazev": "modro-černá",
+    "id": "modro-cerna",
+    "fotky": {
+     "detail": "img/produkty/kalhoty-pas-king-modro-cerna-detail.jpg",
+     "přední": "img/produkty/kalhoty-pas-king-modro-cerna-predni.jpg",
+     "zadní": "img/produkty/kalhoty-pas-king-modro-cerna-zadni.jpg"
+    },
+    "hlavni": "img/produkty/kalhoty-pas-king-modro-cerna-predni.jpg",
+    "vzornik": "img/vzorniky/kalhoty-pas-king-modro-cerna-predni.jpg",
+    "strih": "127/K"
+   },
+   {
+    "nazev": "zeleno-černá",
+    "id": "zeleno-cerna",
+    "fotky": {
+     "detail": "img/produkty/kalhoty-pas-king-zeleno-cerna-detail.jpg",
+     "přední": "img/produkty/kalhoty-pas-king-zeleno-cerna-predni.jpg",
+     "zadní": "img/produkty/kalhoty-pas-king-zeleno-cerna-zadni.jpg"
+    },
+    "hlavni": "img/produkty/kalhoty-pas-king-zeleno-cerna-predni.jpg",
+    "vzornik": "img/vzorniky/kalhoty-pas-king-zeleno-cerna-predni.jpg",
+    "strih": "130/K"
+   },
+   {
+    "nazev": "černo-červená",
+    "id": "cerno-cervena",
+    "fotky": {
+     "detail": "img/produkty/kalhoty-pas-king-cerno-cervena-detail.jpg",
+     "přední": "img/produkty/kalhoty-pas-king-cerno-cervena-predni.jpg",
+     "zadní": "img/produkty/kalhoty-pas-king-cerno-cervena-zadni.jpg"
+    },
+    "hlavni": "img/produkty/kalhoty-pas-king-cerno-cervena-predni.jpg",
+    "vzornik": "img/vzorniky/kalhoty-pas-king-cerno-cervena-predni.jpg",
+    "strih": "133/K"
+   },
+   {
+    "nazev": "šedo-oranžová",
+    "id": "sedo-oranzova",
+    "fotky": {
+     "detail": "img/produkty/kalhoty-pas-king-sedo-oranzova-detail.jpg",
+     "přední": "img/produkty/kalhoty-pas-king-sedo-oranzova-predni.jpg",
+     "zadní": "img/produkty/kalhoty-pas-king-sedo-oranzova-zadni.jpg"
+    },
+    "hlavni": "img/produkty/kalhoty-pas-king-sedo-oranzova-predni.jpg",
+    "vzornik": "img/vzorniky/kalhoty-pas-king-sedo-oranzova-predni.jpg",
+    "strih": "136/K"
+   }
+  ],
+  "nazev": "Kalhoty pas King",
+  "id": "kalhoty-pas-king",
+  "znacka": "King",
+  "kategorie": "Kalhoty",
+  "predmet": "kalhoty do pasu",
+  "material": "65 % PES / 35 % BA",
+  "gramaz": "260 g/m²",
+  "velikosti": "46–66",
+  "popis": "Kalhoty do pasu s poutky na opasek a nakládanými stehenními kapsami. Rozkrok řešený klínem kvůli dřepu, zadní sed zvýšený. Kolenní díl připravený na vsazení chráničů.",
+  "pouziti": "stavba, dílna, servis",
+  "norma": "EN ISO 13688"
+ },
+ {
+  "varianty": [
+   {
+    "nazev": "modro-černá",
+    "id": "modro-cerna",
+    "fotky": {
+     "detail": "img/produkty/kalhoty-lacl-king-modro-cerna-detail.jpg",
+     "přední": "img/produkty/kalhoty-lacl-king-modro-cerna-predni.jpg"
+    },
+    "hlavni": "img/produkty/kalhoty-lacl-king-modro-cerna-predni.jpg",
+    "vzornik": "img/vzorniky/kalhoty-lacl-king-modro-cerna-predni.jpg",
+    "strih": "139/K"
+   },
+   {
+    "nazev": "zeleno-černá",
+    "id": "zeleno-cerna",
+    "fotky": {
+     "detail": "img/produkty/kalhoty-lacl-king-zeleno-cerna-detail.jpg",
+     "přední": "img/produkty/kalhoty-lacl-king-zeleno-cerna-predni.jpg",
+     "zadní": "img/produkty/kalhoty-lacl-king-zeleno-cerna-zadni.jpg"
+    },
+    "hlavni": "img/produkty/kalhoty-lacl-king-zeleno-cerna-predni.jpg",
+    "vzornik": "img/vzorniky/kalhoty-lacl-king-zeleno-cerna-predni.jpg",
+    "strih": "142/K"
+   },
+   {
+    "nazev": "černo-červená",
+    "id": "cerno-cervena",
+    "fotky": {
+     "detail": "img/produkty/kalhoty-lacl-king-cerno-cervena-detail.jpg",
+     "přední": "img/produkty/kalhoty-lacl-king-cerno-cervena-predni.jpg",
+     "zadní": "img/produkty/kalhoty-lacl-king-cerno-cervena-zadni.jpg"
+    },
+    "hlavni": "img/produkty/kalhoty-lacl-king-cerno-cervena-predni.jpg",
+    "vzornik": "img/vzorniky/kalhoty-lacl-king-cerno-cervena-predni.jpg",
+    "strih": "145/K"
+   },
+   {
+    "nazev": "šedo-oranžová",
+    "id": "sedo-oranzova",
+    "fotky": {
+     "detail": "img/produkty/kalhoty-lacl-king-sedo-oranzova-detail.jpg",
+     "přední": "img/produkty/kalhoty-lacl-king-sedo-oranzova-predni.jpg",
+     "zadní": "img/produkty/kalhoty-lacl-king-sedo-oranzova-zadni.jpg"
+    },
+    "hlavni": "img/produkty/kalhoty-lacl-king-sedo-oranzova-predni.jpg",
+    "vzornik": "img/vzorniky/kalhoty-lacl-king-sedo-oranzova-predni.jpg",
+    "strih": "148/K"
+   }
+  ],
+  "nazev": "Kalhoty s laclem King",
+  "id": "kalhoty-s-laclem-king",
+  "znacka": "King",
+  "kategorie": "Laclové kalhoty",
+  "predmet": "laclové kalhoty",
+  "material": "65 % PES / 35 % BA",
+  "gramaz": "260 g/m²",
+  "velikosti": "46–66",
+  "popis": "Laclové kalhoty s náprsní kapsou na zip a pruženkou v zádech. Traky s rychloupínacími přezkami, boční rozparky na knoflík. Zesílený sed a kolenní díly.",
+  "pouziti": "stavba, dílna, servis",
+  "norma": "EN ISO 13688"
+ },
+ {
+  "varianty": [
+   {
+    "nazev": "královská modrá",
+    "id": "kralovska-modra",
+    "fotky": {
+     "detail": "img/produkty/klasik-kalhoty-modre-detail.jpg",
+     "přední": "img/produkty/klasik-kalhoty-modre-predni.jpg",
+     "zadní": "img/produkty/klasik-kalhoty-modre-zadni.jpg"
+    },
+    "hlavni": "img/produkty/klasik-kalhoty-modre-predni.jpg",
+    "vzornik": "img/vzorniky/klasik-kalhoty-modre-predni.jpg",
+    "strih": "151/O"
+   },
+   {
+    "nazev": "tmavě modrofialová",
+    "id": "tmave-modrofialova",
+    "fotky": {
+     "přední": "img/produkty/klasik-kalhoty-tmave-modre-predni.jpg",
+     "zadní": "img/produkty/klasik-kalhoty-tmave-modre-zadni.jpg"
+    },
+    "hlavni": "img/produkty/klasik-kalhoty-tmave-modre-predni.jpg",
+    "vzornik": "img/vzorniky/klasik-kalhoty-tmave-modre-predni.jpg",
+    "strih": "154/O"
+   },
+   {
+    "nazev": "zelená",
+    "id": "zelena",
+    "fotky": {
+     "přední": "img/produkty/klasik-kalhoty-zelene-predni.jpg",
+     "zadní": "img/produkty/klasik-kalhoty-zelene-zadni.jpg"
+    },
+    "hlavni": "img/produkty/klasik-kalhoty-zelene-predni.jpg",
+    "vzornik": "img/vzorniky/klasik-kalhoty-zelene-predni.jpg",
+    "strih": "157/O"
+   }
+  ],
+  "nazev": "Klasické kalhoty do pasu",
+  "id": "klasicke-kalhoty-do-pasu",
+  "znacka": "Ostatní",
+  "kategorie": "Kalhoty",
+  "predmet": "kalhoty do pasu",
+  "material": "65 % PES / 35 % BA",
+  "gramaz": "260 g/m²",
+  "velikosti": "46–66",
+  "popis": "Kalhoty do pasu s poutky na opasek a nakládanými stehenními kapsami. Rozkrok řešený klínem kvůli dřepu, zadní sed zvýšený. Kolenní díl připravený na vsazení chráničů.",
+  "pouziti": "dílna, provoz",
+  "norma": "EN ISO 13688"
+ },
+ {
+  "varianty": [
+   {
+    "nazev": "modro-černá",
+    "id": "modro-cerna",
+    "fotky": {
+     "detail": "img/produkty/kombineza-king-modro-cerna-detail.jpg",
+     "přední": "img/produkty/kombineza-king-modro-cerna-predni.jpg",
+     "zadní": "img/produkty/kombineza-king-modro-cerna-zadni.jpg"
+    },
+    "hlavni": "img/produkty/kombineza-king-modro-cerna-predni.jpg",
+    "vzornik": "img/vzorniky/kombineza-king-modro-cerna-predni.jpg",
+    "strih": "160/K"
+   },
+   {
+    "nazev": "zelená s černými prvky",
+    "id": "zelena-s-cernymi-prvky",
+    "fotky": {
+     "detail": "img/produkty/kombineza-king-zelena-detail.jpg",
+     "přední": "img/produkty/kombineza-king-zelena-predni.jpg"
+    },
+    "hlavni": "img/produkty/kombineza-king-zelena-predni.jpg",
+    "vzornik": "img/vzorniky/kombineza-king-zelena-predni.jpg",
+    "strih": "163/K"
+   },
+   {
+    "nazev": "červeno-černá",
+    "id": "cerveno-cerna",
+    "fotky": {
+     "detail": "img/produkty/kombineza-king-cerveno-cerna-detail.jpg",
+     "přední": "img/produkty/kombineza-king-cerveno-cerna-predni.jpg",
+     "zadní": "img/produkty/kombineza-king-cerveno-cerna-zadni.jpg"
+    },
+    "hlavni": "img/produkty/kombineza-king-cerveno-cerna-predni.jpg",
+    "vzornik": "img/vzorniky/kombineza-king-cerveno-cerna-predni.jpg",
+    "strih": "166/K"
+   },
+   {
+    "nazev": "šedo-oranžová",
+    "id": "sedo-oranzova",
+    "fotky": {
+     "detail": "img/produkty/kombineza-king-sedo-oranzova-detail.jpg",
+     "přední": "img/produkty/kombineza-king-sedo-oranzova-predni.jpg",
+     "zadní": "img/produkty/kombineza-king-sedo-oranzova-zadni.jpg"
+    },
+    "hlavni": "img/produkty/kombineza-king-sedo-oranzova-predni.jpg",
+    "vzornik": "img/vzorniky/kombineza-king-sedo-oranzova-predni.jpg",
+    "strih": "169/K"
+   }
+  ],
+  "nazev": "Kombinéza King",
+  "id": "kombineza-king",
+  "znacka": "King",
+  "kategorie": "Kombinézy",
+  "predmet": "celá kombinéza",
+  "material": "65 % PES / 35 % BA",
+  "gramaz": "260 g/m²",
+  "velikosti": "46–66",
+  "popis": "Celotělová kombinéza s krytým zipem po celé délce. Pruženka v pase kvůli volnosti v ramenou, náprsní kapsy s klopou, stehenní kapsa. Zesílená kolena a sed.",
+  "pouziti": "stavba, dílna, servis",
+  "norma": "EN ISO 13688"
+ },
+ {
+  "varianty": [
+   {
+    "nazev": "modrá s černým sedlem",
+    "id": "modra-s-cernym-sedlem",
+    "fotky": {
+     "detail": "img/produkty/kombineza-king-modra-s-lemy-detail.jpg"
+    },
+    "hlavni": "img/produkty/kombineza-king-modra-s-lemy-detail.jpg",
+    "vzornik": "img/vzorniky/kombineza-king-modra-s-lemy-detail.jpg",
+    "strih": "172/K"
+   },
+   {
+    "nazev": "tmavě modrá se žlutými reflexními pruhy",
+    "id": "tmave-modra-se-zlutymi-reflexnimi-pruhy",
+    "fotky": {
+     "detail": "img/produkty/kombineza-king-tmavomodra-zlute-pruhy-detail.jpg",
+     "přední": "img/produkty/kombineza-king-tmavomodra-zlute-pruhy-predni.jpg"
+    },
+    "hlavni": "img/produkty/kombineza-king-tmavomodra-zlute-pruhy-predni.jpg",
+    "vzornik": "img/vzorniky/kombineza-king-tmavomodra-zlute-pruhy-predni.jpg",
+    "strih": "175/K"
+   }
+  ],
+  "nazev": "Kombinéza King s lemy",
+  "id": "kombineza-king-s-lemy",
+  "znacka": "King",
+  "kategorie": "Kombinézy",
+  "predmet": "celá kombinéza",
+  "material": "65 % PES / 35 % BA",
+  "gramaz": "260 g/m²",
+  "velikosti": "46–66",
+  "popis": "Celotělová kombinéza s krytým zipem po celé délce. Pruženka v pase kvůli volnosti v ramenou, náprsní kapsy s klopou, stehenní kapsa. Zesílená kolena a sed.",
+  "pouziti": "stavba, dílna, servis",
+  "norma": "EN ISO 13688"
+ },
+ {
+  "varianty": [
+   {
+    "nazev": "tmavě modrá se šedomodrými díly",
+    "id": "tmave-modra-se-sedomodrymi-dily",
+    "fotky": {
+     "detail": "img/produkty/kombineza-polar-detail.jpg",
+     "přední": "img/produkty/kombineza-polar-predni.jpg",
+     "zadní": "img/produkty/kombineza-polar-zadni.jpg"
+    },
+    "hlavni": "img/produkty/kombineza-polar-predni.jpg",
+    "vzornik": "img/vzorniky/kombineza-polar-predni.jpg",
+    "strih": "178/P"
+   }
+  ],
+  "nazev": "Kombinéza Polar",
+  "id": "kombineza-polar",
+  "znacka": "Polar",
+  "kategorie": "Kombinézy",
+  "predmet": "celá kombinéza",
+  "material": "65 % PES / 35 % BA",
+  "gramaz": "320 g/m²",
+  "velikosti": "46–66",
+  "popis": "Celotělová kombinéza s krytým zipem po celé délce. Pruženka v pase kvůli volnosti v ramenou, náprsní kapsy s klopou, stehenní kapsa. Zesílená kolena a sed.",
+  "pouziti": "chladné provozy, venkovní práce",
+  "norma": "EN ISO 13688"
+ },
+ {
+  "varianty": [
+   {
+    "nazev": "modrá s bílými pruhy",
+    "id": "modra-s-bilymi-pruhy",
+    "fotky": {
+     "přední": "img/produkty/kombineza-pruhy-modra-predni.jpg"
+    },
+    "hlavni": "img/produkty/kombineza-pruhy-modra-predni.jpg",
+    "vzornik": "img/vzorniky/kombineza-pruhy-modra-predni.jpg",
+    "strih": "181/O"
+   },
+   {
+    "nazev": "zelená s bílými pruhy",
+    "id": "zelena-s-bilymi-pruhy",
+    "fotky": {
+     "detail": "img/produkty/kombineza-pruhy-zelena-detail.jpg",
+     "přední": "img/produkty/kombineza-pruhy-zelena-predni.jpg",
+     "zadní": "img/produkty/kombineza-pruhy-zelena-zadni.jpg"
+    },
+    "hlavni": "img/produkty/kombineza-pruhy-zelena-predni.jpg",
+    "vzornik": "img/vzorniky/kombineza-pruhy-zelena-predni.jpg",
+    "strih": "184/O"
+   }
+  ],
+  "nazev": "Kombinéza s pruhy",
+  "id": "kombineza-s-pruhy",
+  "znacka": "Ostatní",
+  "kategorie": "Kombinézy",
+  "predmet": "celá kombinéza",
+  "material": "65 % PES / 35 % BA",
+  "gramaz": "260 g/m²",
+  "velikosti": "46–66",
+  "popis": "Celotělová kombinéza s krytým zipem po celé délce. Pruženka v pase kvůli volnosti v ramenou, náprsní kapsy s klopou, stehenní kapsa. Zesílená kolena a sed.",
+  "pouziti": "dílna, provoz",
+  "norma": "EN ISO 13688"
+ },
+ {
+  "varianty": [
+   {
+    "nazev": "červená s bílými pruhy",
+    "id": "cervena-s-bilymi-pruhy",
+    "fotky": {
+     "přední": "img/produkty/kombineza-pruhy-cervena-damska-predni.jpg"
+    },
+    "hlavni": "img/produkty/kombineza-pruhy-cervena-damska-predni.jpg",
+    "vzornik": "img/vzorniky/kombineza-pruhy-cervena-damska-predni.jpg",
+    "strih": "187/O"
+   }
+  ],
+  "nazev": "Kombinéza s pruhy dámská",
+  "id": "kombineza-s-pruhy-damska",
+  "znacka": "Ostatní",
+  "kategorie": "Kombinézy",
+  "predmet": "celá kombinéza",
+  "material": "65 % PES / 35 % BA",
+  "gramaz": "260 g/m²",
+  "velikosti": "46–66",
+  "popis": "Celotělová kombinéza s krytým zipem po celé délce. Pruženka v pase kvůli volnosti v ramenou, náprsní kapsy s klopou, stehenní kapsa. Zesílená kolena a sed.",
+  "pouziti": "dílna, provoz",
+  "norma": "EN ISO 13688"
+ },
+ {
+  "varianty": [
+   {
+    "nazev": "modro-černá",
+    "id": "modro-cerna",
+    "fotky": {
+     "detail": "img/produkty/kratasy-king-modro-cerna-detail.jpg",
+     "přední": "img/produkty/kratasy-king-modro-cerna-predni.jpg",
+     "zadní": "img/produkty/kratasy-king-modro-cerna-zadni.jpg"
+    },
+    "hlavni": "img/produkty/kratasy-king-modro-cerna-predni.jpg",
+    "vzornik": "img/vzorniky/kratasy-king-modro-cerna-predni.jpg",
+    "strih": "190/K"
+   },
+   {
+    "nazev": "zeleno-černá",
+    "id": "zeleno-cerna",
+    "fotky": {
+     "detail": "img/produkty/kratasy-king-zeleno-cerna-detail.jpg",
+     "přední": "img/produkty/kratasy-king-zeleno-cerna-predni.jpg",
+     "zadní": "img/produkty/kratasy-king-zeleno-cerna-zadni.jpg"
+    },
+    "hlavni": "img/produkty/kratasy-king-zeleno-cerna-predni.jpg",
+    "vzornik": "img/vzorniky/kratasy-king-zeleno-cerna-predni.jpg",
+    "strih": "193/K"
+   },
+   {
+    "nazev": "černo-červená",
+    "id": "cerno-cervena",
+    "fotky": {
+     "detail": "img/produkty/kratasy-king-cerno-cervena-detail.jpg",
+     "přední": "img/produkty/kratasy-king-cerno-cervena-predni.jpg"
+    },
+    "hlavni": "img/produkty/kratasy-king-cerno-cervena-predni.jpg",
+    "vzornik": "img/vzorniky/kratasy-king-cerno-cervena-predni.jpg",
+    "strih": "196/K"
+   },
+   {
+    "nazev": "šedo-černá",
+    "id": "sedo-cerna",
+    "fotky": {
+     "detail": "img/produkty/kratasy-king-sedo-cerna-detail.jpg",
+     "přední": "img/produkty/kratasy-king-sedo-cerna-predni.jpg",
+     "zadní": "img/produkty/kratasy-king-sedo-cerna-zadni.jpg"
+    },
+    "hlavni": "img/produkty/kratasy-king-sedo-cerna-predni.jpg",
+    "vzornik": "img/vzorniky/kratasy-king-sedo-cerna-predni.jpg",
+    "strih": "199/K"
+   }
+  ],
+  "nazev": "Kraťasy King",
+  "id": "kratasy-king",
+  "znacka": "King",
+  "kategorie": "Kraťasy",
+  "predmet": "kraťasy",
+  "material": "65 % PES / 35 % BA",
+  "gramaz": "260 g/m²",
+  "velikosti": "46–64",
+  "popis": "Kraťasy do pasu s poutky a nakládanými kapsami. Délka nad koleno, zesílený sed, boční kapsa s klopou na drobné nářadí.",
+  "pouziti": "stavba, dílna, servis",
+  "norma": "EN ISO 13688"
+ },
+ {
+  "varianty": [
+   {
+    "nazev": "antracitová s neonově žlutozelenými prvky",
+    "id": "antracitova-s-neonove-zlutozelenymi-prvky",
+    "fotky": {
+     "detail": "img/produkty/riedl-kratasy-detail.jpg",
+     "přední": "img/produkty/riedl-kratasy-predni.jpg",
+     "zadní": "img/produkty/riedl-kratasy-zadni.jpg"
+    },
+    "hlavni": "img/produkty/riedl-kratasy-predni.jpg",
+    "vzornik": "img/vzorniky/riedl-kratasy-predni.jpg",
+    "strih": "202/R"
+   }
+  ],
+  "nazev": "Kraťasy Riedl",
+  "id": "kratasy-riedl",
+  "znacka": "Riedl",
+  "kategorie": "Kraťasy",
+  "predmet": "kraťasy",
+  "material": "65 % PES / 35 % BA",
+  "gramaz": "245 g/m²",
+  "velikosti": "46–64",
+  "popis": "Kraťasy do pasu s poutky a nakládanými kapsami. Délka nad koleno, zesílený sed, boční kapsa s klopou na drobné nářadí.",
+  "pouziti": "dílna, servis, technika",
+  "norma": "EN ISO 13688"
+ },
+ {
+  "varianty": [
+   {
+    "nazev": "královská modrá",
+    "id": "kralovska-modra",
+    "fotky": {
+     "detail": "img/produkty/klasik-lacl-modre-detail.jpg",
+     "přední": "img/produkty/klasik-lacl-modre-predni.jpg",
+     "zadní": "img/produkty/klasik-lacl-modre-zadni.jpg"
+    },
+    "hlavni": "img/produkty/klasik-lacl-modre-predni.jpg",
+    "vzornik": "img/vzorniky/klasik-lacl-modre-predni.jpg",
+    "strih": "205/K"
+   },
+   {
+    "nazev": "tmavě modrá (navy)",
+    "id": "tmave-modra-navy",
+    "fotky": {
+     "detail": "img/produkty/klasik-lacl-navy-detail.jpg",
+     "přední": "img/produkty/klasik-lacl-navy-predni.jpg"
+    },
+    "hlavni": "img/produkty/klasik-lacl-navy-predni.jpg",
+    "vzornik": "img/vzorniky/klasik-lacl-navy-predni.jpg",
+    "strih": "208/K"
+   },
+   {
+    "nazev": "zelená",
+    "id": "zelena",
+    "fotky": {
+     "detail": "img/produkty/klasik-lacl-zelene-detail.jpg",
+     "přední": "img/produkty/klasik-lacl-zelene-predni.jpg"
+    },
+    "hlavni": "img/produkty/klasik-lacl-zelene-predni.jpg",
+    "vzornik": "img/vzorniky/klasik-lacl-zelene-predni.jpg",
+    "strih": "211/K"
+   }
+  ],
+  "nazev": "Laclové kalhoty Klasik",
+  "id": "laclove-kalhoty-klasik",
+  "znacka": "Klasik",
+  "kategorie": "Laclové kalhoty",
+  "predmet": "laclové kalhoty",
+  "material": "100 % BA",
+  "gramaz": "280 g/m²",
+  "velikosti": "46–66",
+  "popis": "Laclové kalhoty s náprsní kapsou na zip a pruženkou v zádech. Traky s rychloupínacími přezkami, boční rozparky na knoflík. Zesílený sed a kolenní díly.",
+  "pouziti": "zemědělství, údržba, sklad",
+  "norma": "EN ISO 13688"
+ },
+ {
+  "varianty": [
+   {
+    "nazev": "tmavě modrá (navy)",
+    "id": "tmave-modra-navy",
+    "fotky": {
+     "detail": "img/produkty/klasik-lacl-damske-navy-detail.jpg",
+     "přední": "img/produkty/klasik-lacl-damske-navy-predni.jpg"
+    },
+    "hlavni": "img/produkty/klasik-lacl-damske-navy-predni.jpg",
+    "vzornik": "img/vzorniky/klasik-lacl-damske-navy-predni.jpg",
+    "strih": "214/K"
+   },
+   {
+    "nazev": "červená",
+    "id": "cervena",
+    "fotky": {
+     "detail": "img/produkty/klasik-lacl-damske-cervene-detail.jpg",
+     "přední": "img/produkty/klasik-lacl-damske-cervene-predni.jpg"
+    },
+    "hlavni": "img/produkty/klasik-lacl-damske-cervene-predni.jpg",
+    "vzornik": "img/vzorniky/klasik-lacl-damske-cervene-predni.jpg",
+    "strih": "217/K"
+   }
+  ],
+  "nazev": "Laclové kalhoty Klasik dámské",
+  "id": "laclove-kalhoty-klasik-damske",
+  "znacka": "Klasik",
+  "kategorie": "Laclové kalhoty",
+  "predmet": "laclové kalhoty",
+  "material": "100 % BA",
+  "gramaz": "280 g/m²",
+  "velikosti": "46–66",
+  "popis": "Laclové kalhoty s náprsní kapsou na zip a pruženkou v zádech. Traky s rychloupínacími přezkami, boční rozparky na knoflík. Zesílený sed a kolenní díly.",
+  "pouziti": "zemědělství, údržba, sklad",
+  "norma": "EN ISO 13688"
+ },
+ {
+  "varianty": [
+   {
+    "nazev": "zelená",
+    "id": "zelena",
+    "fotky": {
+     "přední": "img/produkty/klasik-souprava-zelena-predni.jpg",
+     "zadní": "img/produkty/klasik-souprava-zelena-zadni.jpg"
+    },
+    "hlavni": "img/produkty/klasik-souprava-zelena-predni.jpg",
+    "vzornik": "img/vzorniky/klasik-souprava-zelena-predni.jpg",
+    "strih": "220/K"
+   }
+  ],
+  "nazev": "Monterková souprava Klasik",
+  "id": "monterkova-souprava-klasik",
+  "znacka": "Klasik",
+  "kategorie": "Soupravy",
+  "predmet": "souprava (blůza a kalhoty)",
+  "material": "100 % BA",
+  "gramaz": "280 g/m²",
+  "velikosti": "46–66",
+  "popis": "Souprava blůzy a kalhot ve stejném materiálu. Blůza s knoflíkovou légou a náprsními kapsami, kalhoty do pasu s poutky. Sladěné pro celý tým.",
+  "pouziti": "zemědělství, údržba, sklad",
+  "norma": "EN ISO 13688"
+ },
+ {
+  "varianty": [
+   {
+    "nazev": "královská modrá",
+    "id": "kralovska-modra",
+    "fotky": {
+     "detail": "img/produkty/plast-kralovsky-modry-detail.jpg",
+     "přední": "img/produkty/plast-kralovsky-modry-predni.jpg",
+     "zadní": "img/produkty/plast-kralovsky-modry-zadni.jpg"
+    },
+    "hlavni": "img/produkty/plast-kralovsky-modry-predni.jpg",
+    "vzornik": "img/vzorniky/plast-kralovsky-modry-predni.jpg",
+    "strih": "223/O"
+   },
+   {
+    "nazev": "tmavě modrá (navy)",
+    "id": "tmave-modra-navy",
+    "fotky": {
+     "zadní": "img/produkty/plast-tmave-modry-zadni.jpg"
+    },
+    "hlavni": "img/produkty/plast-tmave-modry-zadni.jpg",
+    "vzornik": "img/vzorniky/plast-tmave-modry-zadni.jpg",
+    "strih": "226/O"
+   },
+   {
+    "nazev": "zelená",
+    "id": "zelena",
+    "fotky": {
+     "detail": "img/produkty/plast-zeleny-detail.jpg",
+     "přední": "img/produkty/plast-zeleny-predni.jpg",
+     "zadní": "img/produkty/plast-zeleny-zadni.jpg"
+    },
+    "hlavni": "img/produkty/plast-zeleny-predni.jpg",
+    "vzornik": "img/vzorniky/plast-zeleny-predni.jpg",
+    "strih": "229/O"
+   }
+  ],
+  "nazev": "Pracovní plášť",
+  "id": "pracovni-plast",
+  "znacka": "Ostatní",
+  "kategorie": "Pláště",
+  "predmet": "plášť",
+  "material": "65 % PES / 35 % BA",
+  "gramaz": "260 g/m²",
+  "velikosti": "46–64",
+  "popis": "Pracovní plášť ke kolenům s knoflíkovou légou a klopovým límcem. Dvě boční a jedna náprsní kapsa, zadní rozparek. Střih volný, aby se dal nosit přes oděv.",
+  "pouziti": "dílna, provoz",
+  "norma": "EN ISO 13688"
+ },
+ {
+  "varianty": [
+   {
+    "nazev": "celá výstražná oranžová",
+    "id": "cela-vystrazna-oranzova",
+    "fotky": {
+     "detail": "img/produkty/reflex-bluza-oranzova-detail.jpg",
+     "přední": "img/produkty/reflex-bluza-oranzova-predni.jpg",
+     "zadní": "img/produkty/reflex-bluza-oranzova-zadni.jpg"
+    },
+    "hlavni": "img/produkty/reflex-bluza-oranzova-predni.jpg",
+    "vzornik": "img/vzorniky/reflex-bluza-oranzova-predni.jpg",
+    "strih": "232/R"
+   }
+  ],
+  "nazev": "Reflexní blůza",
+  "id": "reflexni-bluza",
+  "znacka": "Reflexní",
+  "kategorie": "Bundy a blůzy",
+  "predmet": "blůza (horní díl)",
+  "material": "65 % PES / 35 % BA",
+  "gramaz": "260 g/m²",
+  "velikosti": "46–66",
+  "popis": "Horní díl s košilovým límcem a úpletovými manžetami. Zesílené průramky, náprsní kapsy s klopou, kapsa na tužky na levém rukávu. Přední zapínání na kryté zipy, dolní kraj stahovaný pruženkou.",
+  "pouziti": "dílna, provoz",
+  "norma": "EN ISO 13688"
+ }
+]

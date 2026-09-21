@@ -142,7 +142,7 @@
 
         if (predni) {
           predni.src = d.fotky["přední"] || d.fotky["detail"] || predni.src;
-          predni.alt = d.rada + " — " + d.varianta;
+          predni.alt = d.rada + ", " + d.varianta;
         }
         var maZadni = !!d.fotky["zadní"];
         if (zadni) {
@@ -258,7 +258,7 @@
       tl.classList.add("aktivni");
 
       var nadpis = document.getElementById("nazev-produktu");
-      if (nadpis) nadpis.textContent = d.rada + " — " + d.varianta;
+      if (nadpis) nadpis.innerHTML = esc(d.rada) + ' <span class="varianta-nazev">' + esc(d.varianta) + "</span>";
       document.querySelectorAll("[data-strih]").forEach(function (e) { e.textContent = d.strih; });
 
       var nahledy = document.getElementById("nahledy");
@@ -468,7 +468,7 @@
       box.className = "karta";
       box.style.cssText = "padding:20px;margin-top:16px";
       box.innerHTML = "<h3 style=\"margin:0 0 6px;font-size:18px\">Poptávku jsme přijali, ozveme se do 2 pracovních dnů.</h3>"
-        + '<p class="mono" style="color:var(--ocel);margin:0">(náčrt — formulář zatím neodesílá)</p>';
+        + '<p class="mono" style="color:var(--ocel);margin:0">Náčrt, formulář zatím neodesílá.</p>';
       f.replaceWith(box);
     });
   });

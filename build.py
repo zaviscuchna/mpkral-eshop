@@ -17,6 +17,20 @@ KATEGORIE = ["Kombinézy", "Kalhoty", "Laclové kalhoty", "Bundy a blůzy",
              "Kraťasy", "Pláště", "Soupravy"]
 RADY = ["King", "Klasik", "Riedl", "Polar", "Reflexní"]
 
+def zkontroluj_css(cesta):
+    """Nevyvážená závorka v CSS tiše zahodí všechna pravidla pod sebou.
+    Prohlížeč nic neohlásí, jen se to přestane používat — proto radši spadnout tady."""
+    s = cesta.read_text(encoding="utf-8")
+    hloubka = 0
+    for i, radek in enumerate(s.splitlines(), 1):
+        hloubka += radek.count("{") - radek.count("}")
+        if hloubka < 0:
+            raise SystemExit(f"CHYBA v {cesta.name}: přebývající }} na řádku {i}")
+    if hloubka != 0:
+        raise SystemExit(f"CHYBA v {cesta.name}: chybí {hloubka} uzavíracích závorek")
+
+
+zkontroluj_css(KOREN / "css" / "style.css")
 OTISK = hashlib.md5((KOREN / "css" / "style.css").read_bytes()).hexdigest()[:8]
 OTISK_JS = hashlib.md5((KOREN / "js" / "app.js").read_bytes()).hexdigest()[:8]
 
@@ -34,7 +48,7 @@ def esc(s):
 
 def zast(text):
     """Zastupny udaj - teckovane podtrzeni + title."""
-    return f'<span class="zastupne" title="zástupný údaj — doplní M+P Král">{esc(text)}</span>'
+    return f'<span class="zastupne" title="zástupný údaj, doplní M+P Král">{esc(text)}</span>'
 
 
 def hlava(titulek, popis, cesta=""):
@@ -119,7 +133,7 @@ def paticka(cesta=""):
       <div>
         <h3>Kontakt</h3>
         <ul>
-          <li>M+P Král — Petr Král</li>
+          <li>M+P Král, Petr Král</li>
           <li>{esc(ADRESA)}</li>
           <li>okres Jindřichův Hradec</li>
           <li>{esc(TELEFON)}</li>
@@ -179,7 +193,7 @@ def produkt_karta(rada, velka=True):
 
     return f"""<article class="produkt" data-produkt data-rada="{esc(rada['nazev'])}" data-kategorie="{esc(rada['kategorie'])}" data-znacka="{esc(rada['znacka'])}">
   <a class="produkt-fotka" href="produkt.html?rada={esc(rada['id'])}">
-    <img src="{esc(predni)}" alt="{esc(rada['nazev'])} — {esc(v0['nazev'])}" loading="lazy" data-predni>
+    <img src="{esc(predni)}" alt="{esc(rada['nazev'])}, {esc(v0['nazev'])}" loading="lazy" data-predni>
     {druha}{znacka}{prepinac}
   </a>
   <div class="produkt-telo">
@@ -219,7 +233,7 @@ def rozpis_velikosti(rada, kompakt=False):
 
 # ---------------------------------------------------------------- index.html
 def index():
-    h = [hlava("M+P Král — výroba pracovních oděvů, Kunžak",
+    h = [hlava("M+P Král · výroba pracovních oděvů, Kunžak",
                "Český výrobce pracovních oděvů z Kunžaku. 1 300 vlastních střihů, zakázková výroba, certifikované oděvy.")]
     h.append(hlavicka("", ""))
 
@@ -244,10 +258,10 @@ def index():
         Dnes je nás pětačtyřicet a šijeme pořád na stejném místě v Kunžaku.</p>
         <p>Začínali jsme u několika druhů pracovních oděvů, spodního a nočního prádla.
         Postupně přibyly oděvy pro zdravotnictví a potravinářství a certifikované
-        pracovní oděvy — tedy všude tam, kde na střihu a materiálu opravdu záleží.</p>
+        pracovní oděvy. Všude tam, kde na střihu a materiálu opravdu záleží.</p>
         <p>Veškerou výrobu si zajišťujeme sami: návrh, konstrukci, nastříhání i ušití.
         Nic nekupujeme hotové a nic nedáváme ven. Proto vám umíme říct, proč je
-        v tom místě zesílení — a proto ho umíme posunout, když vám nesedí.</p>
+        v tom místě zesílení. A proto ho umíme posunout, když vám nesedí.</p>
         <p class="o-firme-zaver">Za svojí prací si stojíme. Férová cena, dodržené
         termíny a zákazník, který se vrátí. Nic složitějšího za tím není.</p>
       </div>
@@ -351,15 +365,15 @@ def index():
   <section class="sekce">
     {kota("06", "Ušijeme podle vás", "zakázková výroba")}
     <p class="kurziva" style="font-size:20px;max-width:60ch;margin:0 0 28px">
-      Nový vzor není u nás výjimka — nasamplujeme ho, vyzkoušíte ho v provozu a teprve pak se šije série.
+      Nový vzor u nás není výjimka. Nasamplujeme ho, vyzkoušíte ho v provozu a teprve pak se šije série.
     </p>
     <div class="kroky">
       <div class="krok"><span class="cislo">01</span><h3>Vzorek</h3><p>Ušijeme jeden kus podle vašeho zadání nebo podle existujícího střihu z archivu.</p></div>
-      <div class="krok"><span class="cislo">02</span><h3>Úprava střihu</h3><p>Vyzkoušíte ho v provozu. Co nesedí, upravíme v konstrukci — délku, kapsy, zesílení.</p></div>
+      <div class="krok"><span class="cislo">02</span><h3>Úprava střihu</h3><p>Vyzkoušíte ho v provozu. Co nesedí, upravíme v konstrukci: délku, kapsy, zesílení.</p></div>
       <div class="krok"><span class="cislo">03</span><h3>Série</h3><p>Ušijeme celou zakázku v odsouhlaseném střihu, velikostech a barvě.</p></div>
     </div>
     <div class="tlacitka" style="margin-top:24px">
-      <a class="tl tl-obrys" href="#poptavka">Objednat vzorek — 1 ks</a>
+      <a class="tl tl-obrys" href="#poptavka">Objednat vzorek, 1 ks</a>
     </div>
   </section>
 </div>""")
@@ -378,7 +392,7 @@ def index():
         <p>Oddělená větev sortimentu s jinými požadavky než stavba: hladké materiály bez
         vnějších kapes na hrudi, zvýšená odolnost proti opakovanému praní na vysokou teplotu,
         barvy, na kterých je znečištění vidět.</p>
-        <p>Šijeme i podle hygienických požadavků konkrétního provozu — včetně úprav střihu
+        <p>Šijeme i podle hygienických požadavků konkrétního provozu, včetně úprav střihu
         podle výstupu z auditu.</p>
         <p style="margin-top:18px">
           <span class="odznak">{zast("EN ISO 13688")}</span>
@@ -480,13 +494,13 @@ def index():
         </div>
         <div class="pole"><label for="f-pozn">Co potřebujete</label><textarea id="f-pozn" name="poznamka" placeholder="Střih, barva, počty po velikostech, potisk, termín…"></textarea></div>
         <button type="submit" class="tl tl-hlavni">Odeslat poptávku</button>
-        <p class="mono" style="color:var(--ocel);margin:0">Ceny uvádíme bez DPH. (náčrt — formulář zatím neodesílá)</p>
+        <p class="mono" style="color:var(--ocel);margin:0">Ceny uvádíme bez DPH. Náčrt, formulář zatím neodesílá.</p>
       </form>
 
       <aside class="kontakt-znovu">
         <p class="mono-popisek">Už jste u nás objednávali?</p>
-        <p class="kontakt-znovu-text">Pošlete číslo poslední dodávky a ušijeme totéž —
-        stejný střih, stejná barva, stejné velikosti. Nic vypisovat nemusíte.</p>
+        <p class="kontakt-znovu-text">Pošlete číslo poslední dodávky a ušijeme totéž.
+        Stejný střih, stejná barva, stejné velikosti. Nic vypisovat nemusíte.</p>
         <div class="pole"><label for="f-dodavka">Číslo dodávky</label><input id="f-dodavka" placeholder="např. 2025/0413"></div>
         <button type="button" class="tl tl-obrys tl-plna" style="margin-top:14px">Zopakovat objednávku</button>
       </aside>
@@ -500,7 +514,7 @@ def index():
 
 # ---------------------------------------------------------------- katalog.html
 def katalog():
-    h = [hlava("Katalog — M+P Král", "Všechny střihy pracovních oděvů M+P Král.")]
+    h = [hlava("Katalog · M+P Král", "Všechny střihy pracovních oděvů M+P Král.")]
     h.append(hlavicka("", ""))
     filtry_kat = "".join(
         f'<label><input type="checkbox" data-filtr="kategorie" value="{esc(k)}"> {esc(k)}</label>'
@@ -569,7 +583,7 @@ def produkt():
       <span class="mono-popisek" style="display:block;margin-top:5px;max-width:64px">{esc(v['nazev'])}</span>
     </li>""" for i, v in enumerate(rada["varianty"]))
 
-    h = [hlava(f"{rada['nazev']} — M+P Král", rada["popis"])]
+    h = [hlava(f"{rada['nazev']} · M+P Král", rada["popis"])]
     h.append(hlavicka(rada["kategorie"], ""))
     h.append(f"""<main class="obal sekce">
   <p class="mono" style="color:var(--ocel)"><a href="katalog.html">Katalog</a> / {esc(rada['kategorie'])} / {esc(rada['nazev'])}</p>
@@ -583,7 +597,7 @@ def produkt():
     </div>
 
     <div class="detail-info">
-      <h1 id="nazev-produktu">{esc(rada['nazev'])} — {esc(v0['nazev'])}</h1>
+      <h1 id="nazev-produktu">{esc(rada['nazev'])} <span class="varianta-nazev">{esc(v0['nazev'])}</span></h1>
       <p class="technicky">{zast(rada['material'])} · {zast(rada['gramaz'])} · vel. {zast(rada['velikosti'])} · střih <span data-strih>{zast(v0['strih'])}</span></p>
       <p class="popis">{esc(rada['popis'])}</p>
 
@@ -592,7 +606,7 @@ def produkt():
       {rozpis_velikosti(rada)}
 
       <div class="tlacitka" style="margin-top:14px">
-        <a class="tl tl-obrys" href="index.html#poptavka">Objednat vzorek — 1 ks</a>
+        <a class="tl tl-obrys" href="index.html#poptavka">Objednat vzorek, 1 ks</a>
       </div>
 
       <div class="boxy">
@@ -622,7 +636,7 @@ def produkt():
       </div>
 
       <p style="margin-top:24px">Chcete jinou barvu nebo úpravu střihu?
-      <a href="index.html#poptavka">Nasamplujeme vzorek</a> — v archivu máme 1 300 střihů,
+      <a href="index.html#poptavka">Nasamplujeme vzorek</a>. V archivu máme 1 300 střihů,
       většinou stačí vybrat a upravit.</p>
     </div>
   </div>
@@ -639,11 +653,11 @@ def produkt():
 
 # ---------------------------------------------------------------- sanon.html
 def sanon():
-    h = [hlava("Šanon poptávky — M+P Král", "Rozpracovaná poptávka.")]
+    h = [hlava("Šanon poptávky · M+P Král", "Rozpracovaná poptávka.")]
     h.append(hlavicka("", ""))
     h.append(f"""<main class="obal sekce">
   <div class="tisk-hlavicka">
-    <h1 style="margin:0">Poptávka — M+P Král</h1>
+    <h1 style="margin:0">Poptávka · M+P Král</h1>
     <p class="mono">{esc(ADRESA)} · Výroba pracovních oděvů</p>
   </div>
   {kota("01", "Šanon poptávky", "bez registrace", "Rozpis zůstává uložený ve vašem prohlížeči. Můžete ho vytisknout a přiložit k interní objednávce.")}
@@ -671,7 +685,7 @@ def sanon():
       <div class="pole"><label for="s-pozn">Poznámka</label><textarea id="s-pozn"></textarea></div>
       <p class="mono" style="color:var(--ocel);margin:0">Ceny uvádíme bez DPH.</p>
       <button type="submit" class="tl tl-hlavni">Odeslat poptávku</button>
-      <p class="mono" style="color:var(--ocel);margin:0">(náčrt — formulář zatím neodesílá)</p>
+      <p class="mono" style="color:var(--ocel);margin:0">Náčrt, formulář zatím neodesílá.</p>
     </form>
   </section>
 </main>""")

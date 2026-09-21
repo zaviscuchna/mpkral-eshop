@@ -211,8 +211,6 @@ def index():
 <div class="obal">
   <section class="hero">
     <h1>Střih,<br>který si<br>ušijeme sami</h1>
-    <p class="deck">Nejsme sklad a nejsme překupník. Návrh, konstrukci,
-    střih i šití děláme ve vlastních prostorách — od roku 1993.</p>
     <div class="tlacitka">
       <a class="tl tl-hlavni" href="katalog.html">Prohlédnout řady</a>
       <a class="tl tl-obrys" href="#poptavka">Poptat zakázku</a>

@@ -320,13 +320,51 @@
       });
     }
 
-    /* kategorie z hashe (#0 … #6) */
-    if (location.hash) {
-      var idx = parseInt(location.hash.slice(1), 10);
+    /* kategorie z adresy (#0 … #6).
+       Musí reagovat i na hashchange — klik na kategorii uvnitř katalogu
+       stránku znovu nenačte, takže by se jinak nestalo vůbec nic. */
+    function zHashe() {
       var pole = document.querySelectorAll('[data-filtr="kategorie"]');
-      if (!isNaN(idx) && pole[idx]) { pole[idx].checked = true; }
+      var idx = parseInt((location.hash || "").slice(1), 10);
+      pole.forEach(function (i) { i.checked = false; });
+      if (!isNaN(idx) && pole[idx]) pole[idx].checked = true;
+
+      /* zvýraznit odpovídající položku v navigaci */
+      document.querySelectorAll(".navigace a").forEach(function (a, j) {
+        a.classList.toggle("aktivni", !isNaN(idx) && j === idx);
+      });
+
+      filtruj();
     }
-    filtruj();
+
+    window.addEventListener("hashchange", function () {
+      zHashe();
+      var v = document.getElementById("vypis");
+      if (v) {
+        var y = v.getBoundingClientRect().top + window.pageYOffset - 150;
+        window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
+      }
+    });
+
+    /* klik na kategorii, která už je v adrese, hashchange nevyvolá */
+    document.querySelectorAll('.navigace a[href*="katalog.html#"]').forEach(function (a) {
+      a.addEventListener("click", function () {
+        var cil = a.getAttribute("href").split("#")[1];
+        if (cil === (location.hash || "").slice(1)) zHashe();
+      });
+    });
+
+    /* ruční odškrtnutí filtru má adresu srovnat, ať spolu nekolidují */
+    document.querySelectorAll('[data-filtr="kategorie"]').forEach(function (i) {
+      i.addEventListener("change", function () {
+        if (location.hash) history.replaceState(null, "", location.pathname);
+        document.querySelectorAll(".navigace a").forEach(function (a) {
+          a.classList.remove("aktivni");
+        });
+      });
+    });
+
+    zHashe();
   }
 
   /* ---------------------------------------------------------- stránka šanonu */

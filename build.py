@@ -403,12 +403,53 @@ def index():
   </section>
 </div>""")
 
-    # 12 poptávka
+    # 10 kontakt
+    tel_href = "tel:" + TELEFON.replace(" ", "")
     h.append(f"""<div class="obal">
   <section class="sekce" id="poptavka">
-    {kota("10", "Poptávka a kontakt", "odpovídáme do 2 dnů")}
-    <div class="navy-dva">
+    {kota("10", "Napište nám", "odpovídáme do 2 pracovních dnů")}
+
+    <div class="kontakt-velky">
+      <a class="kontakt-radek" href="{tel_href}">
+        <span class="kontakt-stitek">Telefon</span>
+        <span class="kontakt-hodnota">{esc(TELEFON)}</span>
+      </a>
+      <a class="kontakt-radek" href="mailto:{esc(MAIL)}">
+        <span class="kontakt-stitek">E-mail</span>
+        <span class="kontakt-hodnota">{esc(MAIL)}</span>
+      </a>
+    </div>
+
+    <div class="kontakt-mrizka">
+      <div class="kontakt-pole">
+        <h3>Dílna</h3>
+        <p>Nová 401<br>378 62 Kunžak<br>okres Jindřichův Hradec</p>
+        <svg class="kontakt-znak" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+          <circle cx="60" cy="60" r="30" fill="none" stroke="currentColor" stroke-width="1"/>
+          <circle cx="60" cy="60" r="3" fill="currentColor"/>
+          <path d="M60 8v30M60 82v30M8 60h30M82 60h30" stroke="currentColor" stroke-width="1"/>
+          <path d="M14 14h14M14 14v14M106 14H92M106 14v14M14 106h14M14 106V92M106 106H92M106 106V92"
+                stroke="currentColor" stroke-width="1" fill="none"/>
+        </svg>
+      </div>
+      <div class="kontakt-pole">
+        <h3>Fakturace</h3>
+        <p>Petr Král M+P<br>IČ {esc(ICO)}<br>tel./fax {esc(TELFAX)}</p>
+      </div>
+      <div class="kontakt-pole">
+        <h3>Provoz dílny</h3>
+        <p>{zast("po–pá 7:00–15:30")}<br>{zast("so–ne zavřeno")}</p>
+      </div>
+      <div class="kontakt-pole">
+        <h3>Jak to chodí</h3>
+        <p>Napíšete, co potřebujete a kolik kusů.<br>
+        Do dvou pracovních dnů potvrdíme cenu i termín.</p>
+      </div>
+    </div>
+
+    <div class="kontakt-dole">
       <form class="formular" data-poptavka>
+        <p class="mono-popisek" style="margin:0 0 6px">Poptávkový formulář</p>
         <div class="dva-sloupce">
           <div class="pole"><label for="f-firma">Firma</label><input id="f-firma" name="firma" required></div>
           <div class="pole"><label for="f-ico">IČO</label><input id="f-ico" name="ico" inputmode="numeric"></div>
@@ -421,22 +462,18 @@ def index():
           <div class="pole"><label for="f-mail">E-mail</label><input id="f-mail" name="mail" type="email" required></div>
           <div class="pole"><label for="f-obj">Číslo vaší objednávky</label><input id="f-obj" name="objednavka"></div>
         </div>
-        <div class="pole"><label for="f-pozn">Poznámka</label><textarea id="f-pozn" name="poznamka" placeholder="Počty, velikosti, potisk, termín…"></textarea></div>
-        <p class="mono" style="color:var(--ocel);margin:0">Ceny uvádíme bez DPH.</p>
+        <div class="pole"><label for="f-pozn">Co potřebujete</label><textarea id="f-pozn" name="poznamka" placeholder="Střih, barva, počty po velikostech, potisk, termín…"></textarea></div>
         <button type="submit" class="tl tl-hlavni">Odeslat poptávku</button>
-        <p class="mono" style="color:var(--ocel);margin:0">(náčrt — formulář zatím neodesílá)</p>
+        <p class="mono" style="color:var(--ocel);margin:0">Ceny uvádíme bez DPH. (náčrt — formulář zatím neodesílá)</p>
       </form>
-      <div>
-        <h3 style="margin-top:0;font-size:20px">M+P Král — Petr Král</h3>
-        <p>{esc(ADRESA)}<br>okres Jindřichův Hradec</p>
-        <p class="mono">{esc(TELEFON)} · {esc(MAIL)}<br>tel./fax {esc(TELFAX)} · IČ {esc(ICO)}</p>
-        <div class="karta" style="padding:18px;margin-top:18px">
-          <h3 style="margin:0 0 8px;font-size:17px">Objednávali jste u nás?</h3>
-          <p style="margin:0 0 12px;font-size:15px">Pošlete číslo poslední dodávky a ušijeme totéž — stejný střih, stejná barva, stejné velikosti.</p>
-          <div class="pole"><input placeholder="Číslo dodávky" aria-label="Číslo dodávky"></div>
-          <button type="button" class="tl tl-obrys" style="margin-top:10px">Zopakovat objednávku</button>
-        </div>
-      </div>
+
+      <aside class="kontakt-znovu">
+        <p class="mono-popisek">Už jste u nás objednávali?</p>
+        <p class="kontakt-znovu-text">Pošlete číslo poslední dodávky a ušijeme totéž —
+        stejný střih, stejná barva, stejné velikosti. Nic vypisovat nemusíte.</p>
+        <div class="pole"><label for="f-dodavka">Číslo dodávky</label><input id="f-dodavka" placeholder="např. 2025/0413"></div>
+        <button type="button" class="tl tl-obrys tl-plna" style="margin-top:14px">Zopakovat objednávku</button>
+      </aside>
     </div>
   </section>
 </div>

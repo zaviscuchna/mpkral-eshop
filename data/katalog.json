@@ -1208,6 +1208,17 @@
     "strih": "286/K"
    },
    {
+    "nazev": "zeleno-vínová",
+    "id": "zeleno-vinova",
+    "fotky": {
+     "detail": "img/produkty/kombineza-king-zimni-zeleno-vinova-detail.jpg",
+     "přední": "img/produkty/kombineza-king-zimni-zeleno-vinova-predni.jpg"
+    },
+    "hlavni": "img/produkty/kombineza-king-zimni-zeleno-vinova-predni.jpg",
+    "vzornik": "img/vzorniky/kombineza-king-zimni-zeleno-vinova-predni.jpg",
+    "strih": "289/K"
+   },
+   {
     "nazev": "zeleno-černá",
     "id": "zeleno-cerna",
     "fotky": {
@@ -1216,7 +1227,7 @@
     },
     "hlavni": "img/produkty/kombineza-king-zimni-zeleno-cerna-predni.jpg",
     "vzornik": "img/vzorniky/kombineza-king-zimni-zeleno-cerna-predni.jpg",
-    "strih": "289/K"
+    "strih": "292/K"
    }
   ],
   "nazev": "Zimní kombinéza King",

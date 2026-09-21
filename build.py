@@ -78,17 +78,13 @@ def hlavicka(aktivni="", cesta=""):
     </a>
     <div class="hl-vpravo">
       <input class="hledani" type="search" placeholder="Hledat" id="hledani" aria-label="Hledat">
-      <div class="prepinac-rezimu" id="prepinac-rezimu" role="group" aria-label="Světlý nebo tmavý režim">
-        <button type="button" class="rezim-ikona" data-rezim="prepnout" aria-label="Přepnout světlý a tmavý režim">
-          <svg class="rezim-znak" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
-            <circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor"/>
-            <path d="M10 1.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/>
-          </svg>
-        </button>
-        <button type="button" data-rezim="light">Světlý</button>
-        <span class="rezim-delic">/</span>
-        <button type="button" data-rezim="dark">Tmavý</button>
-      </div>
+      <button type="button" class="prepinac-rezimu" id="prepinac-rezimu"
+              aria-label="Přepnout na tmavý režim" aria-pressed="false">
+        <svg class="rezim-znak" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+          <circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor"/>
+          <path d="M10 1.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/>
+        </svg>
+      </button>
       <a class="sanon-tlacitko" href="{cesta}sanon.html">Šanon <span class="sanon-pocet" data-sanon-pocet>0</span></a>
     </div>
   </div>

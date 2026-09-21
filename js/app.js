@@ -49,7 +49,6 @@
   (function () {
     var prep = document.getElementById("prepinac-rezimu");
     if (!prep) return;
-    var tlacitka = prep.querySelectorAll("button");
 
     function uloz(r) {
       try {
@@ -64,35 +63,21 @@
       return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
         ? "dark" : "light";
     }
+    function platny() {
+      return document.documentElement.getAttribute("data-theme") || podleSystemu();
+    }
     function vykresli() {
-      var r = document.documentElement.getAttribute("data-theme") || podleSystemu();
-      tlacitka.forEach(function (b) {
-        b.classList.toggle("aktivni", b.dataset.rezim === r);
-        b.setAttribute("aria-pressed", b.dataset.rezim === r ? "true" : "false");
-      });
+      var tma = platny() === "dark";
+      prep.setAttribute("aria-pressed", tma ? "true" : "false");
+      prep.setAttribute("aria-label", tma ? "Přepnout na světlý režim" : "Přepnout na tmavý režim");
+      prep.title = tma ? "Světlý režim" : "Tmavý režim";
     }
 
-    tlacitka.forEach(function (b) {
-      b.addEventListener("click", function () {
-        var r = b.dataset.rezim;
-        if (r === "prepnout") {
-          var ted = document.documentElement.getAttribute("data-theme") || podleSystemu();
-          r = ted === "dark" ? "light" : "dark";
-          document.documentElement.setAttribute("data-theme", r);
-          uloz(r);
-          vykresli();
-          return;
-        }
-        /* klik na už aktivní režim vrátí řízení systému */
-        if (document.documentElement.getAttribute("data-theme") === r) {
-          document.documentElement.removeAttribute("data-theme");
-          uloz(null);
-        } else {
-          document.documentElement.setAttribute("data-theme", r);
-          uloz(r);
-        }
-        vykresli();
-      });
+    prep.addEventListener("click", function () {
+      var novy = platny() === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", novy);
+      uloz(novy);
+      vykresli();
     });
 
     /* dokud si člověk nevybral, sledovat nastavení systému */

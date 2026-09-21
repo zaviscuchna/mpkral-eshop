@@ -449,7 +449,9 @@
     "nazev": "modrá s bílými pruhy",
     "id": "modra-s-bilymi-pruhy",
     "fotky": {
-     "přední": "img/produkty/kombineza-pruhy-modra-predni.jpg"
+     "detail": "img/produkty/kombineza-pruhy-modra-detail.jpg",
+     "přední": "img/produkty/kombineza-pruhy-modra-predni.jpg",
+     "zadní": "img/produkty/kombineza-pruhy-modra-zadni.jpg"
     },
     "hlavni": "img/produkty/kombineza-pruhy-modra-predni.jpg",
     "vzornik": "img/vzorniky/kombineza-pruhy-modra-predni.jpg",
@@ -486,6 +488,7 @@
     "nazev": "červená s bílými pruhy",
     "id": "cervena-s-bilymi-pruhy",
     "fotky": {
+     "detail": "img/produkty/kombineza-pruhy-cervena-damska-detail.jpg",
      "přední": "img/produkty/kombineza-pruhy-cervena-damska-predni.jpg"
     },
     "hlavni": "img/produkty/kombineza-pruhy-cervena-damska-predni.jpg",
@@ -536,7 +539,8 @@
     "id": "cerno-cervena",
     "fotky": {
      "detail": "img/produkty/kratasy-king-cerno-cervena-detail.jpg",
-     "přední": "img/produkty/kratasy-king-cerno-cervena-predni.jpg"
+     "přední": "img/produkty/kratasy-king-cerno-cervena-predni.jpg",
+     "zadní": "img/produkty/kratasy-king-cerno-cervena-zadni.jpg"
     },
     "hlavni": "img/produkty/kratasy-king-cerno-cervena-predni.jpg",
     "vzornik": "img/vzorniky/kratasy-king-cerno-cervena-predni.jpg",
@@ -613,7 +617,8 @@
     "id": "tmave-modra-navy",
     "fotky": {
      "detail": "img/produkty/klasik-lacl-navy-detail.jpg",
-     "přední": "img/produkty/klasik-lacl-navy-predni.jpg"
+     "přední": "img/produkty/klasik-lacl-navy-predni.jpg",
+     "zadní": "img/produkty/klasik-lacl-navy-zadni.jpg"
     },
     "hlavni": "img/produkty/klasik-lacl-navy-predni.jpg",
     "vzornik": "img/vzorniky/klasik-lacl-navy-predni.jpg",
@@ -624,7 +629,8 @@
     "id": "zelena",
     "fotky": {
      "detail": "img/produkty/klasik-lacl-zelene-detail.jpg",
-     "přední": "img/produkty/klasik-lacl-zelene-predni.jpg"
+     "přední": "img/produkty/klasik-lacl-zelene-predni.jpg",
+     "zadní": "img/produkty/klasik-lacl-zelene-zadni.jpg"
     },
     "hlavni": "img/produkty/klasik-lacl-zelene-predni.jpg",
     "vzornik": "img/vzorniky/klasik-lacl-zelene-predni.jpg",

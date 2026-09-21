@@ -692,6 +692,7 @@
     "nazev": "zelená",
     "id": "zelena",
     "fotky": {
+     "detail": "img/produkty/klasik-souprava-zelena-detail.jpg",
      "přední": "img/produkty/klasik-souprava-zelena-predni.jpg",
      "zadní": "img/produkty/klasik-souprava-zelena-zadni.jpg"
     },
@@ -730,10 +731,11 @@
     "nazev": "tmavě modrá (navy)",
     "id": "tmave-modra-navy",
     "fotky": {
+     "přední": "img/produkty/plast-tmave-modry-predni.jpg",
      "zadní": "img/produkty/plast-tmave-modry-zadni.jpg"
     },
-    "hlavni": "img/produkty/plast-tmave-modry-zadni.jpg",
-    "vzornik": "img/vzorniky/plast-tmave-modry-zadni.jpg",
+    "hlavni": "img/produkty/plast-tmave-modry-predni.jpg",
+    "vzornik": "img/vzorniky/plast-tmave-modry-predni.jpg",
     "strih": "226/O"
    },
    {
@@ -819,10 +821,11 @@
     "nazev": "oranžová se šedým spodním dílem",
     "id": "oranzova-se-sedym-spodnim-dilem",
     "fotky": {
+     "přední": "img/produkty/reflex-bluza2-oranzovo-seda-predni.jpg",
      "zadní": "img/produkty/reflex-bluza2-oranzovo-seda-zadni.jpg"
     },
-    "hlavni": "img/produkty/reflex-bluza2-oranzovo-seda-zadni.jpg",
-    "vzornik": "img/vzorniky/reflex-bluza2-oranzovo-seda-zadni.jpg",
+    "hlavni": "img/produkty/reflex-bluza2-oranzovo-seda-predni.jpg",
+    "vzornik": "img/vzorniky/reflex-bluza2-oranzovo-seda-predni.jpg",
     "strih": "238/R"
    }
   ],
@@ -899,10 +902,11 @@
     "id": "oranzova-s-cernym-spodnim-dilem",
     "fotky": {
      "detail": "img/produkty/reflex-kabat2-oranzovo-cerny-detail.jpg",
+     "přední": "img/produkty/reflex-kabat2-oranzovo-cerny-predni.jpg",
      "zadní": "img/produkty/reflex-kabat2-oranzovo-cerny-zadni.jpg"
     },
-    "hlavni": "img/produkty/reflex-kabat2-oranzovo-cerny-detail.jpg",
-    "vzornik": "img/vzorniky/reflex-kabat2-oranzovo-cerny-detail.jpg",
+    "hlavni": "img/produkty/reflex-kabat2-oranzovo-cerny-predni.jpg",
+    "vzornik": "img/vzorniky/reflex-kabat2-oranzovo-cerny-predni.jpg",
     "strih": "247/R"
    }
   ],

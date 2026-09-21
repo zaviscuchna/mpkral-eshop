@@ -774,5 +774,460 @@
   "popis": "Horní díl s košilovým límcem a úpletovými manžetami. Zesílené průramky, náprsní kapsy s klopou, kapsa na tužky na levém rukávu. Přední zapínání na kryté zipy, dolní kraj stahovaný pruženkou.",
   "pouziti": "dílna, provoz",
   "norma": "EN ISO 13688"
+ },
+ {
+  "varianty": [
+   {
+    "nazev": "oranžová s černým spodním dílem a manžetami",
+    "id": "oranzova-s-cernym-spodnim-dilem-a-manzetami",
+    "fotky": {
+     "přední": "img/produkty/reflex-bluza2-damska-cerny-spodek-predni.jpg"
+    },
+    "hlavni": "img/produkty/reflex-bluza2-damska-cerny-spodek-predni.jpg",
+    "vzornik": "img/vzorniky/reflex-bluza2-damska-cerny-spodek-predni.jpg",
+    "strih": "235/R"
+   }
+  ],
+  "nazev": "Reflexní blůza dámská",
+  "id": "reflexni-bluza-damska",
+  "znacka": "Reflexní",
+  "kategorie": "Bundy a blůzy",
+  "predmet": "blůza (horní díl)",
+  "material": "65 % PES / 35 % BA",
+  "gramaz": "260 g/m²",
+  "velikosti": "46–66",
+  "popis": "Horní díl s košilovým límcem a úpletovými manžetami. Zesílené průramky, náprsní kapsy s klopou, kapsa na tužky na levém rukávu. Přední zapínání na kryté zipy, dolní kraj stahovaný pruženkou.",
+  "pouziti": "dílna, provoz",
+  "norma": "EN ISO 13688"
+ },
+ {
+  "varianty": [
+   {
+    "nazev": "oranžová se šedým spodním dílem",
+    "id": "oranzova-se-sedym-spodnim-dilem",
+    "fotky": {
+     "zadní": "img/produkty/reflex-bluza2-oranzovo-seda-zadni.jpg"
+    },
+    "hlavni": "img/produkty/reflex-bluza2-oranzovo-seda-zadni.jpg",
+    "vzornik": "img/vzorniky/reflex-bluza2-oranzovo-seda-zadni.jpg",
+    "strih": "238/R"
+   }
+  ],
+  "nazev": "Reflexní blůza s šedým spodkem",
+  "id": "reflexni-bluza-s-sedym-spodkem",
+  "znacka": "Reflexní",
+  "kategorie": "Bundy a blůzy",
+  "predmet": "blůza (horní díl)",
+  "material": "65 % PES / 35 % BA",
+  "gramaz": "260 g/m²",
+  "velikosti": "46–66",
+  "popis": "Horní díl s košilovým límcem a úpletovými manžetami. Zesílené průramky, náprsní kapsy s klopou, kapsa na tužky na levém rukávu. Přední zapínání na kryté zipy, dolní kraj stahovaný pruženkou.",
+  "pouziti": "dílna, provoz",
+  "norma": "EN ISO 13688"
+ },
+ {
+  "varianty": [
+   {
+    "nazev": "oranžová se šedým sedlem a rukávy",
+    "id": "oranzova-se-sedym-sedlem-a-rukavy",
+    "fotky": {
+     "detail": "img/produkty/reflex-bluza3-oranzovo-seda-detail.jpg",
+     "přední": "img/produkty/reflex-bluza3-oranzovo-seda-predni.jpg",
+     "zadní": "img/produkty/reflex-bluza3-oranzovo-seda-zadni.jpg"
+    },
+    "hlavni": "img/produkty/reflex-bluza3-oranzovo-seda-predni.jpg",
+    "vzornik": "img/vzorniky/reflex-bluza3-oranzovo-seda-predni.jpg",
+    "strih": "241/R"
+   }
+  ],
+  "nazev": "Reflexní blůza se šedým sedlem",
+  "id": "reflexni-bluza-se-sedym-sedlem",
+  "znacka": "Reflexní",
+  "kategorie": "Bundy a blůzy",
+  "predmet": "blůza (horní díl)",
+  "material": "65 % PES / 35 % BA",
+  "gramaz": "260 g/m²",
+  "velikosti": "46–66",
+  "popis": "Horní díl s košilovým límcem a úpletovými manžetami. Zesílené průramky, náprsní kapsy s klopou, kapsa na tužky na levém rukávu. Přední zapínání na kryté zipy, dolní kraj stahovaný pruženkou.",
+  "pouziti": "dílna, provoz",
+  "norma": "EN ISO 13688"
+ },
+ {
+  "varianty": [
+   {
+    "nazev": "výstražná oranžová se stříbrnými pruhy",
+    "id": "vystrazna-oranzova-se-stribrnymi-pruhy",
+    "fotky": {
+     "detail": "img/produkty/reflex-kabat-oranzovy-detail.jpg",
+     "přední": "img/produkty/reflex-kabat-oranzovy-predni.jpg",
+     "zadní": "img/produkty/reflex-kabat-oranzovy-zadni.jpg"
+    },
+    "hlavni": "img/produkty/reflex-kabat-oranzovy-predni.jpg",
+    "vzornik": "img/vzorniky/reflex-kabat-oranzovy-predni.jpg",
+    "strih": "244/R"
+   }
+  ],
+  "nazev": "Reflexní kabát",
+  "id": "reflexni-kabat",
+  "znacka": "Reflexní",
+  "kategorie": "Bundy a blůzy",
+  "predmet": "kabát (horní díl)",
+  "material": "65 % PES / 35 % BA",
+  "gramaz": "260 g/m²",
+  "velikosti": "46–66",
+  "popis": "Horní díl s košilovým límcem a úpletovými manžetami. Zesílené průramky, náprsní kapsy s klopou, kapsa na tužky na levém rukávu. Přední zapínání na kryté zipy, dolní kraj stahovaný pruženkou.",
+  "pouziti": "dílna, provoz",
+  "norma": "EN ISO 13688"
+ },
+ {
+  "varianty": [
+   {
+    "nazev": "oranžová s černým spodním dílem",
+    "id": "oranzova-s-cernym-spodnim-dilem",
+    "fotky": {
+     "detail": "img/produkty/reflex-kabat2-oranzovo-cerny-detail.jpg",
+     "zadní": "img/produkty/reflex-kabat2-oranzovo-cerny-zadni.jpg"
+    },
+    "hlavni": "img/produkty/reflex-kabat2-oranzovo-cerny-detail.jpg",
+    "vzornik": "img/vzorniky/reflex-kabat2-oranzovo-cerny-detail.jpg",
+    "strih": "247/R"
+   }
+  ],
+  "nazev": "Reflexní kabát s černým spodkem",
+  "id": "reflexni-kabat-s-cernym-spodkem",
+  "znacka": "Reflexní",
+  "kategorie": "Bundy a blůzy",
+  "predmet": "kabát (horní díl)",
+  "material": "65 % PES / 35 % BA",
+  "gramaz": "260 g/m²",
+  "velikosti": "46–66",
+  "popis": "Horní díl s košilovým límcem a úpletovými manžetami. Zesílené průramky, náprsní kapsy s klopou, kapsa na tužky na levém rukávu. Přední zapínání na kryté zipy, dolní kraj stahovaný pruženkou.",
+  "pouziti": "dílna, provoz",
+  "norma": "EN ISO 13688"
+ },
+ {
+  "varianty": [
+   {
+    "nazev": "celá výstražná oranžová",
+    "id": "cela-vystrazna-oranzova",
+    "fotky": {
+     "detail": "img/produkty/reflex-kalhoty4-oranzove-detail.jpg",
+     "přední": "img/produkty/reflex-kalhoty4-oranzove-predni.jpg",
+     "zadní": "img/produkty/reflex-kalhoty4-oranzove-zadni.jpg"
+    },
+    "hlavni": "img/produkty/reflex-kalhoty4-oranzove-predni.jpg",
+    "vzornik": "img/vzorniky/reflex-kalhoty4-oranzove-predni.jpg",
+    "strih": "250/R"
+   }
+  ],
+  "nazev": "Reflexní kalhoty do pasu",
+  "id": "reflexni-kalhoty-do-pasu",
+  "znacka": "Reflexní",
+  "kategorie": "Kalhoty",
+  "predmet": "kalhoty do pasu",
+  "material": "65 % PES / 35 % BA",
+  "gramaz": "260 g/m²",
+  "velikosti": "46–66",
+  "popis": "Kalhoty do pasu s poutky na opasek a nakládanými stehenními kapsami. Rozkrok řešený klínem kvůli dřepu, zadní sed zvýšený. Kolenní díl připravený na vsazení chráničů.",
+  "pouziti": "dílna, provoz",
+  "norma": "EN ISO 13688"
+ },
+ {
+  "varianty": [
+   {
+    "nazev": "podle podkladu",
+    "id": "podle-podkladu",
+    "fotky": {
+     "přední": "img/produkty/reflex-a201-predni.jpg",
+     "zadní": "img/produkty/reflex-a201-zadni.jpg"
+    },
+    "hlavni": "img/produkty/reflex-a201-predni.jpg",
+    "vzornik": "img/vzorniky/reflex-a201-predni.jpg",
+    "strih": "253/R"
+   }
+  ],
+  "nazev": "Reflexní kalhoty do pasu A201",
+  "id": "reflexni-kalhoty-do-pasu-a201",
+  "znacka": "Reflexní",
+  "kategorie": "Kalhoty",
+  "predmet": "kalhoty do pasu",
+  "material": "65 % PES / 35 % BA",
+  "gramaz": "260 g/m²",
+  "velikosti": "46–66",
+  "popis": "Kalhoty do pasu s poutky na opasek a nakládanými stehenními kapsami. Rozkrok řešený klínem kvůli dřepu, zadní sed zvýšený. Kolenní díl připravený na vsazení chráničů.",
+  "pouziti": "dílna, provoz",
+  "norma": "EN ISO 13688"
+ },
+ {
+  "varianty": [
+   {
+    "nazev": "šedá s oranžovo-stříbrnými pruhy",
+    "id": "seda-s-oranzovo-stribrnymi-pruhy",
+    "fotky": {
+     "detail": "img/produkty/reflex-a204-sede-detail.jpg",
+     "přední": "img/produkty/reflex-a204-sede-predni.jpg",
+     "zadní": "img/produkty/reflex-a204-sede-zadni.jpg"
+    },
+    "hlavni": "img/produkty/reflex-a204-sede-predni.jpg",
+    "vzornik": "img/vzorniky/reflex-a204-sede-predni.jpg",
+    "strih": "256/R"
+   }
+  ],
+  "nazev": "Reflexní kalhoty do pasu A204",
+  "id": "reflexni-kalhoty-do-pasu-a204",
+  "znacka": "Reflexní",
+  "kategorie": "Kalhoty",
+  "predmet": "kalhoty do pasu",
+  "material": "65 % PES / 35 % BA",
+  "gramaz": "260 g/m²",
+  "velikosti": "46–66",
+  "popis": "Kalhoty do pasu s poutky na opasek a nakládanými stehenními kapsami. Rozkrok řešený klínem kvůli dřepu, zadní sed zvýšený. Kolenní díl připravený na vsazení chráničů.",
+  "pouziti": "dílna, provoz",
+  "norma": "EN ISO 13688"
+ },
+ {
+  "varianty": [
+   {
+    "nazev": "oranžová s tmavě modrým spodkem nohavic",
+    "id": "oranzova-s-tmave-modrym-spodkem-nohavic",
+    "fotky": {
+     "detail": "img/produkty/reflex-kalhoty3-oranzovo-modre-detail.jpg",
+     "přední": "img/produkty/reflex-kalhoty3-oranzovo-modre-predni.jpg",
+     "zadní": "img/produkty/reflex-kalhoty3-oranzovo-modre-zadni.jpg"
+    },
+    "hlavni": "img/produkty/reflex-kalhoty3-oranzovo-modre-predni.jpg",
+    "vzornik": "img/vzorniky/reflex-kalhoty3-oranzovo-modre-predni.jpg",
+    "strih": "259/R"
+   }
+  ],
+  "nazev": "Reflexní kalhoty do pasu s modrým spodkem",
+  "id": "reflexni-kalhoty-do-pasu-s-modrym-spodkem",
+  "znacka": "Reflexní",
+  "kategorie": "Kalhoty",
+  "predmet": "kalhoty do pasu",
+  "material": "65 % PES / 35 % BA",
+  "gramaz": "260 g/m²",
+  "velikosti": "46–66",
+  "popis": "Kalhoty do pasu s poutky na opasek a nakládanými stehenními kapsami. Rozkrok řešený klínem kvůli dřepu, zadní sed zvýšený. Kolenní díl připravený na vsazení chráničů.",
+  "pouziti": "dílna, provoz",
+  "norma": "EN ISO 13688"
+ },
+ {
+  "varianty": [
+   {
+    "nazev": "výstražná oranžová se stříbrnými pruhy",
+    "id": "vystrazna-oranzova-se-stribrnymi-pruhy",
+    "fotky": {
+     "přední": "img/produkty/reflex-kratasy-predni.jpg",
+     "zadní": "img/produkty/reflex-kratasy-zadni.jpg"
+    },
+    "hlavni": "img/produkty/reflex-kratasy-predni.jpg",
+    "vzornik": "img/vzorniky/reflex-kratasy-predni.jpg",
+    "strih": "262/R"
+   }
+  ],
+  "nazev": "Reflexní kraťasy",
+  "id": "reflexni-kratasy",
+  "znacka": "Reflexní",
+  "kategorie": "Kraťasy",
+  "predmet": "kraťasy",
+  "material": "65 % PES / 35 % BA",
+  "gramaz": "260 g/m²",
+  "velikosti": "46–64",
+  "popis": "Kraťasy do pasu s poutky a nakládanými kapsami. Délka nad koleno, zesílený sed, boční kapsa s klopou na drobné nářadí.",
+  "pouziti": "dílna, provoz",
+  "norma": "EN ISO 13688"
+ },
+ {
+  "varianty": [
+   {
+    "nazev": "celá výstražná oranžová",
+    "id": "cela-vystrazna-oranzova",
+    "fotky": {
+     "detail": "img/produkty/reflex-lacl-oranzove-detail.jpg",
+     "přední": "img/produkty/reflex-lacl-oranzove-predni.jpg",
+     "zadní": "img/produkty/reflex-lacl-oranzove-zadni.jpg"
+    },
+    "hlavni": "img/produkty/reflex-lacl-oranzove-predni.jpg",
+    "vzornik": "img/vzorniky/reflex-lacl-oranzove-predni.jpg",
+    "strih": "265/R"
+   }
+  ],
+  "nazev": "Reflexní laclové kalhoty",
+  "id": "reflexni-laclove-kalhoty",
+  "znacka": "Reflexní",
+  "kategorie": "Laclové kalhoty",
+  "predmet": "laclové kalhoty",
+  "material": "65 % PES / 35 % BA",
+  "gramaz": "260 g/m²",
+  "velikosti": "46–66",
+  "popis": "Laclové kalhoty s náprsní kapsou na zip a pruženkou v zádech. Traky s rychloupínacími přezkami, boční rozparky na knoflík. Zesílený sed a kolenní díly.",
+  "pouziti": "dílna, provoz",
+  "norma": "EN ISO 13688"
+ },
+ {
+  "varianty": [
+   {
+    "nazev": "celá výstražná oranžová",
+    "id": "cela-vystrazna-oranzova",
+    "fotky": {
+     "detail": "img/produkty/reflex-lacl3-damske-oranzove-detail.jpg",
+     "přední": "img/produkty/reflex-lacl3-damske-oranzove-predni.jpg",
+     "zadní": "img/produkty/reflex-lacl3-damske-oranzove-zadni.jpg"
+    },
+    "hlavni": "img/produkty/reflex-lacl3-damske-oranzove-predni.jpg",
+    "vzornik": "img/vzorniky/reflex-lacl3-damske-oranzove-predni.jpg",
+    "strih": "268/R"
+   }
+  ],
+  "nazev": "Reflexní laclové kalhoty dámské",
+  "id": "reflexni-laclove-kalhoty-damske",
+  "znacka": "Reflexní",
+  "kategorie": "Laclové kalhoty",
+  "predmet": "laclové kalhoty",
+  "material": "65 % PES / 35 % BA",
+  "gramaz": "260 g/m²",
+  "velikosti": "46–66",
+  "popis": "Laclové kalhoty s náprsní kapsou na zip a pruženkou v zádech. Traky s rychloupínacími přezkami, boční rozparky na knoflík. Zesílený sed a kolenní díly.",
+  "pouziti": "dílna, provoz",
+  "norma": "EN ISO 13688"
+ },
+ {
+  "varianty": [
+   {
+    "nazev": "oranžová s tmavě modrým laclem a spodkem",
+    "id": "oranzova-s-tmave-modrym-laclem-a-spodkem",
+    "fotky": {
+     "detail": "img/produkty/reflex-lacl2-oranzovo-modre-detail.jpg",
+     "přední": "img/produkty/reflex-lacl2-oranzovo-modre-predni.jpg",
+     "zadní": "img/produkty/reflex-lacl2-oranzovo-modre-zadni.jpg"
+    },
+    "hlavni": "img/produkty/reflex-lacl2-oranzovo-modre-predni.jpg",
+    "vzornik": "img/vzorniky/reflex-lacl2-oranzovo-modre-predni.jpg",
+    "strih": "271/R"
+   }
+  ],
+  "nazev": "Reflexní laclové kalhoty s modrým spodkem",
+  "id": "reflexni-laclove-kalhoty-s-modrym-spodkem",
+  "znacka": "Reflexní",
+  "kategorie": "Laclové kalhoty",
+  "predmet": "laclové kalhoty",
+  "material": "65 % PES / 35 % BA",
+  "gramaz": "260 g/m²",
+  "velikosti": "46–66",
+  "popis": "Laclové kalhoty s náprsní kapsou na zip a pruženkou v zádech. Traky s rychloupínacími přezkami, boční rozparky na knoflík. Zesílený sed a kolenní díly.",
+  "pouziti": "dílna, provoz",
+  "norma": "EN ISO 13688"
+ },
+ {
+  "varianty": [
+   {
+    "nazev": "oranžovo-šedá",
+    "id": "oranzovo-seda",
+    "fotky": {
+     "detail": "img/produkty/reflex-souprava-detail.jpg",
+     "přední": "img/produkty/reflex-souprava-predni.jpg",
+     "zadní": "img/produkty/reflex-souprava-zadni.jpg"
+    },
+    "hlavni": "img/produkty/reflex-souprava-predni.jpg",
+    "vzornik": "img/vzorniky/reflex-souprava-predni.jpg",
+    "strih": "274/R"
+   }
+  ],
+  "nazev": "Reflexní souprava",
+  "id": "reflexni-souprava",
+  "znacka": "Reflexní",
+  "kategorie": "Soupravy",
+  "predmet": "souprava (blůza a kalhoty)",
+  "material": "65 % PES / 35 % BA",
+  "gramaz": "260 g/m²",
+  "velikosti": "46–66",
+  "popis": "Souprava blůzy a kalhot ve stejném materiálu. Blůza s knoflíkovou légou a náprsními kapsami, kalhoty do pasu s poutky. Sladěné pro celý tým.",
+  "pouziti": "dílna, provoz",
+  "norma": "EN ISO 13688"
+ },
+ {
+  "varianty": [
+   {
+    "nazev": "výstražná oranžová se stříbrnými pruhy",
+    "id": "vystrazna-oranzova-se-stribrnymi-pruhy",
+    "fotky": {
+     "detail": "img/produkty/reflex-vesta-detail.jpg",
+     "přední": "img/produkty/reflex-vesta-predni.jpg",
+     "zadní": "img/produkty/reflex-vesta-zadni.jpg"
+    },
+    "hlavni": "img/produkty/reflex-vesta-predni.jpg",
+    "vzornik": "img/vzorniky/reflex-vesta-predni.jpg",
+    "strih": "277/R"
+   }
+  ],
+  "nazev": "Reflexní vesta",
+  "id": "reflexni-vesta",
+  "znacka": "Reflexní",
+  "kategorie": "Vesty",
+  "predmet": "pouze vesta",
+  "material": "65 % PES / 35 % BA",
+  "gramaz": "260 g/m²",
+  "velikosti": "46–66",
+  "popis": "",
+  "pouziti": "dílna, provoz",
+  "norma": "EN ISO 13688"
+ },
+ {
+  "varianty": [
+   {
+    "nazev": "modro-béžová",
+    "id": "modro-bezova",
+    "fotky": {
+     "detail": "img/produkty/kombineza-king-zimni-modro-bezova-detail.jpg",
+     "přední": "img/produkty/kombineza-king-zimni-modro-bezova-predni.jpg"
+    },
+    "hlavni": "img/produkty/kombineza-king-zimni-modro-bezova-predni.jpg",
+    "vzornik": "img/vzorniky/kombineza-king-zimni-modro-bezova-predni.jpg",
+    "strih": "280/K"
+   },
+   {
+    "nazev": "modro-černá",
+    "id": "modro-cerna",
+    "fotky": {
+     "přední": "img/produkty/kombineza-king-zimni-modro-cerna-predni.jpg"
+    },
+    "hlavni": "img/produkty/kombineza-king-zimni-modro-cerna-predni.jpg",
+    "vzornik": "img/vzorniky/kombineza-king-zimni-modro-cerna-predni.jpg",
+    "strih": "283/K"
+   },
+   {
+    "nazev": "modro-žlutá",
+    "id": "modro-zluta",
+    "fotky": {
+     "detail": "img/produkty/kombineza-king-zimni-modro-zluta-detail.jpg",
+     "přední": "img/produkty/kombineza-king-zimni-modro-zluta-predni.jpg"
+    },
+    "hlavni": "img/produkty/kombineza-king-zimni-modro-zluta-predni.jpg",
+    "vzornik": "img/vzorniky/kombineza-king-zimni-modro-zluta-predni.jpg",
+    "strih": "286/K"
+   },
+   {
+    "nazev": "zeleno-černá",
+    "id": "zeleno-cerna",
+    "fotky": {
+     "přední": "img/produkty/kombineza-king-zimni-zeleno-cerna-predni.jpg"
+    },
+    "hlavni": "img/produkty/kombineza-king-zimni-zeleno-cerna-predni.jpg",
+    "vzornik": "img/vzorniky/kombineza-king-zimni-zeleno-cerna-predni.jpg",
+    "strih": "289/K"
+   }
+  ],
+  "nazev": "Zimní kombinéza King",
+  "id": "zimni-kombineza-king",
+  "znacka": "King",
+  "kategorie": "Kombinézy",
+  "predmet": "zimní kombinéza",
+  "material": "65 % PES / 35 % BA",
+  "gramaz": "260 g/m²",
+  "velikosti": "46–66",
+  "popis": "Celotělová kombinéza s krytým zipem po celé délce. Pruženka v pase kvůli volnosti v ramenou, náprsní kapsy s klopou, stehenní kapsa. Zesílená kolena a sed.",
+  "pouziti": "stavba, dílna, servis",
+  "norma": "EN ISO 13688"
  }
 ]

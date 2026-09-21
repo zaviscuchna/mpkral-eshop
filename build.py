@@ -5,6 +5,7 @@
 Obsah je v HTML natvrdo (funguje i s vypnutym JS). JS resi jen interakci:
 prepinani variant a pohledu, sanon poptavky, rozpis velikosti, lupa.
 """
+import hashlib
 import json
 from pathlib import Path
 
@@ -15,6 +16,9 @@ META = json.loads((KOREN / "data" / "meta.json").read_text(encoding="utf-8"))
 KATEGORIE = ["Kombinézy", "Kalhoty", "Laclové kalhoty", "Bundy a blůzy",
              "Kraťasy", "Pláště", "Soupravy"]
 RADY = ["King", "Klasik", "Riedl", "Polar", "Reflexní"]
+
+OTISK = hashlib.md5((KOREN / "css" / "style.css").read_bytes()).hexdigest()[:8]
+OTISK_JS = hashlib.md5((KOREN / "js" / "app.js").read_bytes()).hexdigest()[:8]
 
 ADRESA = "Nová 401, 378 62 Kunžak"
 TELEFON = "+420 608 982 675"
@@ -44,7 +48,7 @@ def hlava(titulek, popis, cesta=""):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{cesta}css/style.css">
+<link rel="stylesheet" href="{cesta}css/style.css?v={OTISK}">
 </head>
 <body>
 """
@@ -54,20 +58,25 @@ def hlavicka(aktivni="", cesta=""):
     polozky = "".join(
         f'<li><a href="{cesta}katalog.html#{i}" class="{"aktivni" if k == aktivni else ""}">{esc(k)}</a></li>'
         for i, k in enumerate(KATEGORIE))
-    return f"""<div class="dilenska-lista">
-  <div class="obal">
-    <span class="dlouze">Šijeme v Kunžaku od roku 1993 · 45 lidí · návrh, konstrukce, střih i šití u nás</span>
-    <span class="kratce">Kunžak · od 1993 · 45 lidí</span>
+    return f"""<header class="hlavicka">
+  <div class="obal hl-horni">
+    <div class="hl-vlevo">
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">Menu</button>
+    </div>
+    <a class="znacka" href="{cesta}index.html">
+      <b>M+P Král</b>
+      <span>Výroba pracovních oděvů · Kunžak · od 1993</span>
+    </a>
+    <div class="hl-vpravo">
+      <input class="hledani" type="search" placeholder="Hledat" id="hledani" aria-label="Hledat">
+      <a class="sanon-tlacitko" href="{cesta}sanon.html">Šanon <span class="sanon-pocet" data-sanon-pocet>0</span></a>
+    </div>
   </div>
-</div>
-<header class="hlavicka">
-  <div class="obal radek">
-    <a class="znacka" href="{cesta}index.html"><b>M+P Král</b><span>Výroba pracovních oděvů</span></a>
-    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">Menu</button>
-    <ul class="navigace" id="navigace">{polozky}</ul>
-    <input class="hledani" type="search" placeholder="Hledat řadu nebo produkt" id="hledani" aria-label="Hledat">
-    <a class="sanon-tlacitko" href="{cesta}sanon.html">Šanon <span class="sanon-pocet" data-sanon-pocet>0</span></a>
-  </div>
+  <nav class="hl-dolni">
+    <div class="obal">
+      <ul class="navigace" id="navigace">{polozky}</ul>
+    </div>
+  </nav>
 </header>
 """
 
@@ -108,7 +117,7 @@ def paticka(cesta=""):
     </p>
   </div>
 </footer>
-<script src="{cesta}js/app.js"></script>
+<script src="{cesta}js/app.js?v={OTISK_JS}"></script>
 </body>
 </html>
 """
@@ -201,7 +210,6 @@ def index():
     h.append(f"""<main>
 <div class="obal">
   <section class="hero">
-    <p class="nadlinka">Výroba pracovních oděvů · Kunžak · od roku 1993</p>
     <h1>Střih,<br>který si<br>ušijeme sami</h1>
     <p class="deck">Nejsme sklad a nejsme překupník. Návrh, konstrukci,
     střih i šití děláme ve vlastních prostorách — od roku 1993.</p>

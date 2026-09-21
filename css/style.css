@@ -90,23 +90,7 @@ a { color: inherit; text-underline-offset: 3px; }
 }
 .zastupne { border-bottom: 1px dotted var(--linka); cursor: help; }
 
-/* ---------------------------------------------------------------- lišta + hlavička */
-.dilenska-lista {
-  background: var(--inkoust);
-  color: var(--papir);
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  padding: 8px 0;
-  text-align: center;
-}
-.dilenska-lista .kratce { display: none; }
-@media (max-width: 720px) {
-  .dilenska-lista .dlouze { display: none; }
-  .dilenska-lista .kratce { display: inline; }
-}
-
+/* ---------------------------------------------------------------- hlavička */
 .hlavicka {
   position: sticky;
   top: 0;
@@ -114,15 +98,23 @@ a { color: inherit; text-underline-offset: 3px; }
   background: var(--papir);
   border-bottom: 1px solid var(--linka);
 }
-.hlavicka .radek { display: flex; align-items: center; gap: 28px; padding-block: 16px; }
-.hlavicka .radek > * { min-width: 0; }
+.hl-horni {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+  padding-block: 20px 16px;
+}
+.hl-horni > * { min-width: 0; }
+.hl-vlevo { justify-self: start; }
+.hl-vpravo { justify-self: end; display: flex; align-items: center; gap: 22px; }
 
-.znacka { text-decoration: none; flex: none; }
+.znacka { justify-self: center; text-align: center; text-decoration: none; }
 .znacka b {
   display: block;
-  font-size: 20px;
+  font-size: clamp(20px, 2.2vw, 30px);
   font-weight: 700;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   line-height: 1;
 }
@@ -130,13 +122,24 @@ a { color: inherit; text-underline-offset: 3px; }
   display: block;
   font-family: "IBM Plex Mono", monospace;
   font-size: 10px;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--ocel);
-  margin-top: 4px;
+  margin-top: 8px;
+  white-space: nowrap;
 }
 
-.navigace { display: flex; gap: 22px; flex-wrap: wrap; flex: 1; margin: 0; padding: 0; list-style: none; }
+/* druhý řádek: kategorie na střed */
+.hl-dolni { border-top: 1px solid var(--linka); }
+.navigace {
+  display: flex;
+  justify-content: center;
+  gap: 26px;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 11px 0;
+  list-style: none;
+}
 .navigace a {
   font-family: "IBM Plex Mono", monospace;
   font-size: 11px;
@@ -145,14 +148,13 @@ a { color: inherit; text-underline-offset: 3px; }
   text-decoration: none;
   color: var(--ocel);
   white-space: nowrap;
-  padding-bottom: 3px;
+  padding-bottom: 2px;
   border-bottom: 1px solid transparent;
   transition: color 120ms, border-color 120ms;
 }
 .navigace a:hover, .navigace a.aktivni { color: var(--inkoust); border-bottom-color: var(--inkoust); }
 
 .hledani {
-  flex: none;
   border: 0;
   border-bottom: 1px solid var(--linka);
   background: transparent;
@@ -162,54 +164,41 @@ a { color: inherit; text-underline-offset: 3px; }
   letter-spacing: 0.1em;
   text-transform: uppercase;
   padding: 7px 2px;
-  width: 200px;
+  width: 120px;
   border-radius: 0;
 }
 .hledani:focus { outline: none; border-bottom-color: var(--inkoust); }
 
 .sanon-tlacitko {
-  flex: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  border: 0;
-  background: transparent;
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 0; background: transparent;
   font-family: "IBM Plex Mono", monospace;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  text-decoration: none;
-  cursor: pointer;
-  padding: 0;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; text-decoration: none; cursor: pointer;
+  padding: 0; white-space: nowrap;
 }
 .sanon-pocet {
-  background: var(--oranzova);
-  color: #fff;
-  font-size: 10px;
-  border-radius: 999px;
-  padding: 2px 7px;
-  min-width: 20px;
-  text-align: center;
+  background: var(--oranzova); color: #fff; font-size: 10px;
+  border-radius: 999px; padding: 2px 7px; min-width: 20px; text-align: center;
 }
 .hamburger { display: none; }
 
-@media (max-width: 1180px) { .hledani { width: 130px; } .navigace { gap: 14px; } }
-@media (max-width: 980px) {
-  .navigace, .hledani { display: none; }
-  .navigace.otevrena {
-    display: flex; flex-direction: column; width: 100%; gap: 0; order: 10;
-    border-top: 1px solid var(--linka); padding-top: 10px;
-  }
-  .navigace.otevrena a { padding: 12px 0; border-bottom: none; font-size: 13px; }
-  .hlavicka .radek { flex-wrap: wrap; gap: 16px; }
+@media (max-width: 900px) {
+  .hl-dolni { display: none; }
+  .hl-dolni.otevrena { display: block; }
   .hamburger {
-    display: inline-flex; margin-left: auto; border: 0; background: transparent;
+    display: inline-flex; border: 0; background: transparent;
     color: var(--inkoust); font-family: "IBM Plex Mono", monospace; font-size: 11px;
     letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; padding: 0;
   }
+  .navigace { flex-direction: column; align-items: center; gap: 0; padding: 6px 0 14px; }
+  .navigace a { padding: 11px 0; font-size: 13px; }
+  .hledani { display: none; }
 }
-@media (max-width: 560px) { .znacka span { display: none; } }
+@media (max-width: 620px) {
+  .znacka span { display: none; }
+  .hl-horni { gap: 12px; padding-block: 16px 14px; }
+}
 
 /* ---------------------------------------------------------------- hero */
 .hero { padding: 100px 0 64px; max-width: 1180px; }
@@ -624,8 +613,7 @@ a { color: inherit; text-underline-offset: 3px; }
 
 /* ---------------------------------------------------------------- tisk */
 @media print {
-  .dilenska-lista, .hlavicka, .paticka, .lista-sanonu, .tl, .filtry, .hamburger { display: none !important; }
-  body { background: #fff; color: #000; font-size: 12pt; }
+    body { background: #fff; color: #000; font-size: 12pt; }
   .obal { max-width: none; padding: 0; }
   .tisk-hlavicka { display: block !important; margin-bottom: 20pt; }
   table { width: 100%; }
@@ -634,28 +622,66 @@ a { color: inherit; text-underline-offset: 3px; }
 .tisk-hlavicka { display: none; }
 
 /* ---------------------------------------------------------------- o firmě */
-.o-firme { display: grid; grid-template-columns: 1.6fr 1fr; gap: 64px; align-items: start; }
+.o-firme {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 72px;
+  align-items: start;
+}
+.o-firme-text { max-width: 58ch; }
 .o-firme-text p {
   font-family: "EB Garamond", Georgia, serif;
-  font-size: clamp(19px, 1.6vw, 23px);
-  line-height: 1.5;
-  max-width: 46ch;
-  margin: 0 0 20px;
+  font-size: clamp(19px, 1.5vw, 22px);
+  line-height: 1.52;
+  margin: 0 0 18px;
+  /* zarovnání do bloku; bez dělení slov by v češtině vznikaly řeky */
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+/* první odstavec nese sekci — o stupeň větší, bez dělení */
+.o-firme-text p:first-child {
+  font-size: clamp(22px, 1.9vw, 27px);
+  line-height: 1.38;
+  text-align: left;
+  hyphens: manual;
+  margin-bottom: 26px;
 }
 .o-firme-text .o-firme-zaver {
   border-top: 1px solid var(--inkoust);
   padding-top: 20px;
-  margin-top: 28px;
+  margin-top: 30px;
   font-style: italic;
+  text-align: left;
+  hyphens: manual;
 }
-.o-firme-fakta dl { margin: 6px 0 0; display: grid; gap: 0; }
+
+.o-firme-fakta { position: sticky; top: 104px; }
+.o-firme-fakta dl { margin: 0; }
 .o-firme-fakta dt {
-  font-family: "IBM Plex Mono", monospace; font-size: 10px;
-  letter-spacing: 0.14em; text-transform: uppercase; color: var(--ocel);
-  padding-top: 14px; border-top: 1px solid var(--linka);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ocel);
+  border-top: 1px solid var(--linka);
+  padding-top: 13px;
 }
-.o-firme-fakta dd { margin: 5px 0 14px; font-size: 16px; line-height: 1.35; }
-@media (max-width: 900px) {
-  .o-firme { grid-template-columns: 1fr; gap: 32px; }
-  .o-firme-text p { max-width: none; }
+.o-firme-fakta dt:first-child { border-top-color: var(--inkoust); }
+.o-firme-fakta dd {
+  margin: 6px 0 18px;
+  font-size: 17px;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+@media (max-width: 1000px) {
+  .o-firme { grid-template-columns: 1fr; gap: 40px; }
+  .o-firme-text { max-width: none; }
+  .o-firme-fakta { position: static; }
+}
+@media (max-width: 620px) {
+  /* na úzkém sloupci je zarovnání do bloku k ničemu — trhalo by mezery */
+  .o-firme-text p { text-align: left; hyphens: manual; }
 }

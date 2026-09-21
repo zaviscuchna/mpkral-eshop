@@ -49,7 +49,7 @@
   var burger = document.getElementById("hamburger");
   if (burger) {
     burger.addEventListener("click", function () {
-      var nav = document.getElementById("navigace");
+      var nav = document.querySelector(".hl-dolni");
       var otevreno = nav.classList.toggle("otevrena");
       burger.setAttribute("aria-expanded", otevreno ? "true" : "false");
     });

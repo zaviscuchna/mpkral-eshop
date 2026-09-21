@@ -5,7 +5,9 @@
     "nazev": "černá s neonově žlutozelenými díly",
     "id": "cerna-s-neonove-zlutozelenymi-dily",
     "fotky": {
-     "přední": "img/produkty/riedl-bluza-cerno-neonova-predni.jpg"
+     "detail": "img/produkty/riedl-bluza-cerno-neonova-detail.jpg",
+     "přední": "img/produkty/riedl-bluza-cerno-neonova-predni.jpg",
+     "zadní": "img/produkty/riedl-bluza-cerno-neonova-zadni.jpg"
     },
     "hlavni": "img/produkty/riedl-bluza-cerno-neonova-predni.jpg",
     "vzornik": "img/vzorniky/riedl-bluza-cerno-neonova-predni.jpg",
@@ -118,10 +120,11 @@
     "id": "cerna-s-cerveno-oranzovymi-prvky",
     "fotky": {
      "detail": "img/produkty/riedl-kalhoty-pas-cerno-oranzove-detail.jpg",
+     "přední": "img/produkty/riedl-kalhoty-pas-cerno-oranzove-predni.jpg",
      "zadní": "img/produkty/riedl-kalhoty-pas-cerno-oranzove-zadni.jpg"
     },
-    "hlavni": "img/produkty/riedl-kalhoty-pas-cerno-oranzove-detail.jpg",
-    "vzornik": "img/vzorniky/riedl-kalhoty-pas-cerno-oranzove-detail.jpg",
+    "hlavni": "img/produkty/riedl-kalhoty-pas-cerno-oranzove-predni.jpg",
+    "vzornik": "img/vzorniky/riedl-kalhoty-pas-cerno-oranzove-predni.jpg",
     "strih": "124/R"
    }
   ],
@@ -280,6 +283,7 @@
     "nazev": "tmavě modrofialová",
     "id": "tmave-modrofialova",
     "fotky": {
+     "detail": "img/produkty/klasik-kalhoty-tmave-modre-detail.jpg",
      "přední": "img/produkty/klasik-kalhoty-tmave-modre-predni.jpg",
      "zadní": "img/produkty/klasik-kalhoty-tmave-modre-zadni.jpg"
     },
@@ -291,6 +295,7 @@
     "nazev": "zelená",
     "id": "zelena",
     "fotky": {
+     "detail": "img/produkty/klasik-kalhoty-zelene-detail.jpg",
      "přední": "img/produkty/klasik-kalhoty-zelene-predni.jpg",
      "zadní": "img/produkty/klasik-kalhoty-zelene-zadni.jpg"
     },
@@ -330,7 +335,8 @@
     "id": "zelena-s-cernymi-prvky",
     "fotky": {
      "detail": "img/produkty/kombineza-king-zelena-detail.jpg",
-     "přední": "img/produkty/kombineza-king-zelena-predni.jpg"
+     "přední": "img/produkty/kombineza-king-zelena-predni.jpg",
+     "zadní": "img/produkty/kombineza-king-zelena-zadni.jpg"
     },
     "hlavni": "img/produkty/kombineza-king-zelena-predni.jpg",
     "vzornik": "img/vzorniky/kombineza-king-zelena-predni.jpg",
@@ -379,10 +385,11 @@
     "nazev": "modrá s černým sedlem",
     "id": "modra-s-cernym-sedlem",
     "fotky": {
-     "detail": "img/produkty/kombineza-king-modra-s-lemy-detail.jpg"
+     "detail": "img/produkty/kombineza-king-modra-s-lemy-detail.jpg",
+     "přední": "img/produkty/kombineza-king-modra-s-lemy-predni.jpg"
     },
-    "hlavni": "img/produkty/kombineza-king-modra-s-lemy-detail.jpg",
-    "vzornik": "img/vzorniky/kombineza-king-modra-s-lemy-detail.jpg",
+    "hlavni": "img/produkty/kombineza-king-modra-s-lemy-predni.jpg",
+    "vzornik": "img/vzorniky/kombineza-king-modra-s-lemy-predni.jpg",
     "strih": "172/K"
    },
    {

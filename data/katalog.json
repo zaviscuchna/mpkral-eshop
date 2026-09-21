@@ -955,6 +955,7 @@
     "nazev": "podle podkladu",
     "id": "podle-podkladu",
     "fotky": {
+     "detail": "img/produkty/reflex-a201-detail.jpg",
      "přední": "img/produkty/reflex-a201-predni.jpg",
      "zadní": "img/produkty/reflex-a201-zadni.jpg"
     },
@@ -1035,6 +1036,7 @@
     "nazev": "výstražná oranžová se stříbrnými pruhy",
     "id": "vystrazna-oranzova-se-stribrnymi-pruhy",
     "fotky": {
+     "detail": "img/produkty/reflex-kratasy-detail.jpg",
      "přední": "img/produkty/reflex-kratasy-predni.jpg",
      "zadní": "img/produkty/reflex-kratasy-zadni.jpg"
     },
@@ -1193,6 +1195,32 @@
  {
   "varianty": [
    {
+    "nazev": "výstražná oranžová se stříbrnými pruhy",
+    "id": "vystrazna-oranzova-se-stribrnymi-pruhy",
+    "fotky": {
+     "detail": "img/produkty/reflex-vesta2-detail.jpg",
+     "přední": "img/produkty/reflex-vesta2-predni.jpg"
+    },
+    "hlavni": "img/produkty/reflex-vesta2-predni.jpg",
+    "vzornik": "img/vzorniky/reflex-vesta2-predni.jpg",
+    "strih": "280/R"
+   }
+  ],
+  "nazev": "Reflexní vesta s kapsami",
+  "id": "reflexni-vesta-s-kapsami",
+  "znacka": "Reflexní",
+  "kategorie": "Vesty",
+  "predmet": "pouze vesta",
+  "material": "65 % PES / 35 % BA",
+  "gramaz": "260 g/m²",
+  "velikosti": "46–66",
+  "popis": "",
+  "pouziti": "dílna, provoz",
+  "norma": "EN ISO 13688"
+ },
+ {
+  "varianty": [
+   {
     "nazev": "modro-béžová",
     "id": "modro-bezova",
     "fotky": {
@@ -1201,17 +1229,18 @@
     },
     "hlavni": "img/produkty/kombineza-king-zimni-modro-bezova-predni.jpg",
     "vzornik": "img/vzorniky/kombineza-king-zimni-modro-bezova-predni.jpg",
-    "strih": "280/K"
+    "strih": "283/K"
    },
    {
     "nazev": "modro-černá",
     "id": "modro-cerna",
     "fotky": {
+     "detail": "img/produkty/kombineza-king-zimni-modro-cerna-detail.jpg",
      "přední": "img/produkty/kombineza-king-zimni-modro-cerna-predni.jpg"
     },
     "hlavni": "img/produkty/kombineza-king-zimni-modro-cerna-predni.jpg",
     "vzornik": "img/vzorniky/kombineza-king-zimni-modro-cerna-predni.jpg",
-    "strih": "283/K"
+    "strih": "286/K"
    },
    {
     "nazev": "modro-žlutá",
@@ -1222,7 +1251,7 @@
     },
     "hlavni": "img/produkty/kombineza-king-zimni-modro-zluta-predni.jpg",
     "vzornik": "img/vzorniky/kombineza-king-zimni-modro-zluta-predni.jpg",
-    "strih": "286/K"
+    "strih": "289/K"
    },
    {
     "nazev": "zeleno-vínová",
@@ -1233,7 +1262,7 @@
     },
     "hlavni": "img/produkty/kombineza-king-zimni-zeleno-vinova-predni.jpg",
     "vzornik": "img/vzorniky/kombineza-king-zimni-zeleno-vinova-predni.jpg",
-    "strih": "289/K"
+    "strih": "292/K"
    },
    {
     "nazev": "zeleno-černá",
@@ -1244,7 +1273,7 @@
     },
     "hlavni": "img/produkty/kombineza-king-zimni-zeleno-cerna-predni.jpg",
     "vzornik": "img/vzorniky/kombineza-king-zimni-zeleno-cerna-predni.jpg",
-    "strih": "292/K"
+    "strih": "295/K"
    }
   ],
   "nazev": "Zimní kombinéza King",

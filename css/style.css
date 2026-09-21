@@ -632,3 +632,30 @@ a { color: inherit; text-underline-offset: 3px; }
   a { text-decoration: none; color: #000; }
 }
 .tisk-hlavicka { display: none; }
+
+/* ---------------------------------------------------------------- o firmě */
+.o-firme { display: grid; grid-template-columns: 1.6fr 1fr; gap: 64px; align-items: start; }
+.o-firme-text p {
+  font-family: "EB Garamond", Georgia, serif;
+  font-size: clamp(19px, 1.6vw, 23px);
+  line-height: 1.5;
+  max-width: 46ch;
+  margin: 0 0 20px;
+}
+.o-firme-text .o-firme-zaver {
+  border-top: 1px solid var(--inkoust);
+  padding-top: 20px;
+  margin-top: 28px;
+  font-style: italic;
+}
+.o-firme-fakta dl { margin: 6px 0 0; display: grid; gap: 0; }
+.o-firme-fakta dt {
+  font-family: "IBM Plex Mono", monospace; font-size: 10px;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--ocel);
+  padding-top: 14px; border-top: 1px solid var(--linka);
+}
+.o-firme-fakta dd { margin: 5px 0 14px; font-size: 16px; line-height: 1.35; }
+@media (max-width: 900px) {
+  .o-firme { grid-template-columns: 1fr; gap: 32px; }
+  .o-firme-text p { max-width: none; }
+}

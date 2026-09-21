@@ -16,7 +16,11 @@ KATEGORIE = ["Kombinézy", "Kalhoty", "Laclové kalhoty", "Bundy a blůzy",
              "Kraťasy", "Pláště", "Soupravy"]
 RADY = ["King", "Klasik", "Riedl", "Polar", "Reflexní"]
 
-ADRESA = "Střížovická 419, 378 62 Kunžak"
+ADRESA = "Nová 401, 378 62 Kunžak"
+TELEFON = "+420 608 982 675"
+TELFAX = "+420 384 399 306"
+MAIL = "info@mpkral.cz"
+ICO = "43861431"
 
 
 def esc(s):
@@ -52,8 +56,8 @@ def hlavicka(aktivni="", cesta=""):
         for i, k in enumerate(KATEGORIE))
     return f"""<div class="dilenska-lista">
   <div class="obal">
-    <span class="dlouze">Šijeme ve Střížovické 419, Kunžak · od roku 1992 · 1 300 vlastních střihů</span>
-    <span class="kratce">Kunžak · od 1992 · 1 300 střihů</span>
+    <span class="dlouze">Šijeme v Kunžaku od roku 1993 · 45 lidí · návrh, konstrukce, střih i šití u nás</span>
+    <span class="kratce">Kunžak · od 1993 · 45 lidí</span>
   </div>
 </div>
 <header class="hlavicka">
@@ -93,14 +97,14 @@ def paticka(cesta=""):
           <li>M+P Král — Petr Král</li>
           <li>{esc(ADRESA)}</li>
           <li>okres Jindřichův Hradec</li>
-          <li>{zast("tel. 384 000 000")}</li>
-          <li>{zast("po–pá 7:00–15:30")}</li>
+          <li>{esc(TELEFON)}</li>
+          <li>{esc(MAIL)}</li>
         </ul>
       </div>
     </div>
     <p class="disclaimer">
       Technické údaje (materiál, gramáž, čísla střihů, normy, lhůty) jsou v tomto náčrtu zástupné.<br>
-      Šijeme <span class="kurziva">od roku 1992</span>.
+      Šijeme <span class="kurziva">od roku 1993</span>.
     </p>
   </div>
 </footer>
@@ -197,14 +201,43 @@ def index():
     h.append(f"""<main>
 <div class="obal">
   <section class="hero">
-    <p class="nadlinka">Výroba pracovních oděvů · Kunžak · od 1992</p>
+    <p class="nadlinka">Výroba pracovních oděvů · Kunžak · od roku 1993</p>
     <h1>Střih,<br>který si<br>ušijeme sami</h1>
-    <p class="deck">Nejsme sklad a nejsme překupník. Šijeme ve vlastní dílně
-    z třinácti set vlastních střihů, které si sami konstruujeme
-    a upravujeme podle toho, co si zákazník vyzkouší v provozu.</p>
+    <p class="deck">Nejsme sklad a nejsme překupník. Návrh, konstrukci,
+    střih i šití děláme ve vlastních prostorách — od roku 1993.</p>
     <div class="tlacitka">
       <a class="tl tl-hlavni" href="katalog.html">Prohlédnout řady</a>
       <a class="tl tl-obrys" href="#poptavka">Poptat zakázku</a>
+    </div>
+  </section>
+</div>""")
+
+    # 02 o firmě
+    h.append(f"""<div class="obal">
+  <section class="sekce" id="o-firme">
+    {kota("01", "Pět lidí. Dnes čtyřicet pět.", "od roku 1993")}
+    <div class="o-firme">
+      <div class="o-firme-text">
+        <p>Firmu založil Petr Král v roce 1993 a první pracovní oděvy šilo pět lidí.
+        Dnes je nás pětačtyřicet a šijeme pořád na stejném místě v Kunžaku.</p>
+        <p>Začínali jsme u několika druhů pracovních oděvů, spodního a nočního prádla.
+        Postupně přibyly oděvy pro zdravotnictví a potravinářství a certifikované
+        pracovní oděvy — tedy všude tam, kde na střihu a materiálu opravdu záleží.</p>
+        <p>Veškerou výrobu si zajišťujeme sami: návrh, konstrukci, nastříhání i ušití.
+        Nic nekupujeme hotové a nic nedáváme ven. Proto vám umíme říct, proč je
+        v tom místě zesílení — a proto ho umíme posunout, když vám nesedí.</p>
+        <p class="o-firme-zaver">Za svojí prací si stojíme. Férová cena, dodržené
+        termíny a zákazník, který se vrátí. Nic složitějšího za tím není.</p>
+      </div>
+      <aside class="o-firme-fakta">
+        <dl>
+          <dt>Založeno</dt><dd>1993</dd>
+          <dt>Lidí v dílně</dt><dd>45</dd>
+          <dt>Kde</dt><dd>{esc(ADRESA)}</dd>
+          <dt>Co děláme sami</dt><dd>návrh · konstrukce · střih · šití</dd>
+          <dt>Specializace</dt><dd>zdravotnictví, potravinářství, certifikované oděvy</dd>
+        </dl>
+      </aside>
     </div>
   </section>
 </div>""")
@@ -227,7 +260,7 @@ def index():
 
     h.append(f"""<div class="obal">
   <section class="sekce">
-    {kota("01", "Kategorie", f"{len(KATEGORIE)} kategorií")}
+    {kota("02", "Kategorie", f"{len(KATEGORIE)} kategorií")}
     <div class="kategorie-mrizka">{"".join(dlazdice)}</div>
   </section>
 </div>""")
@@ -257,7 +290,7 @@ def index():
     </article>""")
     h.append(f"""<div class="obal">
   <section class="sekce">
-    {kota("02", "Naše řady", "5 řad", "Řada je rodina střihů ve stejném materiálu a stejné logice kapes. Uvnitř řady se dá sladit celý tým napříč profesemi.")}
+    {kota("03", "Naše řady", "5 řad", "Řada je rodina střihů ve stejném materiálu a stejné logice kapes. Uvnitř řady se dá sladit celý tým napříč profesemi.")}
     <div class="rady-mrizka">{"".join(karty_rad)}</div>
   </section>
 </div>""")
@@ -266,7 +299,7 @@ def index():
     vyber = [r for r in KAT][:8]
     h.append(f"""<div class="obal">
   <section class="sekce">
-    {kota("03", "Nejžádanější střihy", f"{sum(len(r['varianty']) for r in KAT)} barevných variant")}
+    {kota("04", "Nejžádanější střihy", f"{sum(len(r['varianty']) for r in KAT)} barevných variant")}
     <div class="produkty po-ctyrech">{"".join(produkt_karta(r) for r in vyber)}</div>
     <p style="margin-top:24px"><a href="katalog.html">Zobrazit všech {len(KAT)} střihů →</a></p>
   </section>
@@ -286,7 +319,7 @@ def index():
     </figure>""" for (r, v), p in zip(detaily, popisky))
     h.append(f"""<div class="obal">
   <section class="sekce">
-    {kota("04", "Jak to vypadá zblízka", "detail", "Kvalita se nedá tvrdit, dá se ukázat. Tohle jsou nezmenšené výřezy z produktových fotek.")}
+    {kota("05", "Jak to vypadá zblízka", "detail", "Kvalita se nedá tvrdit, dá se ukázat. Tohle jsou nezmenšené výřezy z produktových fotek.")}
     <div class="produkty po-trech">{bloky}</div>
   </section>
 </div>""")
@@ -294,7 +327,7 @@ def index():
     # 07 zakázka
     h.append(f"""<div class="obal">
   <section class="sekce">
-    {kota("05", "Ušijeme podle vás", "zakázková výroba")}
+    {kota("06", "Ušijeme podle vás", "zakázková výroba")}
     <p class="kurziva" style="font-size:20px;max-width:60ch;margin:0 0 28px">
       Nový vzor není u nás výjimka — nasamplujeme ho, vyzkoušíte ho v provozu a teprve pak se šije série.
     </p>
@@ -316,7 +349,7 @@ def index():
       </div>""" for r, v in plaste)
     h.append(f"""<div class="navy-blok">
   <div class="obal">
-    {kota("06", "Pro zdravotnictví a potravinářství", "hygienické provozy")}
+    {kota("07", "Pro zdravotnictví a potravinářství", "hygienické provozy")}
     <div class="navy-dva">
       <div style="display:flex;gap:16px">{karty_p}</div>
       <div>
@@ -340,7 +373,7 @@ def index():
     </div>""" for p in META["profese"])
     h.append(f"""<div class="obal">
   <section class="sekce">
-    {kota("07", "Oblečeme celý tým", f"{len(META['profese'])} profesí")}
+    {kota("08", "Oblečeme celý tým", f"{len(META['profese'])} profesí")}
     <div class="kategorie-mrizka">{profese}</div>
   </section>
 </div>""")
@@ -348,7 +381,7 @@ def index():
     # 11 hladiny
     h.append(f"""<div class="obal">
   <section class="sekce">
-    {kota("08", "Jak objednáte", "4 kroky")}
+    {kota("09", "Jak objednáte", "4 kroky")}
     <div class="kroky ctyri">
       <div class="krok"><span class="cislo">01</span><h3>Vyberete střih</h3><p>Řadu, barvu a provedení.</p></div>
       <div class="krok"><span class="cislo">02</span><h3>Zapíšete počty</h3><p>Po velikostech, ne jedno číslo.</p></div>
@@ -367,7 +400,7 @@ def index():
     # 12 poptávka
     h.append(f"""<div class="obal">
   <section class="sekce" id="poptavka">
-    {kota("09", "Poptávka a kontakt", "odpovídáme do 2 dnů")}
+    {kota("10", "Poptávka a kontakt", "odpovídáme do 2 dnů")}
     <div class="navy-dva">
       <form class="formular" data-poptavka>
         <div class="dva-sloupce">
@@ -390,7 +423,7 @@ def index():
       <div>
         <h3 style="margin-top:0;font-size:20px">M+P Král — Petr Král</h3>
         <p>{esc(ADRESA)}<br>okres Jindřichův Hradec</p>
-        <p>{zast("Petr Král")} · {zast("tel. 384 000 000")}<br>{zast("po–pá 7:00–15:30")}</p>
+        <p class="mono">{esc(TELEFON)} · {esc(MAIL)}<br>tel./fax {esc(TELFAX)} · IČ {esc(ICO)}</p>
         <div class="karta" style="padding:18px;margin-top:18px">
           <h3 style="margin:0 0 8px;font-size:17px">Objednávali jste u nás?</h3>
           <p style="margin:0 0 12px;font-size:15px">Pošlete číslo poslední dodávky a ušijeme totéž — stejný střih, stejná barva, stejné velikosti.</p>

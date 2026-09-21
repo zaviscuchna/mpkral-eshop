@@ -183,6 +183,8 @@ a { color: inherit; text-underline-offset: 3px; }
 }
 .hamburger { display: none; }
 
+@media (max-width: 1150px) { .hledani { display: none; } }
+@media (max-width: 1060px) { .znacka span { display: none; } }
 @media (max-width: 900px) {
   .hl-dolni { display: none; }
   .hl-dolni.otevrena { display: block; }
@@ -196,8 +198,7 @@ a { color: inherit; text-underline-offset: 3px; }
   .hledani { display: none; }
 }
 @media (max-width: 620px) {
-  .znacka span { display: none; }
-  .hl-horni { gap: 12px; padding-block: 16px 14px; }
+  .hl-horni { gap: 10px; padding-block: 16px 14px; }
 }
 
 /* ---------------------------------------------------------------- hero */
@@ -756,3 +757,42 @@ a { color: inherit; text-underline-offset: 3px; }
   .kontakt-radek { grid-template-columns: 1fr; gap: 8px; padding: 20px 0; }
 }
 @media (max-width: 560px) { .kontakt-mrizka { grid-template-columns: 1fr; } }
+
+/* ---------------------------------------------------------------- přepínač režimu */
+.prepinac-rezimu {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ocel);
+}
+.prepinac-rezimu button {
+  border: 0;
+  background: transparent;
+  font: inherit;
+  color: var(--ocel);
+  padding: 2px 0;
+  cursor: pointer;
+  border-bottom: 1px solid transparent;
+  transition: color 120ms, border-color 120ms;
+}
+.prepinac-rezimu button:hover { color: var(--inkoust); }
+.prepinac-rezimu button.aktivni { color: var(--inkoust); border-bottom-color: var(--inkoust); }
+.rezim-delic { opacity: 0.45; }
+
+.rezim-ikona { display: inline-flex; padding: 2px !important; border: 0 !important; cursor: default; }
+.rezim-znak { width: 13px; height: 13px; display: block; }
+
+@media (max-width: 1400px) { .prepinac-rezimu { font-size: 9px; gap: 6px; } }
+
+/* na úzké hlavičce zbyde jen ikona a ta se stane přepínačem */
+@media (max-width: 1000px) {
+  .prepinac-rezimu [data-rezim="light"],
+  .prepinac-rezimu [data-rezim="dark"],
+  .rezim-delic { display: none; }
+  .rezim-ikona { cursor: pointer; padding: 6px !important; margin: -6px; }
+  .rezim-znak { width: 15px; height: 15px; }
+}

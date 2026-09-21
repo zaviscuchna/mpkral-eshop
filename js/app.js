@@ -45,6 +45,65 @@
     document.querySelectorAll("[data-sanon-kusy]").forEach(function (e) { e.textContent = ks; });
   }
 
+  /* ---------------------------------------------------------- režim zobrazení */
+  (function () {
+    var prep = document.getElementById("prepinac-rezimu");
+    if (!prep) return;
+    var tlacitka = prep.querySelectorAll("button");
+
+    function uloz(r) {
+      try {
+        if (r) localStorage.setItem("mpkral-rezim", r);
+        else localStorage.removeItem("mpkral-rezim");
+      } catch (e) { /* private mode — vydrží jen do konce stránky */ }
+    }
+    function ulozeny() {
+      try { return localStorage.getItem("mpkral-rezim"); } catch (e) { return null; }
+    }
+    function podleSystemu() {
+      return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark" : "light";
+    }
+    function vykresli() {
+      var r = document.documentElement.getAttribute("data-theme") || podleSystemu();
+      tlacitka.forEach(function (b) {
+        b.classList.toggle("aktivni", b.dataset.rezim === r);
+        b.setAttribute("aria-pressed", b.dataset.rezim === r ? "true" : "false");
+      });
+    }
+
+    tlacitka.forEach(function (b) {
+      b.addEventListener("click", function () {
+        var r = b.dataset.rezim;
+        if (r === "prepnout") {
+          var ted = document.documentElement.getAttribute("data-theme") || podleSystemu();
+          r = ted === "dark" ? "light" : "dark";
+          document.documentElement.setAttribute("data-theme", r);
+          uloz(r);
+          vykresli();
+          return;
+        }
+        /* klik na už aktivní režim vrátí řízení systému */
+        if (document.documentElement.getAttribute("data-theme") === r) {
+          document.documentElement.removeAttribute("data-theme");
+          uloz(null);
+        } else {
+          document.documentElement.setAttribute("data-theme", r);
+          uloz(r);
+        }
+        vykresli();
+      });
+    });
+
+    /* dokud si člověk nevybral, sledovat nastavení systému */
+    if (window.matchMedia) {
+      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () {
+        if (!ulozeny()) vykresli();
+      });
+    }
+    vykresli();
+  })();
+
   /* ---------------------------------------------------------- hlavička */
   var burger = document.getElementById("hamburger");
   if (burger) {

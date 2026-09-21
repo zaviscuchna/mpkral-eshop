@@ -8,7 +8,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=9d42558c">
+<link rel="stylesheet" href="css/style.css?v=0251f0f4">
+<script>
+/* nastavit režim ještě před vykreslením, ať nebliká */
+(function () {
+  try {
+    var r = localStorage.getItem("mpkral-rezim");
+    if (r === "dark" || r === "light") document.documentElement.setAttribute("data-theme", r);
+  } catch (e) {}
+})();
+</script>
 </head>
 <body>
 <header class="hlavicka">
@@ -22,6 +31,17 @@
     </a>
     <div class="hl-vpravo">
       <input class="hledani" type="search" placeholder="Hledat" id="hledani" aria-label="Hledat">
+      <div class="prepinac-rezimu" id="prepinac-rezimu" role="group" aria-label="Světlý nebo tmavý režim">
+        <button type="button" class="rezim-ikona" data-rezim="prepnout" aria-label="Přepnout světlý a tmavý režim">
+          <svg class="rezim-znak" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+            <circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor"/>
+            <path d="M10 1.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/>
+          </svg>
+        </button>
+        <button type="button" data-rezim="light">Světlý</button>
+        <span class="rezim-delic">/</span>
+        <button type="button" data-rezim="dark">Tmavý</button>
+      </div>
       <a class="sanon-tlacitko" href="sanon.html">Šanon <span class="sanon-pocet" data-sanon-pocet>0</span></a>
     </div>
   </div>
@@ -93,6 +113,6 @@
     </p>
   </div>
 </footer>
-<script src="js/app.js?v=829da568"></script>
+<script src="js/app.js?v=480c8995"></script>
 </body>
 </html>

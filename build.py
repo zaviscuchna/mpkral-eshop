@@ -59,6 +59,8 @@ def hlava(titulek, popis, cesta=""):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(titulek)}</title>
 <meta name="description" content="{esc(popis)}">
+<link rel="icon" type="image/png" href="{cesta}img/favicon.png">
+<link rel="apple-touch-icon" href="{cesta}img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -87,7 +89,7 @@ def hlavicka(aktivni="", cesta=""):
       <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">Menu</button>
     </div>
     <a class="znacka" href="{cesta}index.html">
-      <b>M+P Král</b>
+      <img class="znacka-logo" src="{cesta}img/logo-mp.png" width="249" height="128" alt="M+P Král">
       <span>Výroba pracovních oděvů · Kunžak · od 1993</span>
     </a>
     <div class="hl-vpravo">
@@ -127,6 +129,10 @@ def paticka(cesta=""):
     return f"""<footer class="paticka">
   <div class="obal">
     <div class="zdvojena-linka" style="margin-bottom:32px"></div>
+    <a class="paticka-logo" href="{cesta}index.html">
+      <img src="{cesta}img/logo-mp.png" width="249" height="128" alt="M+P Král" loading="lazy">
+      <span>Petr Král M+P · výroba pracovních oděvů</span>
+    </a>
     <div class="paticka-mrizka">
       <div><h3>Kategorie</h3><ul>{kat}</ul></div>
       <div><h3>Řady</h3><ul>{rady}</ul></div>

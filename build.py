@@ -231,6 +231,15 @@ def rozpis_velikosti(rada, kompakt=False):
 <button type="button" class="tl tl-hlavni tl-plna" data-do-sanonu>Přidat do šanonu</button>"""
 
 
+def kategorie_foto(rady_k):
+    """Fotky do dlaždice kategorie. Po najetí se v pravé půlce prolínají
+    jedna za druhou, ať je vidět, co pod kategorií je."""
+    fotky = "".join(
+        f'<img src="{esc(r["varianty"][0]["hlavni"])}" alt="" loading="lazy"{" class=vidna" if j == 0 else ""}>'
+        for j, r in enumerate(rady_k))
+    return f'<span class="kat-foto" aria-hidden="true">{fotky}</span>'
+
+
 # ---------------------------------------------------------------- index.html
 def index():
     h = [hlava("M+P Král · výroba pracovních oděvů, Kunžak",
@@ -287,11 +296,15 @@ def index():
       <span class="kod">K-{i + 1:02d}</span>
       <h3>{esc(k)}</h3>
       <span class="mono-popisek">{len(rady_k)} střihů · {barev} barev</span>
+      {kategorie_foto(rady_k)}
     </a>""")
+    zastupci = [next(r for r in KAT if r["kategorie"] == k) for k in KATEGORIE
+                if any(r["kategorie"] == k for r in KAT)]
     dlazdice.append(f"""<a class="kategorie-karta vse" href="katalog.html">
       <span class="kod">K-00</span>
       <h3>Všechny střihy</h3>
       <span class="mono-popisek">{len(KAT)} střihů · {sum(len(r["varianty"]) for r in KAT)} barev</span>
+      {kategorie_foto(zastupci)}
     </a>""")
 
     h.append(f"""<div class="obal">

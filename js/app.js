@@ -460,6 +460,27 @@
     }
   }
 
+  /* ---------------------------------------------------------- fotky v kategorii */
+  /* Po najetí na dlaždici se střídají fotky střihů z kategorie. */
+  document.querySelectorAll(".kat-foto").forEach(function (ramec) {
+    var fotky = ramec.querySelectorAll("img");
+    var karta = ramec.parentNode, i = 0, cas = null;
+    if (fotky.length < 2) return;
+    function ukaz(n) {
+      fotky[i].classList.remove("vidna");
+      i = n % fotky.length;
+      fotky[i].classList.add("vidna");
+    }
+    karta.addEventListener("mouseenter", function () {
+      clearInterval(cas);
+      cas = setInterval(function () { ukaz(i + 1); }, 1100);
+    });
+    karta.addEventListener("mouseleave", function () {
+      clearInterval(cas);
+      ukaz(0);
+    });
+  });
+
   /* ---------------------------------------------------------- formulář */
   document.querySelectorAll("[data-poptavka]").forEach(function (f) {
     f.addEventListener("submit", function (e) {

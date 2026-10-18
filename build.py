@@ -63,7 +63,7 @@ def hlava(titulek, popis, cesta=""):
 <link rel="apple-touch-icon" href="{cesta}img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..700&family=IBM+Plex+Mono:wght@400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{cesta}css/style.css?v={OTISK}">
 <script>
 /* nastavit režim ještě před vykreslením, ať nebliká */
@@ -83,17 +83,17 @@ def hlavicka(aktivni="", cesta=""):
     polozky = "".join(
         f'<li><a href="{cesta}katalog.html#{i}" class="{"aktivni" if k == aktivni else ""}">{esc(k)}</a></li>'
         for i, k in enumerate(KATEGORIE))
-    return f"""<header class="hlavicka">
-  <div class="obal hl-horni">
-    <div class="hl-vlevo">
-      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">Menu</button>
-    </div>
-    <a class="znacka" href="{cesta}index.html">
-      <img class="znacka-logo" src="{cesta}img/logo-mp.png" width="249" height="128" alt="M+P Král">
-      <span>Výroba pracovních oděvů · Kunžak · od 1993</span>
-    </a>
+    return f"""<header class="hlavicka" id="hlavicka">
+  <div class="obal hl-radek">
+    <a class="znacka" href="{cesta}index.html"><img class="znacka-logo" src="{cesta}img/logo-mp.png" width="249" height="128" alt="M+P Král"></a>
+    <nav class="hl-dolni" aria-label="Kategorie">
+      <ul class="navigace" id="navigace">{polozky}</ul>
+    </nav>
     <div class="hl-vpravo">
-      <input class="hledani" type="search" placeholder="Hledat" id="hledani" aria-label="Hledat">
+      <label class="hledani-pole">
+        <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m13 13 4.5 4.5"/></svg>
+        <input class="hledani" type="search" placeholder="Hledat" id="hledani" aria-label="Hledat">
+      </label>
       <button type="button" class="prepinac-rezimu" id="prepinac-rezimu"
               aria-label="Přepnout na tmavý režim" aria-pressed="false">
         <svg class="rezim-znak" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
@@ -102,13 +102,9 @@ def hlavicka(aktivni="", cesta=""):
         </svg>
       </button>
       <a class="sanon-tlacitko" href="{cesta}sanon.html">Šanon <span class="sanon-pocet" data-sanon-pocet>0</span></a>
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">Menu</button>
     </div>
   </div>
-  <nav class="hl-dolni">
-    <div class="obal">
-      <ul class="navigace" id="navigace">{polozky}</ul>
-    </div>
-  </nav>
 </header>
 """
 
@@ -255,6 +251,7 @@ def index():
     h.append(f"""<main>
 <div class="obal">
   <section class="hero">
+    <p class="hero-kicker">Výroba pracovních oděvů · Kunžak · od 1993</p>
     <h1>Střih,<br>který si<br>ušijeme sami</h1>
   </section>
   <div class="tlacitka hero-tlacitka">

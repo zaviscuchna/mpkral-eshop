@@ -113,6 +113,8 @@ def stranka():
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#f2f0eb">
 <title>M+P Král · mobil</title>
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -121,7 +123,7 @@ def stranka():
 <body>
 
 <header class="lista">
-  <a class="logo" href="#"><b>M+P Král</b><span>Kunžak · od 1993</span></a>
+  <a class="logo" href="#"><img src="img/logo-mp.png" width="249" height="128" alt="M+P Král"><span>Kunžak · od 1993</span></a>
   <button type="button" class="ikona" aria-label="Hledat" data-otevrit-hledani>
     <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>
   </button>
@@ -187,6 +189,7 @@ def stranka():
   </section>
 
   <footer class="paticka">
+    <img class="paticka-logo" src="img/logo-mp.png" width="249" height="128" alt="M+P Král" loading="lazy">
     <p>Technické údaje jsou v náčrtu zástupné.</p>
     <p class="kurziva">Šijeme od roku 1993.</p>
   </footer>
@@ -240,7 +243,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 height:56px;padding:0 16px;background:color-mix(in srgb,var(--papir) 92%,transparent);
 backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--linka)}
 .logo{display:flex;flex-direction:column;line-height:1}
-.logo b{font-size:19px;font-weight:800;letter-spacing:.02em;text-transform:uppercase}
+.logo img{display:block;height:26px;width:auto;align-self:flex-start}
 .logo span{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ocel);margin-top:4px}
 .ikona{width:44px;height:44px;display:grid;place-items:center;margin-right:-10px}
 .ikona svg,.spodni svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
@@ -340,6 +343,7 @@ padding:40px 16px 14px;background:linear-gradient(transparent,rgba(17,17,16,.7))
 .adresa{margin:16px 0 0;font-family:"EB Garamond",Georgia,serif;font-size:18px}
 .paticka{padding:40px 16px 24px;color:var(--ocel);font-size:13px}
 .paticka p{margin:0 0 4px}
+.paticka-logo{display:block;height:40px;width:auto;margin-bottom:14px}
 
 /* spodní lišta, na dosah palce */
 .spodni{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;grid-template-columns:1fr 1fr 1fr 1.25fr;
@@ -463,7 +467,7 @@ figcaption{margin-top:16px;font-family:"IBM Plex Mono",monospace;font-size:12px;
 </head>
 <body>
 <header>
-  <h1>M+P Král — mobilní verze</h1>
+  <h1>M+P Král · mobilní verze</h1>
   <p>390 × 844 (iPhone 15). Obě obrazovky jsou živé, dá se v nich posouvat a klikat.</p>
 </header>
 <div class="telefony">

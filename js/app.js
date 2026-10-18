@@ -90,6 +90,12 @@
   })();
 
   /* ---------------------------------------------------------- hlavička */
+  var hlavicka = document.getElementById("hlavicka");
+  if (hlavicka) {
+    var stin = function () { hlavicka.classList.toggle("odscrollovano", window.scrollY > 4); };
+    window.addEventListener("scroll", stin, { passive: true });
+    stin();
+  }
   var burger = document.getElementById("hamburger");
   if (burger) {
     burger.addEventListener("click", function () {

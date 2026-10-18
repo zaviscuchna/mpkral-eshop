@@ -16,6 +16,11 @@
   --navy: #1d2f4d;
   --karta-jas: 1;
 
+  /* popisky v hlavičce: Archivo v rozšířeném řezu, má celou českou sadu,
+     takže háčky a čárky se nesahají do náhradního písma */
+  --pismo-lista: Archivo, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --vyska-hlavicky: 76px;
+
   --sirka: 1440px;
   --gutter: 40px;
 }
@@ -91,117 +96,89 @@ a { color: inherit; text-underline-offset: 3px; }
 .zastupne { border-bottom: 1px dotted var(--linka); cursor: help; }
 
 /* ---------------------------------------------------------------- hlavička */
+/* Jeden řádek, žádné dělicí linky. Jemná linka se objeví až po odscrollování. */
 .hlavicka {
-  position: sticky;
-  top: 0;
-  z-index: 60;
-  background: var(--papir);
-  border-bottom: 1px solid var(--linka);
+  position: sticky; top: 0; z-index: 60;
+  background: color-mix(in srgb, var(--papir) 88%, transparent);
+  -webkit-backdrop-filter: saturate(1.4) blur(14px); backdrop-filter: saturate(1.4) blur(14px);
+  transition: box-shadow 200ms;
 }
-.hl-horni {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  gap: 24px;
-  padding-block: 20px 16px;
+.hlavicka.odscrollovano { box-shadow: 0 1px 0 var(--linka); }
+.hl-radek {
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 32px;
+  height: var(--vyska-hlavicky);
 }
-.hl-horni > * { min-width: 0; }
-.hl-vlevo { justify-self: start; }
-.hl-vpravo { justify-self: end; display: flex; align-items: center; gap: 22px; }
+.hl-radek > * { min-width: 0; }
 
-.znacka { justify-self: center; text-align: center; text-decoration: none; }
+.znacka { justify-self: start; display: block; text-decoration: none; }
 /* logo M+P v původní zelené, je to registrovaná značka, nepřebarvovat */
-.znacka-logo {
-  display: block;
-  height: clamp(38px, 3.6vw, 54px);
-  width: auto;
-  margin-inline: auto;
-}
-.znacka span {
-  display: block;
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 10px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ocel);
-  margin-top: 8px;
-  white-space: nowrap;
-}
+.znacka-logo { display: block; height: 40px; width: auto; }
 
-/* druhý řádek: kategorie na střed */
-.hl-dolni { border-top: 1px solid var(--linka); }
-.navigace {
-  display: flex;
-  justify-content: center;
-  gap: 26px;
-  flex-wrap: wrap;
-  margin: 0;
-  padding: 11px 0;
-  list-style: none;
-}
+.navigace { display: flex; justify-content: center; gap: 30px; margin: 0; padding: 0; list-style: none; }
 .navigace a {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: var(--ocel);
-  white-space: nowrap;
-  padding-bottom: 2px;
-  border-bottom: 1px solid transparent;
-  transition: color 120ms, border-color 120ms;
+  position: relative; display: block; padding: 6px 0;
+  font-size: 14px; font-weight: 500; letter-spacing: -0.005em;
+  text-decoration: none; color: var(--inkoust); opacity: .72; white-space: nowrap;
+  transition: opacity 160ms;
 }
-.navigace a:hover, .navigace a.aktivni { color: var(--inkoust); border-bottom-color: var(--inkoust); }
+.navigace a::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+  background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform 220ms ease;
+}
+.navigace a:hover, .navigace a.aktivni { opacity: 1; }
+.navigace a:hover::after, .navigace a.aktivni::after { transform: scaleX(1); }
 
+.hl-vpravo { justify-self: end; display: flex; align-items: center; gap: 22px; }
+.hledani-pole { display: flex; align-items: center; gap: 8px; color: var(--ocel); cursor: text; }
+.hledani-pole svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; flex: none; }
 .hledani {
-  border: 0;
-  border-bottom: 1px solid var(--linka);
-  background: transparent;
-  color: var(--inkoust);
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 7px 2px;
-  width: 120px;
-  border-radius: 0;
+  width: 88px; padding: 4px 0; border: 0; border-bottom: 1px solid transparent; border-radius: 0;
+  background: transparent; color: var(--inkoust); font: inherit; font-size: 14px;
+  transition: width 220ms ease, border-color 160ms;
 }
-.hledani:focus { outline: none; border-bottom-color: var(--inkoust); }
+.hledani::placeholder { color: var(--ocel); }
+.hledani:focus { outline: none; width: 170px; border-bottom-color: var(--inkoust); }
 
 .sanon-tlacitko {
-  display: inline-flex; align-items: center; gap: 8px;
-  border: 0; background: transparent;
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
-  text-transform: uppercase; text-decoration: none; cursor: pointer;
-  padding: 0; white-space: nowrap;
+  display: inline-flex; align-items: center; gap: 8px; padding: 0;
+  font-size: 14px; font-weight: 600; text-decoration: none; white-space: nowrap;
 }
 .sanon-pocet {
-  background: var(--oranzova); color: #fff; font-size: 10px;
-  border-radius: 999px; padding: 2px 7px; min-width: 20px; text-align: center;
+  display: inline-grid; place-items: center; min-width: 20px; height: 20px; padding: 0 6px;
+  border-radius: 10px; background: var(--inkoust); color: var(--papir);
+  font-size: 11px; font-weight: 600; font-variant-numeric: tabular-nums;
 }
 .hamburger { display: none; }
 
-@media (max-width: 1150px) { .hledani { display: none; } }
-@media (max-width: 1060px) { .znacka span { display: none; } }
-@media (max-width: 900px) {
-  .hl-dolni { display: none; }
-  .hl-dolni.otevrena { display: block; }
-  .hamburger {
-    display: inline-flex; border: 0; background: transparent;
-    color: var(--inkoust); font-family: "IBM Plex Mono", monospace; font-size: 11px;
-    letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; padding: 0;
+@media (max-width: 1280px) {
+  .navigace { gap: 22px; }
+  .hledani { width: 0; }
+  .hledani:focus { width: 150px; }
+}
+@media (max-width: 1100px) {
+  .hl-radek { grid-template-columns: auto 1fr; }
+  .hl-dolni {
+    display: none; position: absolute; top: 100%; left: 0; right: 0;
+    background: var(--papir); box-shadow: 0 1px 0 var(--linka), 0 24px 40px -24px rgba(17,17,16,.25);
   }
-  .navigace { flex-direction: column; align-items: center; gap: 0; padding: 6px 0 14px; }
-  .navigace a { padding: 11px 0; font-size: 13px; }
-  .hledani { display: none; }
+  .hl-dolni.otevrena { display: block; }
+  .navigace { flex-direction: column; align-items: flex-start; gap: 0; padding: 8px 40px 20px; }
+  .navigace a { padding: 12px 0; font-size: 17px; }
+  .hamburger {
+    display: inline-flex; border: 0; background: transparent; padding: 0; cursor: pointer;
+    color: var(--inkoust); font: inherit; font-size: 14px; font-weight: 600;
+  }
+  .hledani-pole { display: none; }
 }
-@media (max-width: 620px) {
-  .hl-horni { gap: 10px; padding-block: 16px 14px; }
-}
+@media (max-width: 900px) { .navigace { padding-inline: 24px; } }
+@media (max-width: 560px) { .navigace { padding-inline: 16px; } .hl-vpravo { gap: 16px; } }
 
 /* ---------------------------------------------------------------- hero */
 .hero { padding: 120px 0 96px; max-width: 1180px; }
+.hero-kicker {
+  margin: 0 0 28px; font-family: var(--pismo-lista); font-stretch: 118%;
+  font-size: 12px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ocel);
+}
 .hero h1 {
   margin: 0;
   font-size: clamp(50px, 9.6vw, 132px);
@@ -216,7 +193,7 @@ a { color: inherit; text-underline-offset: 3px; }
 /* úvod přes celou výšku okna: na první pohled jen nadpis, tlačítka až pod ohybem */
 @media (min-width: 901px) {
   .hero {
-    min-height: calc(100svh - 138px); padding: 64px 0;
+    min-height: calc(100svh - var(--vyska-hlavicky)); padding: 64px 0;
     display: flex; flex-direction: column; justify-content: center;
   }
 }
@@ -436,7 +413,7 @@ a { color: inherit; text-underline-offset: 3px; }
 
 /* ---------------------------------------------------------------- sticky lišta */
 .lista-sanonu {
-  position: sticky; top: 76px; z-index: 40;
+  position: sticky; top: var(--vyska-hlavicky); z-index: 40;
   background: var(--papir); border-bottom: 1px solid var(--linka);
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
   padding: 14px 0; margin-bottom: 36px;

@@ -9,8 +9,8 @@
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=cfc84a4d">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..700&family=IBM+Plex+Mono:wght@400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=23815874">
 <script>
 /* nastavit režim ještě před vykreslením, ať nebliká */
 (function () {
@@ -22,17 +22,17 @@
 </script>
 </head>
 <body>
-<header class="hlavicka">
-  <div class="obal hl-horni">
-    <div class="hl-vlevo">
-      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">Menu</button>
-    </div>
-    <a class="znacka" href="index.html">
-      <img class="znacka-logo" src="img/logo-mp.png" width="249" height="128" alt="M+P Král">
-      <span>Výroba pracovních oděvů · Kunžak · od 1993</span>
-    </a>
+<header class="hlavicka" id="hlavicka">
+  <div class="obal hl-radek">
+    <a class="znacka" href="index.html"><img class="znacka-logo" src="img/logo-mp.png" width="249" height="128" alt="M+P Král"></a>
+    <nav class="hl-dolni" aria-label="Kategorie">
+      <ul class="navigace" id="navigace"><li><a href="katalog.html#0" class="">Kombinézy</a></li><li><a href="katalog.html#1" class="">Kalhoty</a></li><li><a href="katalog.html#2" class="">Laclové kalhoty</a></li><li><a href="katalog.html#3" class="">Bundy a blůzy</a></li><li><a href="katalog.html#4" class="">Kraťasy</a></li><li><a href="katalog.html#5" class="">Pláště</a></li><li><a href="katalog.html#6" class="">Soupravy</a></li></ul>
+    </nav>
     <div class="hl-vpravo">
-      <input class="hledani" type="search" placeholder="Hledat" id="hledani" aria-label="Hledat">
+      <label class="hledani-pole">
+        <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m13 13 4.5 4.5"/></svg>
+        <input class="hledani" type="search" placeholder="Hledat" id="hledani" aria-label="Hledat">
+      </label>
       <button type="button" class="prepinac-rezimu" id="prepinac-rezimu"
               aria-label="Přepnout na tmavý režim" aria-pressed="false">
         <svg class="rezim-znak" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
@@ -41,13 +41,9 @@
         </svg>
       </button>
       <a class="sanon-tlacitko" href="sanon.html">Šanon <span class="sanon-pocet" data-sanon-pocet>0</span></a>
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">Menu</button>
     </div>
   </div>
-  <nav class="hl-dolni">
-    <div class="obal">
-      <ul class="navigace" id="navigace"><li><a href="katalog.html#0" class="">Kombinézy</a></li><li><a href="katalog.html#1" class="">Kalhoty</a></li><li><a href="katalog.html#2" class="">Laclové kalhoty</a></li><li><a href="katalog.html#3" class="">Bundy a blůzy</a></li><li><a href="katalog.html#4" class="">Kraťasy</a></li><li><a href="katalog.html#5" class="">Pláště</a></li><li><a href="katalog.html#6" class="">Soupravy</a></li></ul>
-    </div>
-  </nav>
 </header>
 <main class="obal sekce">
   <div class="tisk-hlavicka">
@@ -115,6 +111,6 @@
     </p>
   </div>
 </footer>
-<script src="js/app.js?v=421fa796"></script>
+<script src="js/app.js?v=7a4c4da4"></script>
 </body>
 </html>

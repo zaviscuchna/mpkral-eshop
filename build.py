@@ -250,11 +250,11 @@ def index():
 <div class="obal">
   <section class="hero">
     <h1>Střih,<br>který si<br>ušijeme sami</h1>
-    <div class="tlacitka">
-      <a class="tl tl-hlavni" href="katalog.html">Prohlédnout řady</a>
-      <a class="tl tl-obrys" href="#poptavka">Poptat zakázku</a>
-    </div>
   </section>
+  <div class="tlacitka hero-tlacitka">
+    <a class="tl tl-hlavni" href="katalog.html">Prohlédnout řady</a>
+    <a class="tl tl-obrys" href="#poptavka">Poptat zakázku</a>
+  </div>
 </div>""")
 
     # 02 o firmě

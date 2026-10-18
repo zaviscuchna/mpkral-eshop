@@ -214,10 +214,17 @@ a { color: inherit; text-underline-offset: 3px; }
   text-transform: uppercase;
 }
 /* hero nese jen headline a dvě tlačítka — nic mezi tím */
-.hero .tlacitka { margin-top: 56px; }
+/* úvod přes celou výšku okna: na první pohled jen nadpis, tlačítka až pod ohybem */
+@media (min-width: 901px) {
+  .hero {
+    min-height: calc(100svh - 138px); padding: 64px 0;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+}
+.hero-tlacitka { padding-top: 40px; }
 @media (max-width: 900px) {
-  .hero { padding: 64px 0 56px; }
-  .hero .tlacitka { margin-top: 36px; }
+  .hero { padding: 64px 0 0; }
+  .hero-tlacitka { padding: 36px 0 56px; }
 }
 
 /* full-bleed pás s produktem */

@@ -252,7 +252,7 @@ def index():
 <div class="obal">
   <section class="hero">
     <p class="hero-kicker">Vlastní dílna · Kunžak · od 1993</p>
-    <h1>Pracovní oděvy <br>šité v Česku</h1>
+    <h1>Pracovní oděvy <br>šité v&nbsp;Česku</h1>
   </section>
   <div class="tlacitka hero-tlacitka">
     <a class="tl tl-hlavni" href="katalog.html">Prohlédnout řady</a>
@@ -297,36 +297,6 @@ def index():
   </section>
 </div>""")
 
-    # 04 řady
-    karty_rad = []
-    for rn in RADY:
-        rady_r = [r for r in KAT if r["znacka"] == rn]
-        veta = META["rady"].get(rn, "")
-        if not rady_r:
-            karty_rad.append(f"""<article class="rada-karta pripravujeme">
-      <h3>{esc(rn)}</h3>
-      <p>{esc(veta)}</p>
-      <div class="ramecek"><div class="mono-popisek">Fotografie<br>dokončujeme</div></div>
-    </article>""")
-            continue
-        vz = []
-        for r in rady_r:
-            for v in r["varianty"][:6]:
-                if v.get("vzornik"):
-                    vz.append(f'<li><span class="vzornik vzornik-maly" style="background-image:url({esc(v["vzornik"])})" title="{esc(v["nazev"])}"></span></li>')
-        karty_rad.append(f"""<article class="rada-karta">
-      <h3>{esc(rn)}</h3>
-      <p>{esc(veta)}</p>
-      <ul class="vzorniky">{"".join(vz[:8])}</ul>
-      <p class="mono-popisek" style="margin-top:12px">{len(rady_r)} střihů</p>
-    </article>""")
-    h.append(f"""<div class="obal">
-  <section class="sekce">
-    {kota("03", "Naše řady", "5 řad", "Řada je rodina střihů ve stejném materiálu a stejné logice kapes. Uvnitř řady se dá sladit celý tým napříč profesemi.")}
-    <div class="rady-mrizka">{"".join(karty_rad)}</div>
-  </section>
-</div>""")
-
     # 06 detail pás
     detaily = []
     for r in KAT:
@@ -341,7 +311,7 @@ def index():
     </figure>""" for (r, v), p in zip(detaily, popisky))
     h.append(f"""<div class="obal">
   <section class="sekce">
-    {kota("04", "Jak to vypadá zblízka", "detail", "Kvalita se nedá tvrdit, dá se ukázat. Tohle jsou nezmenšené výřezy z produktových fotek.")}
+    {kota("03", "Jak to vypadá zblízka", "detail", "Kvalita se nedá tvrdit, dá se ukázat. Tohle jsou nezmenšené výřezy z produktových fotek.")}
     <div class="produkty po-trech">{bloky}</div>
   </section>
 </div>""")
@@ -349,7 +319,7 @@ def index():
     # 07 zakázka
     h.append(f"""<div class="obal">
   <section class="sekce">
-    {kota("05", "Ušijeme podle vás", "zakázková výroba")}
+    {kota("04", "Ušijeme podle vás", "zakázková výroba")}
     <p class="kurziva" style="font-size:20px;max-width:60ch;margin:0 0 28px">
       Nový vzor u nás není výjimka. Nasamplujeme ho, vyzkoušíte ho v provozu a teprve pak se šije série.
     </p>
@@ -371,7 +341,7 @@ def index():
       </div>""" for r, v in plaste)
     h.append(f"""<div class="navy-blok">
   <div class="obal">
-    {kota("06", "Pro zdravotnictví a potravinářství", "hygienické provozy")}
+    {kota("05", "Pro zdravotnictví a potravinářství", "hygienické provozy")}
     <div class="navy-dva">
       <div style="display:flex;gap:16px">{karty_p}</div>
       <div>
@@ -395,7 +365,7 @@ def index():
     </div>""" for p in META["profese"])
     h.append(f"""<div class="obal">
   <section class="sekce">
-    {kota("07", "Oblečeme celý tým", f"{len(META['profese'])} profesí")}
+    {kota("06", "Oblečeme celý tým", f"{len(META['profese'])} profesí")}
     <div class="kroky">{profese}</div>
   </section>
 </div>""")
@@ -403,7 +373,7 @@ def index():
     # 08 o firmě (dole, e-shop začíná produkty)
     h.append(f"""<div class="obal">
   <section class="sekce" id="o-firme">
-    {kota("08", "O firmě", "od roku 1993")}
+    {kota("07", "O firmě", "od roku 1993")}
     <div class="o-firme">
       <div class="o-firme-text">
         <p>Firmu založil Petr Král v roce 1993 a první pracovní oděvy šilo pět lidí.
@@ -434,7 +404,7 @@ def index():
     tel_href = "tel:" + TELEFON.replace(" ", "")
     h.append(f"""<div class="obal">
   <section class="sekce" id="poptavka">
-    {kota("09", "Napište nám", "odpovídáme do 2 pracovních dnů")}
+    {kota("08", "Napište nám", "odpovídáme do 2 pracovních dnů")}
 
     <div class="kontakt-velky">
       <a class="kontakt-radek" href="{tel_href}">

@@ -4,20 +4,9 @@
   "Riedl": "Modernější střih s výstražnými prvky a zesíleními na exponovaných místech.",
   "Klasik": "Osvědčený bavlněný střih bez ozdob. Kdo chce monterky jako dřív, bere tuhle řadu.",
   "Polar": "Zateplená řada pro chladné provozy a venkovní práci.",
-  "Reflexní": "Výstražné oděvy podle EN ISO 20471. Fotografie dokončujeme."
+  "Reflexní": "Výstražné oděvy podle EN ISO 20471."
  },
- "pripravujeme": [
-  {
-   "nazev": "Reflexní řada",
-   "detail": "18 střihů · EN ISO 20471",
-   "stav": "Fotografie dokončujeme"
-  },
-  {
-   "nazev": "Zimní kombinéza King",
-   "detail": "5 barev · zateplená",
-   "stav": "Fotografie dokončujeme"
-  }
- ],
+ "pripravujeme": [],
  "profese": [
   {
    "nazev": "Stavba",

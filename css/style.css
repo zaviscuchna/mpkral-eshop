@@ -112,7 +112,8 @@ a { color: inherit; text-underline-offset: 3px; }
 
 .znacka { justify-self: start; display: block; text-decoration: none; }
 /* logo M+P v původní zelené, je to registrovaná značka, nepřebarvovat */
-.znacka-logo { display: block; height: 40px; width: auto; }
+.znacka-logo { display: block; height: 52px; width: auto; }
+@media (max-width: 900px) { .znacka-logo { height: 46px; } }
 
 .navigace { display: flex; justify-content: center; gap: 30px; margin: 0; padding: 0; list-style: none; }
 .navigace a {

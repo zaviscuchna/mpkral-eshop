@@ -247,7 +247,7 @@ CSS = r"""
 @media (prefers-color-scheme:dark){:root{--papir:#131311;--inkoust:#efece4;--ocel:#9b978d;
 --linka:#34322c;--oranzova:#ff6b3d;--navy:#22354f;--jas:.9}}
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:64px;scrollbar-width:none}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:74px;scrollbar-width:none}
 html::-webkit-scrollbar{display:none}
 body{margin:0;background:var(--papir);color:var(--inkoust);font-family:Archivo,-apple-system,sans-serif;
 font-size:16px;line-height:1.5;padding-bottom:calc(var(--spodek) + env(safe-area-inset-bottom))}
@@ -259,10 +259,10 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 
 /* horní lišta */
 .lista{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;
-height:56px;padding:0 16px;background:color-mix(in srgb,var(--papir) 92%,transparent);
+height:66px;padding:0 16px;background:color-mix(in srgb,var(--papir) 92%,transparent);
 backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--linka)}
 .logo{display:flex;flex-direction:column;line-height:1}
-.logo img{display:block;height:26px;width:auto;align-self:flex-start}
+.logo img{display:block;height:36px;width:auto;align-self:flex-start}
 .logo span{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ocel);margin-top:4px}
 .ikona{width:44px;height:44px;display:grid;place-items:center;margin-right:-10px}
 .ikona svg,.spodni svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}

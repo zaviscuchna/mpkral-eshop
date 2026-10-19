@@ -15,7 +15,6 @@ VYSTUP = KOREN
 
 KATEGORIE = ["Kombinézy", "Kalhoty", "Laclové kalhoty", "Bundy a blůzy",
              "Kraťasy", "Pláště", "Soupravy"]
-RADY = ["King", "Klasik", "Riedl", "Polar", "Reflexní"]
 TELEFON = "+420 608 982 675"
 MAIL = "info@mpkral.cz"
 ADRESA = "Nová 401, 378 62 Kunžak"
@@ -73,19 +72,6 @@ def stranka():
         </div>
       </div>
     </div>""")
-
-    # --- řady
-    rady = []
-    for r in RADY:
-        rady_r = [x for x in KAT if x["znacka"] == r]
-        cesty = [v["vzornik"] for x in rady_r for v in x["varianty"] if v.get("vzornik")][:10]
-        vz = "".join(f'<i style="background-image:url({esc(img(c))})"></i>' for c in cesty)
-        rady.append(f"""<article class="rada">
-        <h3>{esc(r)}</h3>
-        <p>{esc(META['rady'].get(r, ''))}</p>
-        <span class="vz vz-velke">{vz}</span>
-        <span class="mono">{sklon(len(rady_r), 'střih', 'střihy', 'střihů')}</span>
-      </article>""")
 
     # --- nejžádanější: řada King
     nej = [r for r in KAT if r["znacka"] == "King"][:4]
@@ -154,13 +140,7 @@ def stranka():
   </section>
 
   <section class="sekce">
-    <div class="kota"><span>02</span><h2>Naše řady</h2><span>{len(RADY)} řad</span></div>
-    <p class="uvod">Řada je rodina střihů ve stejném materiálu. Celý tým oblečete do jedné.</p>
-    <div class="posuvnik rady">{"".join(rady)}</div>
-  </section>
-
-  <section class="sekce">
-    <div class="kota"><span>03</span><h2>Nejžádanější</h2><span>řada King</span></div>
+    <div class="kota"><span>02</span><h2>Nejžádanější</h2><span>řada King</span></div>
     <div class="mrizka2">{mrizka}</div>
   </section>
 
@@ -182,7 +162,7 @@ def stranka():
   </section>
 
   <section class="sekce" id="poptavka">
-    <div class="kota"><span>04</span><h2>Ozvěte se</h2><span>do 2 dnů</span></div>
+    <div class="kota"><span>03</span><h2>Ozvěte se</h2><span>do 2 dnů</span></div>
     <a class="velky-kontakt" href="tel:{TELEFON.replace(' ', '')}"><span class="mono">Zavolat</span>{esc(TELEFON)}</a>
     <a class="velky-kontakt" href="mailto:{MAIL}"><span class="mono">Napsat</span>{esc(MAIL)}</a>
     <p class="adresa">{esc(ADRESA)}<br>okres Jindřichův Hradec</p>
@@ -301,10 +281,6 @@ scroll-padding-inline:16px;scrollbar-width:none;-webkit-overflow-scrolling:touch
 .vz-velke i{width:22px;height:22px;border-radius:2px}
 
 /* řady */
-.rady .rada{flex:0 0 78%;scroll-snap-align:start;border-top:2px solid var(--inkoust);padding-top:14px}
-.rada h3{margin:0 0 8px;font-size:26px;font-weight:800;letter-spacing:-.02em;text-transform:uppercase}
-.rada p{margin:0 0 14px;font-family:"EB Garamond",Georgia,serif;font-size:17px;line-height:1.35}
-.rada .mono{display:block;margin-top:12px}
 
 /* nejžádanější */
 .mrizka2{display:grid;grid-template-columns:1fr 1fr;gap:20px 10px}

@@ -251,8 +251,8 @@ def index():
     h.append(f"""<main>
 <div class="obal">
   <section class="hero">
-    <p class="hero-kicker">Výroba pracovních oděvů · Kunžak · od 1993</p>
-    <h1>Střih,<br>který si<br>ušijeme sami</h1>
+    <p class="hero-kicker">Vlastní dílna · Kunžak · od 1993</p>
+    <h1>Pracovní oděvy <br>šité v Česku</h1>
   </section>
   <div class="tlacitka hero-tlacitka">
     <a class="tl tl-hlavni" href="katalog.html">Prohlédnout řady</a>
@@ -263,7 +263,7 @@ def index():
     # 01 nejžádanější produkty hned pod úvodem
     vyber = [r for r in KAT][:8]
     h.append(f"""<div class="obal">
-  <section class="sekce">
+  <section class="sekce sekce-prvni">
     {kota("01", "Nejžádanější střihy", f"{sum(len(r['varianty']) for r in KAT)} barevných variant")}
     <div class="produkty po-ctyrech">{"".join(produkt_karta(r) for r in vyber)}</div>
     <p style="margin-top:24px"><a href="katalog.html">Zobrazit všech {len(KAT)} střihů →</a></p>
@@ -396,33 +396,14 @@ def index():
     h.append(f"""<div class="obal">
   <section class="sekce">
     {kota("07", "Oblečeme celý tým", f"{len(META['profese'])} profesí")}
-    <div class="kategorie-mrizka">{profese}</div>
+    <div class="kroky">{profese}</div>
   </section>
 </div>""")
 
-    # 11 hladiny
-    h.append(f"""<div class="obal">
-  <section class="sekce">
-    {kota("08", "Jak objednáte", "4 kroky")}
-    <div class="kroky ctyri">
-      <div class="krok"><span class="cislo">01</span><h3>Vyberete střih</h3><p>Řadu, barvu a provedení.</p></div>
-      <div class="krok"><span class="cislo">02</span><h3>Zapíšete počty</h3><p>Po velikostech, ne jedno číslo.</p></div>
-      <div class="krok"><span class="cislo">03</span><h3>Odešlete šanon</h3><p>Bez registrace a bez hesel.</p></div>
-      <div class="krok"><span class="cislo">04</span><h3>Potvrdíme cenu</h3><p>Do dvou pracovních dnů i s termínem.</p></div>
-    </div>
-    <h3 style="margin:36px 0 12px;font-size:20px">Množstevní hladiny</h3>
-    <table class="hladiny">
-      <thead><tr><th>Množství</th><th>1–9 ks</th><th>10–49 ks</th><th>50+ ks</th></tr></thead>
-      <tbody><tr><td>Cena / ks bez DPH</td><td>—</td><td>—</td><td>—</td></tr></tbody>
-    </table>
-    <p class="mono" style="color:var(--ocel);margin-top:10px">Ceník připravujeme. Rozpětí hladin platí, čísla doplní M+P Král.</p>
-  </section>
-</div>""")
-
-    # 09 o firmě (dole, e-shop začíná produkty)
+    # 08 o firmě (dole, e-shop začíná produkty)
     h.append(f"""<div class="obal">
   <section class="sekce" id="o-firme">
-    {kota("09", "O firmě", "od roku 1993")}
+    {kota("08", "O firmě", "od roku 1993")}
     <div class="o-firme">
       <div class="o-firme-text">
         <p>Firmu založil Petr Král v roce 1993 a první pracovní oděvy šilo pět lidí.
@@ -453,7 +434,7 @@ def index():
     tel_href = "tel:" + TELEFON.replace(" ", "")
     h.append(f"""<div class="obal">
   <section class="sekce" id="poptavka">
-    {kota("10", "Napište nám", "odpovídáme do 2 pracovních dnů")}
+    {kota("09", "Napište nám", "odpovídáme do 2 pracovních dnů")}
 
     <div class="kontakt-velky">
       <a class="kontakt-radek" href="{tel_href}">

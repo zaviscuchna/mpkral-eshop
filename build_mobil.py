@@ -131,8 +131,8 @@ def stranka():
 
 <main>
   <section class="hero">
-    <p class="mono">Výroba pracovních oděvů</p>
-    <h1>Střih, který si ušijeme sami</h1>
+    <p class="mono">Vlastní dílna · Kunžak</p>
+    <h1>Pracovní oděvy šité v Česku</h1>
     <p class="deck">Návrh, konstrukce, střih i šití. Všechno v jedné dílně v Kunžaku, od roku 1993.</p>
     <div class="hero-foto">{hero_foto}</div>
     <dl class="fakta">

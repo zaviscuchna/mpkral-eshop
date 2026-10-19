@@ -174,14 +174,14 @@ a { color: inherit; text-underline-offset: 3px; }
 @media (max-width: 560px) { .navigace { padding-inline: 16px; } .hl-vpravo { gap: 16px; } }
 
 /* ---------------------------------------------------------------- hero */
-.hero { padding: 120px 0 96px; max-width: 1180px; }
+.hero { padding: 48px 0 0; max-width: 1180px; }
 .hero-kicker {
-  margin: 0 0 28px; font-family: var(--pismo-lista); font-stretch: 118%;
+  margin: 0 0 20px; font-family: var(--pismo-lista); font-stretch: 118%;
   font-size: 12px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ocel);
 }
 .hero h1 {
   margin: 0;
-  font-size: clamp(50px, 9.6vw, 132px);
+  font-size: clamp(40px, 4.8vw, 76px);
   font-weight: 700;
   /* verzalky s hacky a carkami potrebuji vic prostoru, jinak
      hacek z dalsiho radku koliduje s pismenem nad nim */
@@ -190,17 +190,13 @@ a { color: inherit; text-underline-offset: 3px; }
   text-transform: uppercase;
 }
 /* hero nese jen headline a dvě tlačítka — nic mezi tím */
-/* úvod přes celou výšku okna: na první pohled jen nadpis, tlačítka až pod ohybem */
-@media (min-width: 901px) {
-  .hero {
-    min-height: calc(100svh - var(--vyska-hlavicky)); padding: 64px 0;
-    display: flex; flex-direction: column; justify-content: center;
-  }
-}
-.hero-tlacitka { padding-top: 40px; }
+/* e-shop: úvod je nízký, aby byly produkty vidět hned bez scrollování */
+.hero-tlacitka { padding: 28px 0 8px; }
+/* na počítači se nadpis skládá volně (2 řádky), zalomení po slovech platí jen pro mobil */
+@media (min-width: 901px) { .hero h1 br { display: none; } }
 @media (max-width: 900px) {
-  .hero { padding: 64px 0 0; }
-  .hero-tlacitka { padding: 36px 0 56px; }
+  .hero { padding: 32px 0 0; }
+  .hero-tlacitka { padding: 24px 0 16px; }
 }
 
 /* full-bleed pás s produktem */
@@ -236,7 +232,8 @@ a { color: inherit; text-underline-offset: 3px; }
 
 /* ---------------------------------------------------------------- sekce a kóty */
 .sekce { padding-block: 96px; }
-@media (max-width: 900px) { .sekce { padding-block: 56px; } }
+.sekce-prvni { padding-top: 40px; }
+@media (max-width: 900px) { .sekce { padding-block: 56px; } .sekce-prvni { padding-top: 32px; } }
 
 .kota { position: relative; border-top: 1px solid var(--inkoust); margin-bottom: 44px; }
 .kota-cislo {

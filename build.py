@@ -260,33 +260,13 @@ def index():
   </div>
 </div>""")
 
-    # 02 o firmě
+    # 01 nejžádanější produkty hned pod úvodem
+    vyber = [r for r in KAT][:8]
     h.append(f"""<div class="obal">
-  <section class="sekce" id="o-firme">
-    {kota("01", "Pět lidí. Dnes čtyřicet pět.", "od roku 1993")}
-    <div class="o-firme">
-      <div class="o-firme-text">
-        <p>Firmu založil Petr Král v roce 1993 a první pracovní oděvy šilo pět lidí.
-        Dnes je nás pětačtyřicet a šijeme pořád na stejném místě v Kunžaku.</p>
-        <p>Začínali jsme u několika druhů pracovních oděvů, spodního a nočního prádla.
-        Postupně přibyly oděvy pro zdravotnictví a potravinářství a certifikované
-        pracovní oděvy. Všude tam, kde na střihu a materiálu opravdu záleží.</p>
-        <p>Veškerou výrobu si zajišťujeme sami: návrh, konstrukci, nastříhání i ušití.
-        Nic nekupujeme hotové a nic nedáváme ven. Proto vám umíme říct, proč je
-        v tom místě zesílení. A proto ho umíme posunout, když vám nesedí.</p>
-        <p class="o-firme-zaver">Za svojí prací si stojíme. Férová cena, dodržené
-        termíny a zákazník, který se vrátí. Nic složitějšího za tím není.</p>
-      </div>
-      <aside class="o-firme-fakta">
-        <dl>
-          <dt>Založeno</dt><dd>1993</dd>
-          <dt>Lidí v dílně</dt><dd>45</dd>
-          <dt>Kde</dt><dd>{esc(ADRESA)}</dd>
-          <dt>Co děláme sami</dt><dd>návrh · konstrukce · střih · šití</dd>
-          <dt>Specializace</dt><dd>zdravotnictví, potravinářství, certifikované oděvy</dd>
-        </dl>
-      </aside>
-    </div>
+  <section class="sekce">
+    {kota("01", "Nejžádanější střihy", f"{sum(len(r['varianty']) for r in KAT)} barevných variant")}
+    <div class="produkty po-ctyrech">{"".join(produkt_karta(r) for r in vyber)}</div>
+    <p style="margin-top:24px"><a href="katalog.html">Zobrazit všech {len(KAT)} střihů →</a></p>
   </section>
 </div>""")
 
@@ -347,16 +327,6 @@ def index():
   </section>
 </div>""")
 
-    # 05 nejžádanější
-    vyber = [r for r in KAT][:8]
-    h.append(f"""<div class="obal">
-  <section class="sekce">
-    {kota("04", "Nejžádanější střihy", f"{sum(len(r['varianty']) for r in KAT)} barevných variant")}
-    <div class="produkty po-ctyrech">{"".join(produkt_karta(r) for r in vyber)}</div>
-    <p style="margin-top:24px"><a href="katalog.html">Zobrazit všech {len(KAT)} střihů →</a></p>
-  </section>
-</div>""")
-
     # 06 detail pás
     detaily = []
     for r in KAT:
@@ -371,7 +341,7 @@ def index():
     </figure>""" for (r, v), p in zip(detaily, popisky))
     h.append(f"""<div class="obal">
   <section class="sekce">
-    {kota("05", "Jak to vypadá zblízka", "detail", "Kvalita se nedá tvrdit, dá se ukázat. Tohle jsou nezmenšené výřezy z produktových fotek.")}
+    {kota("04", "Jak to vypadá zblízka", "detail", "Kvalita se nedá tvrdit, dá se ukázat. Tohle jsou nezmenšené výřezy z produktových fotek.")}
     <div class="produkty po-trech">{bloky}</div>
   </section>
 </div>""")
@@ -379,7 +349,7 @@ def index():
     # 07 zakázka
     h.append(f"""<div class="obal">
   <section class="sekce">
-    {kota("06", "Ušijeme podle vás", "zakázková výroba")}
+    {kota("05", "Ušijeme podle vás", "zakázková výroba")}
     <p class="kurziva" style="font-size:20px;max-width:60ch;margin:0 0 28px">
       Nový vzor u nás není výjimka. Nasamplujeme ho, vyzkoušíte ho v provozu a teprve pak se šije série.
     </p>
@@ -401,7 +371,7 @@ def index():
       </div>""" for r, v in plaste)
     h.append(f"""<div class="navy-blok">
   <div class="obal">
-    {kota("07", "Pro zdravotnictví a potravinářství", "hygienické provozy")}
+    {kota("06", "Pro zdravotnictví a potravinářství", "hygienické provozy")}
     <div class="navy-dva">
       <div style="display:flex;gap:16px">{karty_p}</div>
       <div>
@@ -425,7 +395,7 @@ def index():
     </div>""" for p in META["profese"])
     h.append(f"""<div class="obal">
   <section class="sekce">
-    {kota("08", "Oblečeme celý tým", f"{len(META['profese'])} profesí")}
+    {kota("07", "Oblečeme celý tým", f"{len(META['profese'])} profesí")}
     <div class="kategorie-mrizka">{profese}</div>
   </section>
 </div>""")
@@ -433,7 +403,7 @@ def index():
     # 11 hladiny
     h.append(f"""<div class="obal">
   <section class="sekce">
-    {kota("09", "Jak objednáte", "4 kroky")}
+    {kota("08", "Jak objednáte", "4 kroky")}
     <div class="kroky ctyri">
       <div class="krok"><span class="cislo">01</span><h3>Vyberete střih</h3><p>Řadu, barvu a provedení.</p></div>
       <div class="krok"><span class="cislo">02</span><h3>Zapíšete počty</h3><p>Po velikostech, ne jedno číslo.</p></div>
@@ -446,6 +416,36 @@ def index():
       <tbody><tr><td>Cena / ks bez DPH</td><td>—</td><td>—</td><td>—</td></tr></tbody>
     </table>
     <p class="mono" style="color:var(--ocel);margin-top:10px">Ceník připravujeme. Rozpětí hladin platí, čísla doplní M+P Král.</p>
+  </section>
+</div>""")
+
+    # 09 o firmě (dole, e-shop začíná produkty)
+    h.append(f"""<div class="obal">
+  <section class="sekce" id="o-firme">
+    {kota("09", "O firmě", "od roku 1993")}
+    <div class="o-firme">
+      <div class="o-firme-text">
+        <p>Firmu založil Petr Král v roce 1993 a první pracovní oděvy šilo pět lidí.
+        Dnes je nás pětačtyřicet a šijeme pořád na stejném místě v Kunžaku.</p>
+        <p>Začínali jsme u několika druhů pracovních oděvů, spodního a nočního prádla.
+        Postupně přibyly oděvy pro zdravotnictví a potravinářství a certifikované
+        pracovní oděvy. Všude tam, kde na střihu a materiálu opravdu záleží.</p>
+        <p>Veškerou výrobu si zajišťujeme sami: návrh, konstrukci, nastříhání i ušití.
+        Nic nekupujeme hotové a nic nedáváme ven. Proto vám umíme říct, proč je
+        v tom místě zesílení. A proto ho umíme posunout, když vám nesedí.</p>
+        <p class="o-firme-zaver">Za svojí prací si stojíme. Férová cena, dodržené
+        termíny a zákazník, který se vrátí. Nic složitějšího za tím není.</p>
+      </div>
+      <aside class="o-firme-fakta">
+        <dl>
+          <dt>Založeno</dt><dd>1993</dd>
+          <dt>Lidí v dílně</dt><dd>45</dd>
+          <dt>Kde</dt><dd>{esc(ADRESA)}</dd>
+          <dt>Co děláme sami</dt><dd>návrh · konstrukce · střih · šití</dd>
+          <dt>Specializace</dt><dd>zdravotnictví, potravinářství, certifikované oděvy</dd>
+        </dl>
+      </aside>
+    </div>
   </section>
 </div>""")
 

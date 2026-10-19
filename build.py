@@ -255,7 +255,7 @@ def index():
     <h1>Pracovní oděvy <br>šité v&nbsp;Česku</h1>
   </section>
   <div class="tlacitka hero-tlacitka">
-    <a class="tl tl-hlavni" href="katalog.html">Prohlédnout řady</a>
+    <a class="tl tl-hlavni" href="katalog.html">Prohlédnout katalog</a>
     <a class="tl tl-obrys" href="#poptavka">Poptat zakázku</a>
   </div>
 </div>""")

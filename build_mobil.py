@@ -73,19 +73,35 @@ def stranka():
       </div>
     </div>""")
 
-    # --- nejžádanější: řada King
-    nej = [r for r in KAT if r["znacka"] == "King"][:4]
+    # --- 01 nejžádanější: stejný výběr jako na počítači (prvních 8 řad)
+    nej = KAT[:8]
     mrizka = "".join(f"""<article class="nk">
         <a href="produkt.html?rada={esc(r['id'])}" class="pk-foto"><img src="{esc(img(r['varianty'][0]['hlavni']))}" alt="{esc(r['nazev'])}" loading="lazy"></a>
         <b>{esc(r['nazev'])}</b>
         <span class="vz">{vzorniky(r, 5)}</span>
         <button type="button" class="nk-tl" data-do-sanonu>+ Do šanonu</button>
       </article>""" for r in nej)
+    barev = sum(len(r["varianty"]) for r in KAT)
 
-    hero = [r for r in KAT if r["znacka"] == "King"]
-    hero_foto = "".join(
-        f'<img src="{esc(img(r["varianty"][0]["hlavni"]))}" alt="{esc(r["nazev"])}">'
-        for r in hero[:3])
+    # --- 03 detail: stejné tři výřezy jako na počítači
+    detaily = []
+    for r in KAT:
+        for v in r["varianty"]:
+            if "detail" in v["fotky"] and len(detaily) < 3:
+                detaily.append(v)
+                break
+    popisky = ["Prošití náprsní kapsy", "Přezka laclu", "Zesílený kolenní díl"]
+    detail_html = "".join(f"""<figure class="dk">
+        <img src="{esc(img(v['fotky']['detail']))}" alt="{esc(p)}" loading="lazy">
+        <figcaption class="mono">{esc(p)}</figcaption>
+      </figure>""" for v, p in zip(detaily, popisky))
+
+    # --- 05 zdravotnictví: dva pláště
+    plaste = [v for r in KAT if r["kategorie"] == "Pláště" for v in r["varianty"]][:2]
+    plaste_html = "".join(f'<span class="pk-foto"><img src="{esc(img(v["hlavni"]))}" alt="Pracovní plášť" loading="lazy"></span>' for v in plaste)
+
+    # --- 06 profese
+    profese = "".join(f"<li><b>{esc(x['nazev'])}</b><span>{esc(x['co'])}</span></li>" for x in META["profese"])
 
     hledani_data = json.dumps(
         [{"n": r["nazev"], "k": r["kategorie"], "r": r["znacka"], "id": r["id"],
@@ -117,52 +133,75 @@ def stranka():
 
 <main>
   <section class="hero">
-    <p class="mono">Vlastní dílna · Kunžak</p>
+    <p class="mono">Vlastní dílna · Kunžak · od 1993</p>
     <h1>Pracovní oděvy šité v&nbsp;Česku</h1>
-    <p class="deck">Návrh, konstrukce, střih i šití. Všechno v jedné dílně v Kunžaku, od roku 1993.</p>
-    <div class="hero-foto">{hero_foto}</div>
-    <dl class="fakta">
-      <div><dt>Založeno</dt><dd>1993</dd></div>
-      <div><dt>V dílně</dt><dd>45 lidí</dd></div>
-      <div><dt>Střihů</dt><dd>1 300</dd></div>
-    </dl>
+    <div class="hero-tlacitka">
+      <a class="tl tl-tmave" href="katalog.html">Prohlédnout katalog</a>
+      <a class="tl tl-obrys" href="#poptavka">Poptat zakázku</a>
+    </div>
   </section>
 
-  <figure class="ilustrace">
-    <img src="img/ilustrace/dilna.jpg" alt="Šicí dílna" loading="lazy">
-    <figcaption><span>Dílna v Kunžaku</span><span class="mono">ilustrační foto</span></figcaption>
-  </figure>
-  <p class="citat">Nic nekupujeme hotové a nic nedáváme ven. Proto víme, proč je v tom místě zesílení, a umíme ho posunout.</p>
+  <section class="sekce">
+    <div class="kota"><span>01</span><h2>Nejžádanější střihy</h2><span>{barev} barev</span></div>
+    <div class="mrizka2">{mrizka}</div>
+    <a class="dalsi" href="katalog.html">Zobrazit všech {len(KAT)} střihů →</a>
+  </section>
 
   <section class="sekce" id="co-sijeme">
-    <div class="kota"><span>01</span><h2>Co šijeme</h2><span>{len(KAT)} střihů</span></div>
+    <div class="kota"><span>02</span><h2>Kategorie</h2><span>{len(KATEGORIE)} kategorií</span></div>
     <div class="kategorie">{"".join(kategorie)}</div>
   </section>
 
   <section class="sekce">
-    <div class="kota"><span>02</span><h2>Nejžádanější</h2><span>řada King</span></div>
-    <div class="mrizka2">{mrizka}</div>
+    <div class="kota"><span>03</span><h2>Jak to vypadá zblízka</h2><span>detail</span></div>
+    <p class="uvod">Kvalita se nedá tvrdit, dá se ukázat. Tohle jsou nezmenšené výřezy z produktových fotek.</p>
+    <div class="posuvnik">{detail_html}</div>
   </section>
 
-  <figure class="ilustrace detail">
-    <img src="img/ilustrace/detail.jpg" alt="Dvojitý šev na pracovních kalhotách" loading="lazy">
-    <figcaption><span>Dvojitý šev, zesílený díl</span><span class="mono">ilustrační foto</span></figcaption>
-  </figure>
+  <section class="sekce">
+    <div class="kota"><span>04</span><h2>Ušijeme podle vás</h2><span>na zakázku</span></div>
+    <p class="uvod kurziva">Nový vzor u nás není výjimka. Nasamplujeme ho, vyzkoušíte ho v provozu a teprve pak se šije série.</p>
+    <ol class="kroky kroky-svetle">
+      <li><b>Vzorek</b><span>Ušijeme jeden kus podle vašeho zadání nebo podle existujícího střihu z archivu.</span></li>
+      <li><b>Úprava střihu</b><span>Vyzkoušíte ho v provozu. Co nesedí, upravíme v konstrukci: délku, kapsy, zesílení.</span></li>
+      <li><b>Série</b><span>Ušijeme celou zakázku v odsouhlaseném střihu, velikostech a barvě.</span></li>
+    </ol>
+    <a class="tl tl-obrys" href="#poptavka">Objednat vzorek, 1 ks</a>
+  </section>
 
   <section class="navy">
-    <img class="navy-foto" src="img/ilustrace/strih.jpg" alt="Střihový stůl" loading="lazy">
-    <p class="mono">Na zakázku</p>
-    <h2>Nesedí vám střih? Posuneme ho.</h2>
-    <ol class="kroky">
-      <li><b>Zavoláte nebo pošlete poptávku</b><span>Řekněte, co děláte a kolik lidí oblékáte.</span></li>
-      <li><b>Nasamplujeme vzorek</b><span>Jeden kus k vyzkoušení, i s vaším logem.</span></li>
-      <li><b>Ušijeme sérii</b><span>Ve vlastní dílně, v dohodnutém termínu.</span></li>
-    </ol>
-    <a class="tl tl-svetle" href="#poptavka">Poptat zakázku</a>
+    <p class="mono">05 · Hygienické provozy</p>
+    <h2>Pro zdravotnictví a potravinářství</h2>
+    <div class="navy-plaste">{plaste_html}</div>
+    <p>Oddělená větev sortimentu s jinými požadavky než stavba: hladké materiály bez vnějších kapes na hrudi, zvýšená odolnost proti opakovanému praní na vysokou teplotu, barvy, na kterých je znečištění vidět.</p>
+    <p>Šijeme i podle hygienických požadavků konkrétního provozu, včetně úprav střihu podle výstupu z auditu.</p>
+    <p class="odznaky"><span class="odznak zastupne">EN ISO 13688</span><span class="odznak zastupne">praní 95 °C</span></p>
+  </section>
+
+  <section class="sekce">
+    <div class="kota"><span>06</span><h2>Oblečeme celý tým</h2><span>{len(META['profese'])} profesí</span></div>
+    <ul class="profese">{profese}</ul>
+  </section>
+
+  <section class="sekce" id="o-firme">
+    <div class="kota"><span>07</span><h2>O firmě</h2><span>od roku 1993</span></div>
+    <div class="o-firme">
+      <p>Firmu založil Petr Král v roce 1993 a první pracovní oděvy šilo pět lidí. Dnes je nás pětačtyřicet a šijeme pořád na stejném místě v Kunžaku.</p>
+      <p>Začínali jsme u několika druhů pracovních oděvů, spodního a nočního prádla. Postupně přibyly oděvy pro zdravotnictví a potravinářství a certifikované pracovní oděvy. Všude tam, kde na střihu a materiálu opravdu záleží.</p>
+      <p>Veškerou výrobu si zajišťujeme sami: návrh, konstrukci, nastříhání i ušití. Nic nekupujeme hotové a nic nedáváme ven. Proto vám umíme říct, proč je v tom místě zesílení. A proto ho umíme posunout, když vám nesedí.</p>
+      <p class="kurziva">Za svojí prací si stojíme. Férová cena, dodržené termíny a zákazník, který se vrátí. Nic složitějšího za tím není.</p>
+    </div>
+    <dl class="fakta-seznam">
+      <div><dt>Založeno</dt><dd>1993</dd></div>
+      <div><dt>Lidí v dílně</dt><dd>45</dd></div>
+      <div><dt>Kde</dt><dd>{esc(ADRESA)}</dd></div>
+      <div><dt>Co děláme sami</dt><dd>návrh · konstrukce · střih · šití</dd></div>
+      <div><dt>Specializace</dt><dd>zdravotnictví, potravinářství, certifikované oděvy</dd></div>
+    </dl>
   </section>
 
   <section class="sekce" id="poptavka">
-    <div class="kota"><span>03</span><h2>Ozvěte se</h2><span>do 2 dnů</span></div>
+    <div class="kota"><span>08</span><h2>Napište nám</h2><span>do 2 dnů</span></div>
     <a class="velky-kontakt" href="tel:{TELEFON.replace(' ', '')}"><span class="mono">Zavolat</span>{esc(TELEFON)}</a>
     <a class="velky-kontakt" href="mailto:{MAIL}"><span class="mono">Napsat</span>{esc(MAIL)}</a>
     <p class="adresa">{esc(ADRESA)}<br>okres Jindřichův Hradec</p>
@@ -229,17 +268,10 @@ backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px 
 .ikona svg,.spodni svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 
 /* hero */
-.hero{padding:28px 16px 8px}
-.hero h1{margin:10px 0 14px;font-size:44px;line-height:.95;font-weight:800;letter-spacing:-.035em;text-transform:uppercase}
-.deck{margin:0 0 22px;font-family:"EB Garamond",Georgia,serif;font-size:19px;line-height:1.35}
-.hero-foto{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) minmax(0,1fr);gap:6px;height:300px}
-.hero-foto img{width:100%;height:100%;min-height:0;object-fit:contain;background:var(--bila);filter:brightness(var(--jas))}
-.hero-foto img:first-child{grid-row:1/3}
-.fakta{display:grid;grid-template-columns:repeat(3,1fr);margin:18px 0 0;border-top:1px solid var(--inkoust)}
-.fakta div{padding:12px 0 4px}
-.fakta div+div{padding-left:12px;border-left:1px solid var(--linka)}
-.fakta dt{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ocel)}
-.fakta dd{margin:2px 0 0;font-size:22px;font-weight:700;letter-spacing:-.02em}
+.hero{padding:28px 16px 4px}
+.hero h1{margin:10px 0 20px;font-size:40px;line-height:1;font-weight:800;letter-spacing:-.035em;text-transform:uppercase}
+.hero-tlacitka{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.hero-tlacitka .tl{min-height:48px;font-size:14px}
 
 /* sekce + kóta */
 .sekce{padding:40px 16px 8px}
@@ -280,29 +312,40 @@ scroll-padding-inline:16px;scrollbar-width:none;-webkit-overflow-scrolling:touch
 .vz i{width:14px;height:14px;border-radius:50%;background-size:cover;background-position:center;box-shadow:inset 0 0 0 1px rgba(0,0,0,.15)}
 .vz-velke i{width:22px;height:22px;border-radius:2px}
 
-/* řady */
-
 /* nejžádanější */
 .mrizka2{display:grid;grid-template-columns:1fr 1fr;gap:20px 10px}
 .nk{display:flex;flex-direction:column;gap:3px}
 .nk b{font-size:14px;font-weight:600;line-height:1.25}
 .nk-tl{margin-top:8px;min-height:40px;border:1px solid var(--inkoust);font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase}
 .nk-tl:active{background:var(--inkoust);color:var(--papir)}
+.dalsi{display:block;margin-top:20px;font-weight:600}
 
-/* ilustrační fotky */
-.ilustrace{margin:28px 0 0;position:relative}
-.ilustrace img{width:100%;aspect-ratio:4/5;object-fit:cover}
-.ilustrace.detail{margin-top:40px}
-.ilustrace.detail img{aspect-ratio:1}
-.ilustrace figcaption{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;align-items:flex-end;
-padding:40px 16px 14px;background:linear-gradient(transparent,rgba(17,17,16,.7));color:#fff;font-weight:600;font-size:15px}
-.ilustrace figcaption .mono{color:rgba(255,255,255,.75);font-size:9.5px}
-.citat{margin:0;padding:22px 16px 0;font-family:"EB Garamond",Georgia,serif;font-style:italic;font-size:21px;line-height:1.3}
-.navy-foto{width:calc(100% + 32px);max-width:none;margin:-40px -16px 28px;aspect-ratio:3/2;object-fit:cover}
-.ilustrace.detail+.navy{margin-top:0}
+/* detail zblízka */
+.dk{flex:0 0 78%;scroll-snap-align:start;margin:0}
+.dk img{width:100%;aspect-ratio:1;object-fit:contain;background:var(--bila);filter:brightness(var(--jas))}
+.dk figcaption{margin-top:8px}
 
-/* na zakázku */
+/* profese */
+.profese{list-style:none;margin:0;padding:0}
+.profese li{padding:12px 0;border-top:1px solid var(--linka)}
+.profese b{display:block;font-size:17px;font-weight:600}
+.profese span{font-family:"EB Garamond",Georgia,serif;font-size:16px}
+
+/* o firmě */
+.o-firme p{margin:0 0 14px;font-family:"EB Garamond",Georgia,serif;font-size:18px;line-height:1.4}
+.fakta-seznam{margin:22px 0 0}
+.fakta-seznam div{padding:10px 0;border-top:1px solid var(--linka)}
+.fakta-seznam dt{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ocel)}
+.fakta-seznam dd{margin:2px 0 0;font-size:16px;font-weight:500}
+
+/* zdravotnictví (tmavý pás) */
 .navy{margin-top:40px;padding:40px 16px;background:var(--navy);color:#f2f0eb}
+.navy p{font-family:"EB Garamond",Georgia,serif;font-size:17px;line-height:1.4;margin:0 0 12px}
+.navy p.mono{font-family:"IBM Plex Mono",monospace;font-size:10.5px;margin:0}
+.navy-plaste{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 18px}
+.odznaky{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.odznak{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:6px 10px;border:1px solid rgba(242,240,235,.4)}
+.zastupne{text-decoration:underline dotted;text-underline-offset:3px}
 .navy .mono{color:rgba(242,240,235,.65)}
 .navy h2{margin:8px 0 22px;font-size:32px;line-height:1;font-weight:800;letter-spacing:-.03em;text-transform:uppercase}
 .kroky{list-style:none;margin:0 0 26px;padding:0;counter-reset:k}
@@ -312,6 +355,10 @@ padding:40px 16px 14px;background:linear-gradient(transparent,rgba(17,17,16,.7))
 .kroky span{font-family:"EB Garamond",Georgia,serif;font-size:16px;opacity:.85}
 .tl{display:flex;align-items:center;justify-content:center;min-height:52px;font-weight:600;font-size:16px}
 .tl-svetle{background:#f2f0eb;color:#111110}
+.tl-tmave{background:var(--inkoust);color:var(--papir)}
+.tl-obrys{border:1px solid var(--inkoust)}
+.kroky-svetle li{border-top-color:var(--linka)}
+.kroky-svetle li::before{color:var(--ocel)}
 
 /* kontakt */
 .velky-kontakt{display:block;padding:16px 0;border-bottom:1px solid var(--linka);font-size:26px;font-weight:700;letter-spacing:-.02em;line-height:1.1}
@@ -448,7 +495,7 @@ figcaption{margin-top:16px;font-family:"IBM Plex Mono",monospace;font-size:12px;
 </header>
 <div class="telefony">
   <figure><div class="telefon"><iframe src="mobil.html" title="Úvod"></iframe></div><figcaption>Úvod</figcaption></figure>
-  <figure><div class="telefon"><iframe src="mobil.html#co-sijeme" title="Co šijeme"></iframe></div><figcaption>Co šijeme · kategorie</figcaption></figure>
+  <figure><div class="telefon"><iframe src="mobil.html#co-sijeme" title="Kategorie"></iframe></div><figcaption>Kategorie</figcaption></figure>
 </div>
 </body>
 </html>

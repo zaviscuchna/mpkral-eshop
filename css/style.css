@@ -689,6 +689,13 @@ a { color: inherit; text-underline-offset: 3px; }
   .o-firme-text { max-width: none; }
   .o-firme-fakta { position: static; }
 }
+
+/* skutečné fotky dílny z mpkral.cz */
+.dilna-galerie { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px 16px; margin-top: 56px; }
+.dilna-galerie figure { margin: 0; }
+.dilna-galerie img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; filter: brightness(var(--karta-jas)); }
+.dilna-galerie figcaption { margin-top: 10px; }
+@media (max-width: 900px) { .dilna-galerie { grid-template-columns: repeat(2, 1fr); gap: 16px 10px; margin-top: 40px; } }
 @media (max-width: 620px) {
   /* na úzkém sloupci je zarovnání do bloku k ničemu — trhalo by mezery */
   .o-firme-text p { text-align: left; hyphens: manual; }

@@ -18,6 +18,10 @@ KATEGORIE = ["Kombinézy", "Kalhoty", "Laclové kalhoty", "Bundy a blůzy",
 TELEFON = "+420 608 982 675"
 MAIL = "info@mpkral.cz"
 ADRESA = "Nová 401, 378 62 Kunžak"
+# skutečné fotky dílny z mpkral.cz (img/dilna/), stejné jako v build.py
+DILNA = [("provozovna", "Provozovna v Kunžaku"), ("dilna", "Šicí dílna"),
+         ("konstrukce-strihu", "Konstrukce střihu"), ("nastrih", "Nástřih látky"),
+         ("siti", "Šití"), ("vysivani", "Vyšívání loga")]
 
 
 def esc(s):
@@ -99,6 +103,12 @@ def stranka():
     # --- 05 zdravotnictví: dva pláště
     plaste = [v for r in KAT if r["kategorie"] == "Pláště" for v in r["varianty"]][:2]
     plaste_html = "".join(f'<span class="pk-foto"><img src="{esc(img(v["hlavni"]))}" alt="Pracovní plášť" loading="lazy"></span>' for v in plaste)
+
+    # --- 07 o firmě: skutečné fotky dílny
+    dilna_html = "".join(f"""<figure class="df">
+        <img src="img/dilna/{f}.jpg" alt="{esc(p)}" loading="lazy">
+        <figcaption class="mono">{esc(p)}</figcaption>
+      </figure>""" for f, p in DILNA)
 
     # --- 06 profese
     profese = "".join(f"<li><b>{esc(x['nazev'])}</b><span>{esc(x['co'])}</span></li>" for x in META["profese"])
@@ -198,6 +208,7 @@ def stranka():
       <div><dt>Co děláme sami</dt><dd>návrh · konstrukce · střih · šití</dd></div>
       <div><dt>Specializace</dt><dd>zdravotnictví, potravinářství, certifikované oděvy</dd></div>
     </dl>
+    <div class="posuvnik dilna">{dilna_html}</div>
   </section>
 
   <section class="sekce" id="poptavka">
@@ -332,6 +343,10 @@ scroll-padding-inline:16px;scrollbar-width:none;-webkit-overflow-scrolling:touch
 .profese span{font-family:"EB Garamond",Georgia,serif;font-size:16px}
 
 /* o firmě */
+.dilna{margin-top:24px}
+.df{flex:0 0 84%;scroll-snap-align:start;margin:0}
+.df img{width:100%;aspect-ratio:4/3;object-fit:cover;filter:brightness(var(--jas))}
+.df figcaption{margin-top:8px}
 .o-firme p{margin:0 0 14px;font-family:"EB Garamond",Georgia,serif;font-size:18px;line-height:1.4}
 .fakta-seznam{margin:22px 0 0}
 .fakta-seznam div{padding:10px 0;border-top:1px solid var(--linka)}

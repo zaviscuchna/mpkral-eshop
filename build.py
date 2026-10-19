@@ -16,6 +16,10 @@ META = json.loads((KOREN / "data" / "meta.json").read_text(encoding="utf-8"))
 KATEGORIE = ["Kombinézy", "Kalhoty", "Laclové kalhoty", "Bundy a blůzy",
              "Kraťasy", "Pláště", "Soupravy"]
 RADY = ["King", "Klasik", "Riedl", "Polar", "Reflexní"]
+# skutečné fotky dílny z mpkral.cz (img/dilna/), sdílí je i build_mobil.py
+DILNA = [("provozovna", "Provozovna v Kunžaku"), ("dilna", "Šicí dílna"),
+         ("konstrukce-strihu", "Konstrukce střihu"), ("nastrih", "Nástřih látky"),
+         ("siti", "Šití"), ("vysivani", "Vyšívání loga")]
 
 def zkontroluj_css(cesta):
     """Nevyvážená závorka v CSS tiše zahodí všechna pravidla pod sebou.
@@ -397,6 +401,7 @@ def index():
         </dl>
       </aside>
     </div>
+    <div class="dilna-galerie">{"".join(f'<figure><img src="img/dilna/{f}.jpg" alt="{esc(p)}" loading="lazy"><figcaption class="mono-popisek">{esc(p)}</figcaption></figure>' for f, p in DILNA)}</div>
   </section>
 </div>""")
 

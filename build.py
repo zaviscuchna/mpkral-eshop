@@ -194,13 +194,13 @@ def produkt_karta(rada, velka=True):
     slovo = "barva" if pocet == 1 else ("barvy" if pocet < 5 else "barev")
 
     return f"""<article class="produkt" data-produkt data-rada="{esc(rada['nazev'])}" data-kategorie="{esc(rada['kategorie'])}" data-znacka="{esc(rada['znacka'])}">
-  <a class="produkt-fotka" href="produkt.html?rada={esc(rada['id'])}">
+  <a class="produkt-fotka" href="produkt-{esc(rada['id'])}.html">
     <img src="{esc(predni)}" alt="{esc(rada['nazev'])}, {esc(v0['nazev'])}" loading="lazy" data-predni>
     {druha}{znacka}{prepinac}
   </a>
   <div class="produkt-telo">
     <div class="produkt-hlava">
-      <h3 class="produkt-nazev"><a href="produkt.html?rada={esc(rada['id'])}">{esc(rada['nazev'])}</a></h3>
+      <h3 class="produkt-nazev"><a href="produkt-{esc(rada['id'])}.html">{esc(rada['nazev'])}</a></h3>
       <span class="produkt-rada">{esc(rada['znacka'])}</span>
     </div>
     <p class="produkt-mono">{zast(rada['material'])} · {zast(rada['gramaz'])}</p>
@@ -530,8 +530,7 @@ def katalog():
 
 
 # ---------------------------------------------------------------- produkt.html
-def produkt():
-    rada = next((r for r in KAT if r["nazev"] == "Bunda King"), KAT[0])
+def produkt(rada):
     v0 = rada["varianty"][0]
     hlavni = v0["fotky"].get("přední") or v0["hlavni"]
 
@@ -660,7 +659,26 @@ def sanon():
     return "".join(h)
 
 
+def presmerovani():
+    """Starý odkaz produkt.html?rada=<id> vede na produkt-<id>.html, bez parametru na Bundu King."""
+    ids = json.dumps([r["id"] for r in KAT])
+    prvni = "produkt-" + next((r["id"] for r in KAT if r["nazev"] == "Bunda King"), KAT[0]["id"]) + ".html"
+    return f"""<!DOCTYPE html>
+<html lang="cs"><head><meta charset="utf-8"><title>M+P Král</title>
+<meta http-equiv="refresh" content="0; url={prvni}">
+<script>
+(function () {{
+  var id = new URLSearchParams(location.search).get("rada"), ids = {ids};
+  location.replace(ids.indexOf(id) > -1 ? "produkt-" + id + ".html" : "{prvni}");
+}})();
+</script></head><body><a href="{prvni}">Pokračovat na produkt</a></body></html>
+"""
+
+
 for nazev, obsah in (("index.html", index()), ("katalog.html", katalog()),
-                     ("produkt.html", produkt()), ("sanon.html", sanon())):
+                     ("produkt.html", presmerovani()), ("sanon.html", sanon())):
     (KOREN / nazev).write_text(obsah, encoding="utf-8")
     print(f"{nazev:16} {len(obsah) // 1024} kB")
+for r in KAT:
+    (KOREN / f"produkt-{r['id']}.html").write_text(produkt(r), encoding="utf-8")
+print(f"produkt-*.html   {len(KAT)} stránek")

@@ -9,7 +9,7 @@ katalog ani šanon).
 |---|---|
 | `index.html` | homepage — hero, čísla, kategorie, řady, nejžádanější, detail pás, zakázka, zdravotnictví, profese, poptávka |
 | `katalog.html` | výpis všech střihů s filtry a řazením |
-| `produkt.html` | detail produktu, postavený na Bundě King |
+| `produkt-<id>.html` | detail produktu, jedna stránka pro každou z 35 řad (`produkt.html?rada=<id>` jen přesměruje) |
 | `sanon.html` | poptávkový „košík" včetně tisku |
 
 ## Směr návrhu — editorial
@@ -56,7 +56,6 @@ takže výpis nevypadá rozbitě.
 ## Známá omezení náčrtu
 - formuláře nic neodesílají, jen zobrazí potvrzení
 - šanon žije v `localStorage` daného prohlížeče
-- `produkt.html` je postavený jen pro Bundu King, ostatní řady na něj odkazují
 - tmavý režim převrací jen rám stránky; produktové karty zůstávají bílé záměrně —
   invertovaná pracovní bunda je horší než žádný tmavý režim
 

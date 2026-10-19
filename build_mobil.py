@@ -41,7 +41,7 @@ def vzorniky(rada, kolik=6):
 def karta_svisle(rada):
     """Karta do vodorovného posuvníku: fotka, název, řada, barvy."""
     v0 = rada["varianty"][0]
-    return f"""<a class="pk" href="produkt.html?rada={esc(rada['id'])}">
+    return f"""<a class="pk" href="produkt-{esc(rada['id'])}.html">
         <span class="pk-foto"><img src="{esc(img(v0['hlavni']))}" alt="" loading="lazy"></span>
         <b>{esc(rada['nazev'])}</b>
         <span class="mono">{esc(rada['znacka'])} · {sklon(len(rada['varianty']), 'barva', 'barvy', 'barev')}</span>
@@ -76,7 +76,7 @@ def stranka():
     # --- 01 nejžádanější: stejný výběr jako na počítači (prvních 8 řad)
     nej = KAT[:8]
     mrizka = "".join(f"""<article class="nk">
-        <a href="produkt.html?rada={esc(r['id'])}" class="pk-foto"><img src="{esc(img(r['varianty'][0]['hlavni']))}" alt="{esc(r['nazev'])}" loading="lazy"></a>
+        <a href="produkt-{esc(r['id'])}.html" class="pk-foto"><img src="{esc(img(r['varianty'][0]['hlavni']))}" alt="{esc(r['nazev'])}" loading="lazy"></a>
         <b>{esc(r['nazev'])}</b>
         <span class="vz">{vzorniky(r, 5)}</span>
         <button type="button" class="nk-tl" data-do-sanonu>+ Do šanonu</button>
@@ -443,7 +443,7 @@ JS = r"""
       return (!chip || p.k === chip) && (!q || norm(p.n + " " + p.k + " " + p.r).indexOf(q) > -1);
     });
     vys.innerHTML = r.map(function (p) {
-      return '<li><a href="produkt.html?rada=' + encodeURIComponent(p.id) + '"><img src="' + esc(p.f) + '" alt="">'
+      return '<li><a href="produkt-' + encodeURIComponent(p.id) + '.html"><img src="' + esc(p.f) + '" alt="">'
         + '<span><b>' + esc(p.n) + '</b><span class="mono">' + esc(p.k) + ' · ' + esc(p.r) + '</span></span></a></li>';
     }).join("") || '<li class="mono" style="padding:16px 0">Nic nenalezeno. Zavolejte, ušijeme to.</li>';
   }

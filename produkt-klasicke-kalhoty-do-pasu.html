@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Klasické kalhoty do pasu · M+P Král</title>
+<meta name="description" content="Kalhoty do pasu s poutky na opasek a nakládanými stehenními kapsami. Rozkrok řešený klínem kvůli dřepu, zadní sed zvýšený. Kolenní díl připravený na vsazení chráničů.">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..700&family=IBM+Plex+Mono:wght@400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=a65b1835">
+<script>
+/* nastavit režim ještě před vykreslením, ať nebliká */
+(function () {
+  try {
+    var r = localStorage.getItem("mpkral-rezim");
+    if (r === "dark" || r === "light") document.documentElement.setAttribute("data-theme", r);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<header class="hlavicka" id="hlavicka">
+  <div class="obal hl-radek">
+    <a class="znacka" href="index.html"><img class="znacka-logo" src="img/logo-mp.png" width="249" height="128" alt="M+P Král"></a>
+    <nav class="hl-dolni" aria-label="Kategorie">
+      <ul class="navigace" id="navigace"><li><a href="katalog.html#0" class="">Kombinézy</a></li><li><a href="katalog.html#1" class="aktivni">Kalhoty</a></li><li><a href="katalog.html#2" class="">Laclové kalhoty</a></li><li><a href="katalog.html#3" class="">Bundy a blůzy</a></li><li><a href="katalog.html#4" class="">Kraťasy</a></li><li><a href="katalog.html#5" class="">Pláště</a></li><li><a href="katalog.html#6" class="">Soupravy</a></li></ul>
+    </nav>
+    <div class="hl-vpravo">
+      <label class="hledani-pole">
+        <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m13 13 4.5 4.5"/></svg>
+        <input class="hledani" type="search" placeholder="Hledat" id="hledani" aria-label="Hledat">
+      </label>
+      <button type="button" class="prepinac-rezimu" id="prepinac-rezimu"
+              aria-label="Přepnout na tmavý režim" aria-pressed="false">
+        <svg class="rezim-znak" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+          <circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor"/>
+          <path d="M10 1.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/>
+        </svg>
+      </button>
+      <a class="sanon-tlacitko" href="sanon.html">Šanon <span class="sanon-pocet" data-sanon-pocet>0</span></a>
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">Menu</button>
+    </div>
+  </div>
+</header>
+<main class="obal sekce">
+  <p class="mono" style="color:var(--ocel)"><a href="katalog.html">Katalog</a> / Kalhoty / Klasické kalhoty do pasu</p>
+  <div class="detail-layout" style="margin-top:20px">
+    <div class="detail-galerie">
+      <div class="detail-hlavni karta">
+        <div class="ramecek"><img src="img/produkty/klasik-kalhoty-modre-predni.jpg" alt="Klasické kalhoty do pasu" id="hlavni-fotka"></div>
+      </div>
+      <div class="nahledy" id="nahledy"><button type="button" class="nahled aktivni" data-nahled="přední">
+        <span class="ramecek karta" style="display:block"><img src="img/produkty/klasik-kalhoty-modre-predni.jpg" alt=""></span>
+        <span class="mono-popisek">Přední</span>
+      </button><button type="button" class="nahled " data-nahled="zadní">
+        <span class="ramecek karta" style="display:block"><img src="img/produkty/klasik-kalhoty-modre-zadni.jpg" alt=""></span>
+        <span class="mono-popisek">Zadní</span>
+      </button><button type="button" class="nahled " data-nahled="detail">
+        <span class="ramecek karta" style="display:block"><img src="img/produkty/klasik-kalhoty-modre-detail.jpg" alt=""></span>
+        <span class="mono-popisek">Detail</span>
+      </button></div>
+      <ul class="vzorniky" id="varianty" style="margin-top:22px;gap:14px"><li style="text-align:center">
+      <button type="button" class="vzornik aktivni" style="background-image:url(img/vzorniky/klasik-kalhoty-modre-predni.jpg)"
+        data-varianta="{&quot;rada&quot;: &quot;Klasické kalhoty do pasu&quot;, &quot;varianta&quot;: &quot;královská modrá&quot;, &quot;fotky&quot;: {&quot;detail&quot;: &quot;img/produkty/klasik-kalhoty-modre-detail.jpg&quot;, &quot;přední&quot;: &quot;img/produkty/klasik-kalhoty-modre-predni.jpg&quot;, &quot;zadní&quot;: &quot;img/produkty/klasik-kalhoty-modre-zadni.jpg&quot;}, &quot;strih&quot;: &quot;151/O&quot;}" aria-label="královská modrá"></button>
+      <span class="mono-popisek" style="display:block;margin-top:5px;max-width:64px">královská modrá</span>
+    </li><li style="text-align:center">
+      <button type="button" class="vzornik " style="background-image:url(img/vzorniky/klasik-kalhoty-tmave-modre-predni.jpg)"
+        data-varianta="{&quot;rada&quot;: &quot;Klasické kalhoty do pasu&quot;, &quot;varianta&quot;: &quot;tmavě modrofialová&quot;, &quot;fotky&quot;: {&quot;detail&quot;: &quot;img/produkty/klasik-kalhoty-tmave-modre-detail.jpg&quot;, &quot;přední&quot;: &quot;img/produkty/klasik-kalhoty-tmave-modre-predni.jpg&quot;, &quot;zadní&quot;: &quot;img/produkty/klasik-kalhoty-tmave-modre-zadni.jpg&quot;}, &quot;strih&quot;: &quot;154/O&quot;}" aria-label="tmavě modrofialová"></button>
+      <span class="mono-popisek" style="display:block;margin-top:5px;max-width:64px">tmavě modrofialová</span>
+    </li><li style="text-align:center">
+      <button type="button" class="vzornik " style="background-image:url(img/vzorniky/klasik-kalhoty-zelene-predni.jpg)"
+        data-varianta="{&quot;rada&quot;: &quot;Klasické kalhoty do pasu&quot;, &quot;varianta&quot;: &quot;zelená&quot;, &quot;fotky&quot;: {&quot;detail&quot;: &quot;img/produkty/klasik-kalhoty-zelene-detail.jpg&quot;, &quot;přední&quot;: &quot;img/produkty/klasik-kalhoty-zelene-predni.jpg&quot;, &quot;zadní&quot;: &quot;img/produkty/klasik-kalhoty-zelene-zadni.jpg&quot;}, &quot;strih&quot;: &quot;157/O&quot;}" aria-label="zelená"></button>
+      <span class="mono-popisek" style="display:block;margin-top:5px;max-width:64px">zelená</span>
+    </li></ul>
+    </div>
+
+    <div class="detail-info">
+      <h1 id="nazev-produktu">Klasické kalhoty do pasu <span class="varianta-nazev">královská modrá</span></h1>
+      <p class="technicky"><span class="zastupne" title="zástupný údaj, doplní M+P Král">65 % PES / 35 % BA</span> · <span class="zastupne" title="zástupný údaj, doplní M+P Král">260 g/m²</span> · vel. <span class="zastupne" title="zástupný údaj, doplní M+P Král">46–66</span> · střih <span data-strih><span class="zastupne" title="zástupný údaj, doplní M+P Král">151/O</span></span></p>
+      <p class="popis">Kalhoty do pasu s poutky na opasek a nakládanými stehenními kapsami. Rozkrok řešený klínem kvůli dřepu, zadní sed zvýšený. Kolenní díl připravený na vsazení chráničů.</p>
+
+      <h2 style="font-size:20px;margin:28px 0 10px">Rozpis velikostí</h2>
+      <p class="mono" style="color:var(--ocel);margin:0 0 12px">Zapište počty kusů po velikostech.</p>
+      <div class="vel-mrizka"><label class="vel-bunka"><span>46</span><input type="number" min="0" placeholder="0" aria-label="Velikost 46" data-ks="46"></label><label class="vel-bunka"><span>48</span><input type="number" min="0" placeholder="0" aria-label="Velikost 48" data-ks="48"></label><label class="vel-bunka"><span>50</span><input type="number" min="0" placeholder="0" aria-label="Velikost 50" data-ks="50"></label><label class="vel-bunka"><span>52</span><input type="number" min="0" placeholder="0" aria-label="Velikost 52" data-ks="52"></label><label class="vel-bunka"><span>54</span><input type="number" min="0" placeholder="0" aria-label="Velikost 54" data-ks="54"></label><label class="vel-bunka"><span>56</span><input type="number" min="0" placeholder="0" aria-label="Velikost 56" data-ks="56"></label><label class="vel-bunka"><span>58</span><input type="number" min="0" placeholder="0" aria-label="Velikost 58" data-ks="58"></label><label class="vel-bunka"><span>60</span><input type="number" min="0" placeholder="0" aria-label="Velikost 60" data-ks="60"></label><label class="vel-bunka"><span>62</span><input type="number" min="0" placeholder="0" aria-label="Velikost 62" data-ks="62"></label><label class="vel-bunka"><span>64</span><input type="number" min="0" placeholder="0" aria-label="Velikost 64" data-ks="64"></label><label class="vel-bunka"><span>66</span><input type="number" min="0" placeholder="0" aria-label="Velikost 66" data-ks="66"></label></div>
+<div class="velikosti-seznam"><div class="velikost-radek"><b>46</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="46">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>48</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="48">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>50</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="50">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>52</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="52">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>54</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="54">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>56</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="56">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>58</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="58">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>60</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="60">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>62</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="62">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>64</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="64">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>66</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="66">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div></div>
+<div class="souhrn-kusu"><span>Celkem <b data-celkem>0</b> ks</span><span>bez DPH</span></div>
+<button type="button" class="tl tl-hlavni tl-plna" data-do-sanonu>Přidat do šanonu</button>
+
+      <div class="tlacitka" style="margin-top:14px">
+        <a class="tl tl-obrys" href="index.html#poptavka">Objednat vzorek, 1 ks</a>
+      </div>
+
+      <div class="boxy">
+        <div class="box karta">
+          <h3>Materiál a gramáž</h3>
+          <p><span class="zastupne" title="zástupný údaj, doplní M+P Král">65 % PES / 35 % BA</span>, <span class="zastupne" title="zástupný údaj, doplní M+P Král">260 g/m²</span>. <span class="zastupne" title="zástupný údaj, doplní M+P Král">Srážlivost do 3 %</span>. <span class="zastupne" title="zástupný údaj, doplní M+P Král">Praní 60 °C</span>.</p>
+        </div>
+        <div class="box karta">
+          <h3>Normy a certifikace</h3>
+          <p><span class="odznak"><span class="zastupne" title="zástupný údaj, doplní M+P Král">EN ISO 13688</span></span></p>
+        </div>
+        <div class="box karta">
+          <h3>Potisk a výšivka</h3>
+          <label style="display:flex;gap:8px;align-items:center;font-size:15px"><input type="checkbox" id="chci-logo"> Chci logo</label>
+          <div id="logo-pole" style="display:none;margin-top:10px">
+            <div class="pole"><label for="umisteni">Umístění</label>
+              <select id="umisteni"><option>levá hruď</option><option>záda</option><option>rukáv</option><option>záda + hruď</option></select>
+            </div>
+            <div class="pole" style="margin-top:8px"><label for="logo-soubor">Soubor s logem</label><input type="file" id="logo-soubor"></div>
+            <p class="mono" id="logo-nazev" style="color:var(--ocel);margin:6px 0 0"></p>
+          </div>
+        </div>
+        <div class="box karta">
+          <h3>Dodací lhůta a minimum</h3>
+          <p><span class="zastupne" title="zástupný údaj, doplní M+P Král">Skladové barvy do 5 dnů</span>. <span class="zastupne" title="zástupný údaj, doplní M+P Král">Zakázková barva od 30 ks, 4–6 týdnů</span>.</p>
+        </div>
+      </div>
+
+      <p style="margin-top:24px">Chcete jinou barvu nebo úpravu střihu?
+      <a href="index.html#poptavka">Nasamplujeme vzorek</a>. V archivu máme 1 300 střihů,
+      většinou stačí vybrat a upravit.</p>
+    </div>
+  </div>
+
+  <section class="sekce">
+    <div class="kota">
+  <span class="kota-cislo">02</span><span class="kota-vpravo">Ostatní</span>
+  <div><h2>Ze stejné řady</h2></div>
+</div>
+    <div class="produkty po-ctyrech"><article class="produkt" data-produkt data-rada="Kombinéza s pruhy" data-kategorie="Kombinézy" data-znacka="Ostatní">
+  <a class="produkt-fotka" href="produkt-kombineza-s-pruhy.html">
+    <img src="img/produkty/kombineza-pruhy-modra-predni.jpg" alt="Kombinéza s pruhy, modrá s bílými pruhy" loading="lazy" data-predni>
+    <img src="img/produkty/kombineza-pruhy-modra-zadni.jpg" alt="" loading="lazy" class="skryta" data-zadni><div class="prepinac-pohledu">
+        <button type="button" class="aktivni" data-pohled="predni">Přední</button>
+        <button type="button" data-pohled="zadni">Zadní</button>
+      </div>
+  </a>
+  <div class="produkt-telo">
+    <div class="produkt-hlava">
+      <h3 class="produkt-nazev"><a href="produkt-kombineza-s-pruhy.html">Kombinéza s pruhy</a></h3>
+      <span class="produkt-rada">Ostatní</span>
+    </div>
+    <p class="produkt-mono"><span class="zastupne" title="zástupný údaj, doplní M+P Král">65 % PES / 35 % BA</span> · <span class="zastupne" title="zástupný údaj, doplní M+P Král">260 g/m²</span></p>
+    <ul class="vzorniky"><li><button type="button" class="vzornik aktivni" style="background-image:url(img/vzorniky/kombineza-pruhy-modra-predni.jpg)" title="modrá s bílými pruhy" aria-label="modrá s bílými pruhy" data-varianta="{&quot;rada&quot;: &quot;Kombinéza s pruhy&quot;, &quot;varianta&quot;: &quot;modrá s bílými pruhy&quot;, &quot;fotky&quot;: {&quot;detail&quot;: &quot;img/produkty/kombineza-pruhy-modra-detail.jpg&quot;, &quot;přední&quot;: &quot;img/produkty/kombineza-pruhy-modra-predni.jpg&quot;, &quot;zadní&quot;: &quot;img/produkty/kombineza-pruhy-modra-zadni.jpg&quot;}, &quot;strih&quot;: &quot;181/O&quot;}"></button></li><li><button type="button" class="vzornik " style="background-image:url(img/vzorniky/kombineza-pruhy-zelena-predni.jpg)" title="zelená s bílými pruhy" aria-label="zelená s bílými pruhy" data-varianta="{&quot;rada&quot;: &quot;Kombinéza s pruhy&quot;, &quot;varianta&quot;: &quot;zelená s bílými pruhy&quot;, &quot;fotky&quot;: {&quot;detail&quot;: &quot;img/produkty/kombineza-pruhy-zelena-detail.jpg&quot;, &quot;přední&quot;: &quot;img/produkty/kombineza-pruhy-zelena-predni.jpg&quot;, &quot;zadní&quot;: &quot;img/produkty/kombineza-pruhy-zelena-zadni.jpg&quot;}, &quot;strih&quot;: &quot;184/O&quot;}"></button></li></ul>
+    <p class="produkt-rozsah" data-rozsah>2 barvy · vel. <span class="zastupne" title="zástupný údaj, doplní M+P Král">46–66</span></p>
+    <button type="button" class="tl tl-obrys tl-plna" data-otevrit-rozpis>Zapsat počty</button>
+    <div class="rozpis-v-karte" data-rozpis><div class="vel-mrizka"><label class="vel-bunka"><span>46</span><input type="number" min="0" placeholder="0" aria-label="Velikost 46" data-ks="46"></label><label class="vel-bunka"><span>48</span><input type="number" min="0" placeholder="0" aria-label="Velikost 48" data-ks="48"></label><label class="vel-bunka"><span>50</span><input type="number" min="0" placeholder="0" aria-label="Velikost 50" data-ks="50"></label><label class="vel-bunka"><span>52</span><input type="number" min="0" placeholder="0" aria-label="Velikost 52" data-ks="52"></label><label class="vel-bunka"><span>54</span><input type="number" min="0" placeholder="0" aria-label="Velikost 54" data-ks="54"></label><label class="vel-bunka"><span>56</span><input type="number" min="0" placeholder="0" aria-label="Velikost 56" data-ks="56"></label><label class="vel-bunka"><span>58</span><input type="number" min="0" placeholder="0" aria-label="Velikost 58" data-ks="58"></label><label class="vel-bunka"><span>60</span><input type="number" min="0" placeholder="0" aria-label="Velikost 60" data-ks="60"></label><label class="vel-bunka"><span>62</span><input type="number" min="0" placeholder="0" aria-label="Velikost 62" data-ks="62"></label><label class="vel-bunka"><span>64</span><input type="number" min="0" placeholder="0" aria-label="Velikost 64" data-ks="64"></label><label class="vel-bunka"><span>66</span><input type="number" min="0" placeholder="0" aria-label="Velikost 66" data-ks="66"></label></div>
+<div class="velikosti-seznam"><div class="velikost-radek"><b>46</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="46">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>48</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="48">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>50</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="50">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>52</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="52">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>54</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="54">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>56</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="56">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>58</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="58">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>60</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="60">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>62</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="62">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>64</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="64">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>66</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="66">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div></div>
+<div class="souhrn-kusu"><span>Celkem <b data-celkem>0</b> ks</span><span>bez DPH</span></div>
+<button type="button" class="tl tl-hlavni tl-plna" data-do-sanonu>Přidat do šanonu</button></div>
+  </div>
+</article><article class="produkt" data-produkt data-rada="Kombinéza s pruhy dámská" data-kategorie="Kombinézy" data-znacka="Ostatní">
+  <a class="produkt-fotka" href="produkt-kombineza-s-pruhy-damska.html">
+    <img src="img/produkty/kombineza-pruhy-cervena-damska-predni.jpg" alt="Kombinéza s pruhy dámská, červená s bílými pruhy" loading="lazy" data-predni>
+    <span class="znacka-pohledu">1 pohled</span>
+  </a>
+  <div class="produkt-telo">
+    <div class="produkt-hlava">
+      <h3 class="produkt-nazev"><a href="produkt-kombineza-s-pruhy-damska.html">Kombinéza s pruhy dámská</a></h3>
+      <span class="produkt-rada">Ostatní</span>
+    </div>
+    <p class="produkt-mono"><span class="zastupne" title="zástupný údaj, doplní M+P Král">65 % PES / 35 % BA</span> · <span class="zastupne" title="zástupný údaj, doplní M+P Král">260 g/m²</span></p>
+    <ul class="vzorniky"><li><button type="button" class="vzornik aktivni" style="background-image:url(img/vzorniky/kombineza-pruhy-cervena-damska-predni.jpg)" title="červená s bílými pruhy" aria-label="červená s bílými pruhy" data-varianta="{&quot;rada&quot;: &quot;Kombinéza s pruhy dámská&quot;, &quot;varianta&quot;: &quot;červená s bílými pruhy&quot;, &quot;fotky&quot;: {&quot;detail&quot;: &quot;img/produkty/kombineza-pruhy-cervena-damska-detail.jpg&quot;, &quot;přední&quot;: &quot;img/produkty/kombineza-pruhy-cervena-damska-predni.jpg&quot;}, &quot;strih&quot;: &quot;187/O&quot;}"></button></li></ul>
+    <p class="produkt-rozsah" data-rozsah>1 barva · vel. <span class="zastupne" title="zástupný údaj, doplní M+P Král">46–66</span></p>
+    <button type="button" class="tl tl-obrys tl-plna" data-otevrit-rozpis>Zapsat počty</button>
+    <div class="rozpis-v-karte" data-rozpis><div class="vel-mrizka"><label class="vel-bunka"><span>46</span><input type="number" min="0" placeholder="0" aria-label="Velikost 46" data-ks="46"></label><label class="vel-bunka"><span>48</span><input type="number" min="0" placeholder="0" aria-label="Velikost 48" data-ks="48"></label><label class="vel-bunka"><span>50</span><input type="number" min="0" placeholder="0" aria-label="Velikost 50" data-ks="50"></label><label class="vel-bunka"><span>52</span><input type="number" min="0" placeholder="0" aria-label="Velikost 52" data-ks="52"></label><label class="vel-bunka"><span>54</span><input type="number" min="0" placeholder="0" aria-label="Velikost 54" data-ks="54"></label><label class="vel-bunka"><span>56</span><input type="number" min="0" placeholder="0" aria-label="Velikost 56" data-ks="56"></label><label class="vel-bunka"><span>58</span><input type="number" min="0" placeholder="0" aria-label="Velikost 58" data-ks="58"></label><label class="vel-bunka"><span>60</span><input type="number" min="0" placeholder="0" aria-label="Velikost 60" data-ks="60"></label><label class="vel-bunka"><span>62</span><input type="number" min="0" placeholder="0" aria-label="Velikost 62" data-ks="62"></label><label class="vel-bunka"><span>64</span><input type="number" min="0" placeholder="0" aria-label="Velikost 64" data-ks="64"></label><label class="vel-bunka"><span>66</span><input type="number" min="0" placeholder="0" aria-label="Velikost 66" data-ks="66"></label></div>
+<div class="velikosti-seznam"><div class="velikost-radek"><b>46</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="46">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>48</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="48">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>50</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="50">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>52</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="52">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>54</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="54">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>56</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="56">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>58</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="58">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>60</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="60">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>62</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="62">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>64</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="64">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>66</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="66">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div></div>
+<div class="souhrn-kusu"><span>Celkem <b data-celkem>0</b> ks</span><span>bez DPH</span></div>
+<button type="button" class="tl tl-hlavni tl-plna" data-do-sanonu>Přidat do šanonu</button></div>
+  </div>
+</article><article class="produkt" data-produkt data-rada="Pracovní plášť" data-kategorie="Pláště" data-znacka="Ostatní">
+  <a class="produkt-fotka" href="produkt-pracovni-plast.html">
+    <img src="img/produkty/plast-kralovsky-modry-predni.jpg" alt="Pracovní plášť, královská modrá" loading="lazy" data-predni>
+    <img src="img/produkty/plast-kralovsky-modry-zadni.jpg" alt="" loading="lazy" class="skryta" data-zadni><div class="prepinac-pohledu">
+        <button type="button" class="aktivni" data-pohled="predni">Přední</button>
+        <button type="button" data-pohled="zadni">Zadní</button>
+      </div>
+  </a>
+  <div class="produkt-telo">
+    <div class="produkt-hlava">
+      <h3 class="produkt-nazev"><a href="produkt-pracovni-plast.html">Pracovní plášť</a></h3>
+      <span class="produkt-rada">Ostatní</span>
+    </div>
+    <p class="produkt-mono"><span class="zastupne" title="zástupný údaj, doplní M+P Král">65 % PES / 35 % BA</span> · <span class="zastupne" title="zástupný údaj, doplní M+P Král">260 g/m²</span></p>
+    <ul class="vzorniky"><li><button type="button" class="vzornik aktivni" style="background-image:url(img/vzorniky/plast-kralovsky-modry-predni.jpg)" title="královská modrá" aria-label="královská modrá" data-varianta="{&quot;rada&quot;: &quot;Pracovní plášť&quot;, &quot;varianta&quot;: &quot;královská modrá&quot;, &quot;fotky&quot;: {&quot;detail&quot;: &quot;img/produkty/plast-kralovsky-modry-detail.jpg&quot;, &quot;přední&quot;: &quot;img/produkty/plast-kralovsky-modry-predni.jpg&quot;, &quot;zadní&quot;: &quot;img/produkty/plast-kralovsky-modry-zadni.jpg&quot;}, &quot;strih&quot;: &quot;223/O&quot;}"></button></li><li><button type="button" class="vzornik " style="background-image:url(img/vzorniky/plast-tmave-modry-predni.jpg)" title="tmavě modrá (navy)" aria-label="tmavě modrá (navy)" data-varianta="{&quot;rada&quot;: &quot;Pracovní plášť&quot;, &quot;varianta&quot;: &quot;tmavě modrá (navy)&quot;, &quot;fotky&quot;: {&quot;detail&quot;: &quot;img/produkty/plast-tmave-modry-detail.jpg&quot;, &quot;přední&quot;: &quot;img/produkty/plast-tmave-modry-predni.jpg&quot;, &quot;zadní&quot;: &quot;img/produkty/plast-tmave-modry-zadni.jpg&quot;}, &quot;strih&quot;: &quot;226/O&quot;}"></button></li><li><button type="button" class="vzornik " style="background-image:url(img/vzorniky/plast-zeleny-predni.jpg)" title="zelená" aria-label="zelená" data-varianta="{&quot;rada&quot;: &quot;Pracovní plášť&quot;, &quot;varianta&quot;: &quot;zelená&quot;, &quot;fotky&quot;: {&quot;detail&quot;: &quot;img/produkty/plast-zeleny-detail.jpg&quot;, &quot;přední&quot;: &quot;img/produkty/plast-zeleny-predni.jpg&quot;, &quot;zadní&quot;: &quot;img/produkty/plast-zeleny-zadni.jpg&quot;}, &quot;strih&quot;: &quot;229/O&quot;}"></button></li></ul>
+    <p class="produkt-rozsah" data-rozsah>3 barvy · vel. <span class="zastupne" title="zástupný údaj, doplní M+P Král">46–64</span></p>
+    <button type="button" class="tl tl-obrys tl-plna" data-otevrit-rozpis>Zapsat počty</button>
+    <div class="rozpis-v-karte" data-rozpis><div class="vel-mrizka"><label class="vel-bunka"><span>46</span><input type="number" min="0" placeholder="0" aria-label="Velikost 46" data-ks="46"></label><label class="vel-bunka"><span>48</span><input type="number" min="0" placeholder="0" aria-label="Velikost 48" data-ks="48"></label><label class="vel-bunka"><span>50</span><input type="number" min="0" placeholder="0" aria-label="Velikost 50" data-ks="50"></label><label class="vel-bunka"><span>52</span><input type="number" min="0" placeholder="0" aria-label="Velikost 52" data-ks="52"></label><label class="vel-bunka"><span>54</span><input type="number" min="0" placeholder="0" aria-label="Velikost 54" data-ks="54"></label><label class="vel-bunka"><span>56</span><input type="number" min="0" placeholder="0" aria-label="Velikost 56" data-ks="56"></label><label class="vel-bunka"><span>58</span><input type="number" min="0" placeholder="0" aria-label="Velikost 58" data-ks="58"></label><label class="vel-bunka"><span>60</span><input type="number" min="0" placeholder="0" aria-label="Velikost 60" data-ks="60"></label><label class="vel-bunka"><span>62</span><input type="number" min="0" placeholder="0" aria-label="Velikost 62" data-ks="62"></label><label class="vel-bunka"><span>64</span><input type="number" min="0" placeholder="0" aria-label="Velikost 64" data-ks="64"></label><label class="vel-bunka"><span>66</span><input type="number" min="0" placeholder="0" aria-label="Velikost 66" data-ks="66"></label></div>
+<div class="velikosti-seznam"><div class="velikost-radek"><b>46</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="46">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>48</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="48">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>50</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="50">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>52</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="52">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>54</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="54">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>56</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="56">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>58</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="58">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>60</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="60">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>62</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="62">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>64</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="64">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div><div class="velikost-radek"><b>66</b><div class="stepper"><button type="button" data-krok="-1" aria-label="Ubrat">−</button><output data-ks-out="66">0</output><button type="button" data-krok="1" aria-label="Přidat">+</button></div></div></div>
+<div class="souhrn-kusu"><span>Celkem <b data-celkem>0</b> ks</span><span>bez DPH</span></div>
+<button type="button" class="tl tl-hlavni tl-plna" data-do-sanonu>Přidat do šanonu</button></div>
+  </div>
+</article></div>
+  </section>
+</main>
+<div class="lupa" id="lupa"><img src="" alt="" id="lupa-fotka"></div><footer class="paticka">
+  <div class="obal">
+    <div class="zdvojena-linka" style="margin-bottom:32px"></div>
+    <a class="paticka-logo" href="index.html">
+      <img src="img/logo-mp.png" width="249" height="128" alt="M+P Král" loading="lazy">
+      <span>Petr Král M+P · výroba pracovních oděvů</span>
+    </a>
+    <div class="paticka-mrizka">
+      <div><h3>Kategorie</h3><ul><li><a href="katalog.html#0">Kombinézy</a></li><li><a href="katalog.html#1">Kalhoty</a></li><li><a href="katalog.html#2">Laclové kalhoty</a></li><li><a href="katalog.html#3">Bundy a blůzy</a></li><li><a href="katalog.html#4">Kraťasy</a></li><li><a href="katalog.html#5">Pláště</a></li><li><a href="katalog.html#6">Soupravy</a></li></ul></div>
+      <div><h3>Řady</h3><ul><li>King</li><li>Klasik</li><li>Riedl</li><li>Polar</li><li>Reflexní</li></ul></div>
+      <div>
+        <h3>Kontakt</h3>
+        <ul>
+          <li>M+P Král, Petr Král</li>
+          <li>Nová 401, 378 62 Kunžak</li>
+          <li>okres Jindřichův Hradec</li>
+          <li>+420 608 982 675</li>
+          <li>info@mpkral.cz</li>
+        </ul>
+      </div>
+    </div>
+    <p class="disclaimer">
+      Technické údaje (materiál, gramáž, čísla střihů, normy, lhůty) jsou v tomto náčrtu zástupné.<br>
+      Šijeme <span class="kurziva">od roku 1993</span>.
+    </p>
+  </div>
+</footer>
+<script src="js/app.js?v=7a4c4da4"></script>
+</body>
+</html>

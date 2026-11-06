@@ -1,0 +1,16 @@
+{% extends "admin/base.html" %}
+{% block titulek %}Můj účet{% endblock %}
+{% block obsah %}
+<h1>Můj účet</h1>
+<p>Přihlašovací jméno: <b>{{ uzivatel.login }}</b>{% if uzivatel.posledni_prihlaseni %} · naposledy přihlášen(a) {{ uzivatel.posledni_prihlaseni.replace('T', ' ') }}{% endif %}</p>
+<h2>Změna hesla</h2>
+{% if chyba %}<p class="zprava chyba">{{ chyba }}</p>{% endif %}
+<form method="post" class="formular uzky">
+  <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+  <input type="hidden" name="login" value="{{ uzivatel.login }}" autocomplete="username">
+  <label>Současné heslo<input name="stare" type="password" autocomplete="current-password" required></label>
+  <label>Nové heslo (aspoň 10 znaků)<input name="heslo" type="password" autocomplete="new-password" minlength="10" required></label>
+  <label>Nové heslo ještě jednou<input name="heslo2" type="password" autocomplete="new-password" minlength="10" required></label>
+  <button class="tl hlavni">Změnit heslo</button>
+</form>
+{% endblock %}

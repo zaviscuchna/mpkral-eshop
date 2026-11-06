@@ -1,0 +1,31 @@
+{% extends "admin/base.html" %}
+{% block titulek %}Přehled{% endblock %}
+{% block obsah %}
+<h1>Dobrý den, {{ uzivatel.jmeno }}</h1>
+<div class="dlazdice">
+  <a class="dlazdice-polozka" href="{{ url_for('admin.objednavky', stav='nova') }}"><b>{{ pocet_novych }}</b><span>nových objednávek</span></a>
+  <a class="dlazdice-polozka" href="{{ url_for('admin.poptavky') }}"><b>{{ pocet_poptavek }}</b><span>nových poptávek</span></a>
+  <a class="dlazdice-polozka" href="{{ url_for('admin.produkt_novy') }}"><b>+</b><span>přidat produkt</span></a>
+</div>
+{% if upozorneni %}
+<section class="upozorneni">
+  <h2>Před spuštěním zkontrolovat</h2>
+  <ul>{% for u in upozorneni %}<li>{{ u }}</li>{% endfor %}</ul>
+</section>
+{% endif %}
+<h2>Poslední objednávky</h2>
+{% if objednavky %}
+<table class="tabulka">
+  <tr><th>Číslo</th><th>Kdy</th><th>Zákazník</th><th>Celkem</th><th>Stav</th></tr>
+  {% for o in objednavky %}{% set z = zakaznik(o) %}
+  <tr><td><a href="{{ url_for('admin.objednavka', cislo=o.cislo) }}">{{ o.cislo }}</a></td><td>{{ o.vytvoreno[:16].replace('T', ' ') }}</td>
+      <td>{{ z.firma or z.jmeno }}</td><td>{{ kc(o.celkem) }}</td><td><span class="stav stav-{{ o.stav }}">{{ STAVY[o.stav] }}</span></td></tr>
+  {% endfor %}
+</table>
+{% else %}<p class="napoveda">Zatím žádné objednávky.</p>{% endif %}
+<form method="post" action="{{ url_for('admin.publikovat_rucne') }}" class="dole">
+  <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+  <button class="tl">Znovu sestavit web</button>
+  <span class="napoveda">Web se aktualizuje sám po každé změně. Tohle je jen pro jistotu.</span>
+</form>
+{% endblock %}

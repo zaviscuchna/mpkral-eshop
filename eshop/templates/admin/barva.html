@@ -1,0 +1,31 @@
+{% extends "admin/base.html" %}
+{% block titulek %}{{ v.produkt_nazev }} · {{ v.nazev }}{% endblock %}
+{% block obsah %}
+<p><a href="{{ url_for('admin.produkt', pid=v.produkt_id) }}#barvy">← {{ v.produkt_nazev }}</a></p>
+<h1>{{ v.produkt_nazev }} · {{ v.nazev }}</h1>
+<form method="post" enctype="multipart/form-data" class="formular karta">
+  <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+  <div class="dva">
+    <label>Název barvy<input name="nazev" value="{{ v.nazev }}" maxlength="80" required></label>
+    <label>Číslo střihu<input name="strih" value="{{ v.strih }}" maxlength="30"></label>
+  </div>
+  <p class="napoveda">Novou fotku nahrajte jen tam, kde ji chcete vyměnit. Ostatní zůstanou.</p>
+  <div class="tri">
+    {% for pole, popis in (('foto_predni', 'Přední'), ('foto_zadni', 'Zadní'), ('foto_detail', 'Detail')) %}
+    <div class="foto-pole">
+      <span class="popisek">{{ popis }}</span>
+      {% if v[pole] %}<img src="/{{ v[pole] }}" alt="">{% else %}<div class="prazdna-foto">bez fotky</div>{% endif %}
+      <label class="soubor">Vyměnit<input type="file" name="{{ pole }}" accept="image/*" data-nahled></label>
+      {% if v[pole] and pole != 'foto_predni' %}<label class="zaskrtavatko"><input type="checkbox" name="smazat_{{ pole }}" value="1"> odebrat</label>{% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  <div class="foto-pole vzornik-pole">
+    <span class="popisek">Vzorník látky (malé kolečko na webu)</span>
+    {% if v.vzornik %}<img class="vzornik velky" src="/{{ v.vzornik }}" alt="">{% endif %}
+    <label class="soubor">Nahrát vlastní výřez látky<input type="file" name="vzornik" accept="image/*"></label>
+  </div>
+  <label class="zaskrtavatko"><input type="checkbox" name="viditelna" value="1" {{ 'checked' if v.viditelna }}> Zobrazit tuto barvu na webu</label>
+  <button class="tl hlavni">Uložit</button>
+</form>
+{% endblock %}

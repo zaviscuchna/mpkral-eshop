@@ -1,0 +1,9 @@
+{% extends "admin/base.html" %}
+{% block titulek %}Záznam změn{% endblock %}
+{% block obsah %}
+<h1>Záznam změn</h1>
+<table class="tabulka">
+  <tr><th>Kdy</th><th>Kdo</th><th>Co</th><th>Podrobnosti</th></tr>
+  {% for r in radky %}<tr><td>{{ r.kdy.replace('T', ' ') }}</td><td>{{ r.kdo }}</td><td>{{ r.akce }}</td><td>{{ r.detail }}</td></tr>{% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "admin/base.html" %}
+{% block titulek %}Poptávky{% endblock %}
+{% block obsah %}
+<h1>Poptávky z webu</h1>
+{% for p in seznam %}
+<section class="karta poptavka {{ 'vyrizena' if p.stav == 'vyrizena' }}">
+  <p class="napoveda">{{ p.vytvoreno.replace('T', ' ') }}{% if p.stav == 'vyrizena' %} · vyřízená{% endif %}</p>
+  <h2>{{ p.firma or p.osoba or 'Bez jména' }}</h2>
+  <p>{% if p.osoba %}{{ p.osoba }}<br>{% endif %}{% if p.ico %}IČO {{ p.ico }}<br>{% endif %}
+     {% if p.email %}<a href="mailto:{{ p.email }}">{{ p.email }}</a><br>{% endif %}
+     {% if p.telefon %}<a href="tel:{{ p.telefon|replace(' ', '') }}">{{ p.telefon }}</a><br>{% endif %}
+     {% if p.objednavka %}Číslo jejich objednávky: {{ p.objednavka }}{% endif %}</p>
+  {% if p.poznamka %}<p class="predformat">{{ p.poznamka }}</p>{% endif %}
+  <form method="post" action="{{ url_for('admin.poptavka_stav', pid=p.id) }}">
+    <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+    {% if p.stav == 'vyrizena' %}<input type="hidden" name="stav" value="nova"><button class="tl">Vrátit mezi nové</button>
+    {% else %}<input type="hidden" name="stav" value="vyrizena"><button class="tl hlavni">Vyřízeno</button>{% endif %}
+  </form>
+</section>
+{% else %}<p class="napoveda">Zatím žádné poptávky.</p>{% endfor %}
+{% endblock %}

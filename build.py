@@ -7,11 +7,31 @@ prepinani variant a pohledu, sanon poptavky, rozpis velikosti, lupa.
 """
 import hashlib
 import json
+import os
 from pathlib import Path
 
 KOREN = Path(__file__).resolve().parent
-KAT = json.loads((KOREN / "data" / "katalog.json").read_text(encoding="utf-8"))
-META = json.loads((KOREN / "data" / "meta.json").read_text(encoding="utf-8"))
+# Na serveru e-shop předá data z databáze a vlastní výstupní složku (eshop/publikace.py).
+# Bez proměnných prostředí se staví z data/ přímo do repa, jako dřív pro GitHub Pages.
+DATA = Path(os.environ.get("MPK_DATA") or KOREN / "data")
+VYSTUP = Path(os.environ.get("MPK_VYSTUP") or KOREN)
+META = json.loads((DATA / "meta.json").read_text(encoding="utf-8"))
+OBCHOD = json.loads((DATA / "obchod.json").read_text(encoding="utf-8")) if (DATA / "obchod.json").exists() else {}
+
+
+def _viditelne(katalog):
+    """Skryté řady a barvy z administrace na web nejdou; řada bez barvy taky ne."""
+    out = []
+    for r in katalog:
+        if not r.get("viditelny", True):
+            continue
+        r = dict(r, varianty=[v for v in r["varianty"] if v.get("viditelna", True)])
+        if r["varianty"]:
+            out.append(r)
+    return out
+
+
+KAT = _viditelne(json.loads((DATA / "katalog.json").read_text(encoding="utf-8")))
 
 KATEGORIE = ["Kombinézy", "Kalhoty", "Laclové kalhoty", "Bundy a blůzy",
              "Kraťasy", "Pláště", "Soupravy"]
@@ -38,11 +58,18 @@ zkontroluj_css(KOREN / "css" / "style.css")
 OTISK = hashlib.md5((KOREN / "css" / "style.css").read_bytes()).hexdigest()[:8]
 OTISK_JS = hashlib.md5((KOREN / "js" / "app.js").read_bytes()).hexdigest()[:8]
 
-ADRESA = "Nová 401, 378 62 Kunžak"
-TELEFON = "+420 608 982 675"
-TELFAX = "+420 384 399 306"
-MAIL = "info@mpkral.cz"
-ICO = "43861431"
+FIRMA = {"nazev": "Petr Král M+P", "adresa": "Nová 401, 378 62 Kunžak", "okres": "okres Jindřichův Hradec",
+         "telefon": "+420 608 982 675", "telfax": "+420 384 399 306", "email": "info@mpkral.cz",
+         "ico": "43861431", "dic": "", "platce_dph": True, "sazba_dph": 21}
+FIRMA.update(OBCHOD.get("firma", {}))
+ADRESA, TELEFON, TELFAX, MAIL, ICO = (FIRMA["adresa"], FIRMA["telefon"], FIRMA["telfax"],
+                                      FIRMA["email"], FIRMA["ico"])
+# objednávky s cenami běží jen se serverem (eshop/); statický web na Pages zůstává poptávkový
+OBJEDNAVKY = bool(OBCHOD.get("objednavky"))
+PLATCE = bool(FIRMA.get("platce_dph", True))
+SAZBA = int(FIRMA.get("sazba_dph") or 0) if PLATCE else 0
+KOSIK = "Košík" if OBJEDNAVKY else "Šanon"
+KOSIK_URL = "kosik.html" if OBJEDNAVKY else "sanon.html"
 
 
 def esc(s):
@@ -53,6 +80,37 @@ def esc(s):
 def zast(text):
     """Zastupny udaj - teckovane podtrzeni + title."""
     return f'<span class="zastupne" title="zástupný údaj, doplní M+P Král">{esc(text)}</span>'
+
+
+def udaj(rada, text):
+    """Technický údaj řady. Dokud ho M+P v administraci nepotvrdí, zůstává označený jako zástupný."""
+    return esc(text) if rada.get("overeno") else zast(text)
+
+
+def kc(castka):
+    return f"{int(round(castka)):,}".replace(",", "\u00a0") + "\u00a0Kč"
+
+
+def s_dph(cena):
+    return cena * (100 + SAZBA) / 100
+
+
+def cena_html(rada, podrobne=False):
+    """Cena za kus. Bez ceny „na dotaz“ — taková řada jde jen poptat."""
+    c = rada.get("cena")
+    if not c:
+        return '<p class="produkt-cena na-dotaz">Cena na dotaz</p>' if OBJEDNAVKY else ""
+    hlavni = f'<b>{kc(s_dph(c))}</b> s DPH' if PLATCE else f'<b>{kc(c)}</b>'
+    vedle = f' <span>· {kc(c)} bez DPH</span>' if PLATCE else ""
+    radky = ""
+    hl = {int(k): v for k, v in (rada.get("hladiny") or {}).items() if v}
+    if podrobne and hl:
+        bunky = "".join(f"<tr><td>od {k} ks</td><td>{kc(s_dph(v) if PLATCE else v)}</td></tr>"
+                        for k, v in sorted(hl.items()))
+        radky = f'<table class="hladiny-cen"><tr><td>1 ks</td><td>{kc(s_dph(c) if PLATCE else c)}</td></tr>{bunky}</table>'
+    elif hl:
+        radky = f' <span>· od {min(hl)} ks levněji</span>'
+    return f'<p class="produkt-cena">{hlavni}{vedle}{radky if not podrobne else ""}</p>{radky if podrobne else ""}'
 
 
 def hlava(titulek, popis, cesta=""):
@@ -105,7 +163,7 @@ def hlavicka(aktivni="", cesta=""):
           <path d="M10 1.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/>
         </svg>
       </button>
-      <a class="sanon-tlacitko" href="{cesta}sanon.html">Šanon <span class="sanon-pocet" data-sanon-pocet>0</span></a>
+      <a class="sanon-tlacitko" href="{cesta}{KOSIK_URL}">{KOSIK} <span class="sanon-pocet" data-sanon-pocet>0</span></a>
       <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">Menu</button>
     </div>
   </div>
@@ -147,8 +205,9 @@ def paticka(cesta=""):
         </ul>
       </div>
     </div>
+    {pravni_odkazy(cesta)}
     <p class="disclaimer">
-      Technické údaje (materiál, gramáž, čísla střihů, normy, lhůty) jsou v tomto náčrtu zástupné.<br>
+      {"" if all(r.get("overeno") for r in KAT) else "Technické údaje (materiál, gramáž, čísla střihů, normy, lhůty) jsou v tomto náčrtu zástupné.<br>"}
       Šijeme <span class="kurziva">od roku 1993</span>.
     </p>
   </div>
@@ -159,8 +218,21 @@ def paticka(cesta=""):
 """
 
 
+PRAVNI = [("obchodni-podminky", "Obchodní podmínky"), ("reklamacni-rad", "Reklamační řád"),
+          ("ochrana-osobnich-udaju", "Ochrana osobních údajů")]
+
+
+def pravni_odkazy(cesta=""):
+    if not OBJEDNAVKY:
+        return ""
+    odkazy = " · ".join(f'<a href="{cesta}{f}.html">{esc(n)}</a>' for f, n in PRAVNI)
+    return f'<p class="pravni-odkazy">{odkazy} · IČ {esc(ICO)}{" · DIČ " + esc(FIRMA["dic"]) if FIRMA.get("dic") else ""}</p>'
+
+
 def varianta_data(rada, var):
     return esc(json.dumps({
+        "rada_id": rada["id"],
+        "id": var["id"],
         "rada": rada["nazev"],
         "varianta": var["nazev"],
         "fotky": var["fotky"],
@@ -197,7 +269,7 @@ def produkt_karta(rada, velka=True):
     pocet = len(rada["varianty"])
     slovo = "barva" if pocet == 1 else ("barvy" if pocet < 5 else "barev")
 
-    return f"""<article class="produkt" data-produkt data-rada="{esc(rada['nazev'])}" data-kategorie="{esc(rada['kategorie'])}" data-znacka="{esc(rada['znacka'])}">
+    return f"""<article class="produkt" data-produkt data-id="{esc(rada['id'])}" data-rada="{esc(rada['nazev'])}" data-kategorie="{esc(rada['kategorie'])}" data-znacka="{esc(rada['znacka'])}">
   <a class="produkt-fotka" href="produkt-{esc(rada['id'])}.html">
     <img src="{esc(predni)}" alt="{esc(rada['nazev'])}, {esc(v0['nazev'])}" loading="lazy" data-predni>
     {druha}{znacka}{prepinac}
@@ -207,9 +279,10 @@ def produkt_karta(rada, velka=True):
       <h3 class="produkt-nazev"><a href="produkt-{esc(rada['id'])}.html">{esc(rada['nazev'])}</a></h3>
       <span class="produkt-rada">{esc(rada['znacka'])}</span>
     </div>
-    <p class="produkt-mono">{zast(rada['material'])} · {zast(rada['gramaz'])}</p>
+    <p class="produkt-mono">{udaj(rada, rada['material'])} · {udaj(rada, rada['gramaz'])}</p>
     {vzorniky}
-    <p class="produkt-rozsah" data-rozsah>{pocet} {slovo} · vel. {zast(rada['velikosti'])}</p>
+    <p class="produkt-rozsah" data-rozsah>{pocet} {slovo} · vel. {udaj(rada, rada['velikosti'])}</p>
+    {cena_html(rada)}
     <button type="button" class="tl tl-obrys tl-plna" data-otevrit-rozpis>Zapsat počty</button>
     <div class="rozpis-v-karte" data-rozpis>{rozpis_velikosti(rada, kompakt=True)}</div>
   </div>
@@ -234,7 +307,7 @@ def rozpis_velikosti(rada, kompakt=False):
     return f"""<div class="vel-mrizka">{bunky}</div>
 <div class="velikosti-seznam">{radky}</div>
 <div class="souhrn-kusu"><span>Celkem <b data-celkem>0</b> ks</span><span>bez DPH</span></div>
-<button type="button" class="tl tl-hlavni tl-plna" data-do-sanonu>Přidat do šanonu</button>"""
+<button type="button" class="tl tl-hlavni tl-plna" data-do-sanonu>Přidat do {"košíku" if OBJEDNAVKY else "šanonu"}</button>"""
 
 
 def kategorie_foto(rady_k):
@@ -407,6 +480,11 @@ def index():
 
     # 10 kontakt
     tel_href = "tel:" + TELEFON.replace(" ", "")
+    if OBJEDNAVKY:
+        poznamka_poptavky = ('Ceny uvádíme bez DPH. Údaje použijeme jen k vyřízení poptávky, více v '
+                             '<a href="ochrana-osobnich-udaju.html">ochraně osobních údajů</a>.')
+    else:
+        poznamka_poptavky = "Ceny uvádíme bez DPH. Náčrt, formulář zatím neodesílá."
     h.append(f"""<div class="obal">
   <section class="sekce" id="poptavka">
     {kota("08", "Napište nám", "odpovídáme do 2 pracovních dnů")}
@@ -465,8 +543,9 @@ def index():
           <div class="pole"><label for="f-obj">Číslo vaší objednávky</label><input id="f-obj" name="objednavka"></div>
         </div>
         <div class="pole"><label for="f-pozn">Co potřebujete</label><textarea id="f-pozn" name="poznamka" placeholder="Střih, barva, počty po velikostech, potisk, termín…"></textarea></div>
+        <div class="medovnik" aria-hidden="true"><label>Web <input type="text" name="web" tabindex="-1" autocomplete="off"></label></div>
         <button type="submit" class="tl tl-hlavni">Odeslat poptávku</button>
-        <p class="mono" style="color:var(--ocel);margin:0">Ceny uvádíme bez DPH. Náčrt, formulář zatím neodesílá.</p>
+        <p class="mono" style="color:var(--ocel);margin:0">{poznamka_poptavky}</p>
       </form>
 
       <aside class="kontakt-znovu">
@@ -569,8 +648,9 @@ def produkt(rada):
 
     <div class="detail-info">
       <h1 id="nazev-produktu">{esc(rada['nazev'])} <span class="varianta-nazev">{esc(v0['nazev'])}</span></h1>
-      <p class="technicky">{zast(rada['material'])} · {zast(rada['gramaz'])} · vel. {zast(rada['velikosti'])} · střih <span data-strih>{zast(v0['strih'])}</span></p>
+      <p class="technicky">{udaj(rada, rada['material'])} · {udaj(rada, rada['gramaz'])} · vel. {udaj(rada, rada['velikosti'])} · střih <span data-strih>{udaj(rada, v0['strih'])}</span></p>
       <p class="popis">{esc(rada['popis'])}</p>
+      <div class="detail-cena">{cena_html(rada, podrobne=True)}</div>
 
       <h2 style="font-size:20px;margin:28px 0 10px">Rozpis velikostí</h2>
       <p class="mono" style="color:var(--ocel);margin:0 0 12px">Zapište počty kusů po velikostech.</p>
@@ -583,11 +663,11 @@ def produkt(rada):
       <div class="boxy">
         <div class="box karta">
           <h3>Materiál a gramáž</h3>
-          <p>{zast(rada['material'])}, {zast(rada['gramaz'])}. {zast("Srážlivost do 3 %")}. {zast("Praní 60 °C")}.</p>
+          <p>{udaj(rada, rada['material'])}, {udaj(rada, rada['gramaz'])}.{"" if rada.get("overeno") else " " + zast("Srážlivost do 3 %") + ". " + zast("Praní 60 °C") + "."}</p>
         </div>
         <div class="box karta">
           <h3>Normy a certifikace</h3>
-          <p><span class="odznak">{zast(rada['norma'])}</span></p>
+          <p><span class="odznak">{udaj(rada, rada['norma'])}</span></p>
         </div>
         <div class="box karta">
           <h3>Potisk a výšivka</h3>
@@ -664,6 +744,99 @@ def sanon():
     return "".join(h)
 
 
+def kosik():
+    """Košík a objednávka. Ceny tu jsou jen pro zobrazení — server je při odeslání spočítá znovu
+    z databáze, cenu z prohlížeče nikdy nebere."""
+    data = {
+        "platce": PLATCE, "sazba": SAZBA,
+        "doprava": OBCHOD.get("doprava", []), "platby": OBCHOD.get("platby", []),
+        "ceny": {r["id"]: {"nazev": r["nazev"], "cena": r.get("cena") or 0,
+                           "hladiny": {str(k): v for k, v in (r.get("hladiny") or {}).items() if v},
+                           "varianty": {v["id"]: v["nazev"] for v in r["varianty"]}} for r in KAT},
+    }
+    json_data = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
+    pole = lambda i, popis, typ="text", povinne=True, extra="": (
+        f'<div class="pole"><label for="o-{i}">{popis}{"" if povinne else " <span>(nepovinné)</span>"}</label>'
+        f'<input id="o-{i}" name="{i}" type="{typ}"{" required" if povinne else ""}{extra}></div>')
+    h = [hlava("Košík · M+P Král", "Košík a objednávka.")]
+    h.append(hlavicka("", ""))
+    h.append(f"""<main class="obal sekce">
+  {kota("01", "Košík", "bez registrace", "Košík zůstává uložený ve vašem prohlížeči, dokud objednávku neodešlete.")}
+  <div id="sanon-obsah" data-kosik></div>
+  <div class="tlacitka" style="margin-top:24px" data-kosik-tlacitka>
+    <a class="tl tl-obrys" href="katalog.html">Pokračovat ve výběru</a>
+    <button type="button" class="tl tl-obrys" data-vyprazdnit>Vyprázdnit košík</button>
+  </div>
+
+  <section class="sekce" id="objednat" data-objednavka-sekce>
+    {kota("02", "Doprava a platba")}
+    <div class="volby">
+      <fieldset><legend>Doprava</legend><div data-doprava></div></fieldset>
+      <fieldset><legend>Platba</legend><div data-platby></div></fieldset>
+    </div>
+
+    {kota("03", "Vaše údaje", "pro fakturu a doručení")}
+    <form class="formular" data-objednavka style="max-width:760px">
+      <div class="dva-sloupce">{pole("firma", "Firma", povinne=False, extra=' autocomplete="organization"')}{pole("ico", "IČO", povinne=False, extra=' inputmode="numeric"')}</div>
+      <div class="dva-sloupce">{pole("dic", "DIČ", povinne=False)}{pole("jmeno", "Jméno a příjmení", extra=' autocomplete="name"')}</div>
+      <div class="dva-sloupce">{pole("email", "E-mail", "email", extra=' autocomplete="email"')}{pole("telefon", "Telefon", "tel", extra=' autocomplete="tel"')}</div>
+      {pole("ulice", "Ulice a číslo", extra=' autocomplete="street-address"')}
+      <div class="dva-sloupce">{pole("mesto", "Město", extra=' autocomplete="address-level2"')}{pole("psc", "PSČ", extra=' autocomplete="postal-code" inputmode="numeric"')}</div>
+      <label class="souhlas"><input type="checkbox" name="jina_adresa" data-jina-adresa> Doručit na jinou adresu</label>
+      <div data-dodaci hidden>
+        {pole("dod_jmeno", "Příjemce (jméno nebo firma)", povinne=False)}
+        {pole("dod_ulice", "Ulice a číslo", povinne=False)}
+        <div class="dva-sloupce">{pole("dod_mesto", "Město", povinne=False)}{pole("dod_psc", "PSČ", povinne=False)}</div>
+      </div>
+      <div class="pole"><label for="o-poznamka">Poznámka <span>(nepovinné)</span></label><textarea id="o-poznamka" name="poznamka" maxlength="2000" placeholder="Logo, termín, cokoliv dalšího…"></textarea></div>
+      <div class="souhrn-objednavky" data-souhrn></div>
+      <label class="souhlas"><input type="checkbox" name="souhlas" required> Souhlasím s <a href="obchodni-podminky.html" target="_blank">obchodními podmínkami</a> a beru na vědomí <a href="ochrana-osobnich-udaju.html" target="_blank">zpracování osobních údajů</a>.</label>
+      <div class="medovnik" aria-hidden="true"><label>Web <input type="text" name="web" tabindex="-1" autocomplete="off"></label></div>
+      <button type="submit" class="tl tl-hlavni">Odeslat objednávku s povinností platby</button>
+      <p class="chyba-formulare" data-chyba role="alert"></p>
+    </form>
+  </section>
+  <div data-potvrzeni hidden></div>
+</main>
+<script type="application/json" id="obchod-data">{json_data}</script>""")
+    h.append(paticka(""))
+    return "".join(h)
+
+
+def pravni_stranka(soubor, nazev):
+    """Právní text z data/pravni/ (na serveru z databáze nastavení). Bez textu stránka nevznikne."""
+    zdroj = DATA / "pravni" / f"{soubor}.html"
+    if not zdroj.exists():
+        zdroj = KOREN / "data" / "pravni" / f"{soubor}.html"
+    if not zdroj.exists():
+        return None
+    text = zdroj.read_text(encoding="utf-8")
+    h = [hlava(f"{nazev} · M+P Král", nazev)]
+    h.append(hlavicka("", ""))
+    h.append(f"""<main class="obal sekce">
+  {kota("", nazev)}
+  <div class="pravni-text">{text}</div>
+</main>""")
+    h.append(paticka(""))
+    return "".join(h)
+
+
+def sablona():
+    """Obal pro stránky, které vykresluje server (potvrzení objednávky, chyby).
+    Server nahradí __MPK_TITULEK__ a <!--MPK_OBSAH--> už ošetřeným obsahem."""
+    # absolutní cesty: stránka žije na /objednavka/<token>, relativní odkazy by vedly do podsložky
+    return (hlava("__MPK_TITULEK__ · M+P Král", "M+P Král", "/") + hlavicka("", "/")
+            + '<main class="obal sekce"><!--MPK_OBSAH--></main>' + paticka("/"))
+
+
+def presmerovani_na(cil):
+    return f"""<!DOCTYPE html>
+<html lang="cs"><head><meta charset="utf-8"><title>M+P Král</title>
+<meta http-equiv="refresh" content="0; url={cil}"></head>
+<body><a href="{cil}">Pokračovat</a></body></html>
+"""
+
+
 def presmerovani():
     """Starý odkaz produkt.html?rada=<id> vede na produkt-<id>.html, bez parametru na Bundu King."""
     ids = json.dumps([r["id"] for r in KAT])
@@ -680,10 +853,25 @@ def presmerovani():
 """
 
 
-for nazev, obsah in (("index.html", index()), ("katalog.html", katalog()),
-                     ("produkt.html", presmerovani()), ("sanon.html", sanon())):
-    (KOREN / nazev).write_text(obsah, encoding="utf-8")
-    print(f"{nazev:16} {len(obsah) // 1024} kB")
-for r in KAT:
-    (KOREN / f"produkt-{r['id']}.html").write_text(produkt(r), encoding="utf-8")
-print(f"produkt-*.html   {len(KAT)} stránek")
+def main():
+    VYSTUP.mkdir(parents=True, exist_ok=True)
+    stranky = [("index.html", index()), ("katalog.html", katalog()), ("produkt.html", presmerovani())]
+    if OBJEDNAVKY:
+        stranky += [("kosik.html", kosik()), ("sanon.html", presmerovani_na("kosik.html")),
+                    ("_sablona.html", sablona())]
+        for soubor, nazev in PRAVNI:
+            obsah = pravni_stranka(soubor, nazev)
+            if obsah:
+                stranky.append((f"{soubor}.html", obsah))
+    else:
+        stranky.append(("sanon.html", sanon()))
+    for nazev, obsah in stranky:
+        (VYSTUP / nazev).write_text(obsah, encoding="utf-8")
+        print(f"{nazev:16} {len(obsah) // 1024} kB")
+    for r in KAT:
+        (VYSTUP / f"produkt-{r['id']}.html").write_text(produkt(r), encoding="utf-8")
+    print(f"produkt-*.html   {len(KAT)} stránek")
+
+
+if __name__ == "__main__":
+    main()

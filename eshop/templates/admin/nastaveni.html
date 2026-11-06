@@ -1,0 +1,71 @@
+{% extends "admin/base.html" %}
+{% block titulek %}Nastavení{% endblock %}
+{% block obsah %}
+<h1>Nastavení obchodu</h1>
+{% if chyba %}<p class="zprava chyba">{{ chyba }}</p>{% endif %}
+<form method="post" class="formular">
+  <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+  <section class="karta">
+    <h2>Objednávky</h2>
+    <label class="zaskrtavatko"><input type="checkbox" name="objednavky" value="1" {{ 'checked' if objednavky }}> Přijímat objednávky přes web</label>
+    <p class="napoveda">Když to vypnete, web zůstane, jen bez košíku. Hodí se třeba na dovolenou.</p>
+  </section>
+  <section class="karta">
+    <h2>Firma</h2>
+    <div class="dva">
+      <label>Obchodní jméno<input name="nazev" value="{{ firma.nazev }}"></label>
+      <label>Adresa<input name="adresa" value="{{ firma.adresa }}"></label>
+    </div>
+    <div class="dva">
+      <label>Okres<input name="okres" value="{{ firma.okres }}"></label>
+      <label>E-mail<input name="email" value="{{ firma.email }}" type="email"></label>
+    </div>
+    <div class="dva">
+      <label>Telefon<input name="telefon" value="{{ firma.telefon }}"></label>
+      <label>Tel./fax<input name="telfax" value="{{ firma.telfax }}"></label>
+    </div>
+    <div class="dva">
+      <label>IČO<input name="ico" value="{{ firma.ico }}" inputmode="numeric"></label>
+      <label>DIČ<input name="dic" value="{{ firma.dic }}" placeholder="CZ…"></label>
+    </div>
+    <div class="dva">
+      <label class="zaskrtavatko"><input type="checkbox" name="platce_dph" value="1" {{ 'checked' if firma.platce_dph }}> Jsme plátci DPH</label>
+      <label>Sazba DPH (%)<input name="sazba_dph" value="{{ firma.sazba_dph or 21 }}" inputmode="numeric"></label>
+    </div>
+  </section>
+  <section class="karta">
+    <h2>Bankovní účet</h2>
+    <p class="napoveda">Ukazuje se zákazníkům u platby převodem. Z IBAN se dělá QR platba.</p>
+    <div class="dva">
+      <label>Číslo účtu<input name="ucet" value="{{ firma.ucet }}" placeholder="123456789/0800"></label>
+      <label>IBAN<input name="iban" value="{{ firma.iban }}" placeholder="CZ65 0800 0000 1234 5678 9012"></label>
+    </div>
+  </section>
+  <section class="karta">
+    <h2>Doprava</h2>
+    <p class="napoveda">Ceny bez DPH. 0 = zdarma. Nový způsob dopiště do prázdného řádku.</p>
+    {% for i in range(doprava|length + 2) %}{% set d = doprava[i] if i < doprava|length else {} %}
+    <div class="radek-volby">
+      <input type="hidden" name="d_id_{{ i }}" value="{{ d.id or '' }}">
+      <label>Název<input name="d_nazev_{{ i }}" value="{{ d.nazev or '' }}"></label>
+      <label>Cena (Kč)<input name="d_cena_{{ i }}" value="{{ na_kc(d.cena) if d.nazev else '' }}" inputmode="decimal"></label>
+      {% if d.nazev %}<label class="zaskrtavatko"><input type="checkbox" name="d_smazat_{{ i }}" value="1"> odebrat</label>{% endif %}
+    </div>
+    {% endfor %}
+  </section>
+  <section class="karta">
+    <h2>Platba</h2>
+    <p class="napoveda">Poplatek bez DPH. U každé platby můžete zaškrtnout, ke které dopravě patří (nic nezaškrtnuté = ke všem).</p>
+    {% for i in range(platby|length + 2) %}{% set p = platby[i] if i < platby|length else {} %}
+    <div class="radek-volby">
+      <input type="hidden" name="p_id_{{ i }}" value="{{ p.id or '' }}">
+      <label>Název<input name="p_nazev_{{ i }}" value="{{ p.nazev or '' }}"></label>
+      <label>Poplatek (Kč)<input name="p_poplatek_{{ i }}" value="{{ na_kc(p.poplatek) if p.nazev else '' }}" inputmode="decimal"></label>
+      <span class="jen-k">{% for d in doprava %}<label class="zaskrtavatko"><input type="checkbox" name="p_jen_{{ i }}" value="{{ d.id }}" {{ 'checked' if p.jen_doprava and d.id in p.jen_doprava }}> {{ d.nazev }}</label>{% endfor %}</span>
+      {% if p.nazev %}<label class="zaskrtavatko"><input type="checkbox" name="p_smazat_{{ i }}" value="1"> odebrat</label>{% endif %}
+    </div>
+    {% endfor %}
+  </section>
+  <button class="tl hlavni">Uložit nastavení</button>
+</form>
+{% endblock %}

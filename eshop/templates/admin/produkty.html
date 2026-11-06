@@ -1,0 +1,32 @@
+{% extends "admin/base.html" %}
+{% block titulek %}Produkty{% endblock %}
+{% block obsah %}
+<div class="hlavicka-stranky">
+  <h1>Produkty</h1>
+  <a class="tl hlavni" href="{{ url_for('admin.produkt_novy') }}">+ Přidat produkt</a>
+</div>
+<p class="napoveda">Pořadí šipkami je pořadí na webu. Skrytý produkt na webu není, ale nic se nesmaže.</p>
+{% for kat, seznam in podle_kat.items() if seznam %}
+<h2>{{ kat }}</h2>
+<div class="seznam-produktu">
+  {% for p in seznam %}
+  <article class="radek-produktu {{ 'skryty' if not p.viditelny }}" id="p-{{ p.id }}">
+    <a href="{{ url_for('admin.produkt', pid=p.id) }}" class="nahled">{% if fotky.get(p.id) %}<img src="/{{ fotky[p.id] }}" alt="" loading="lazy">{% endif %}</a>
+    <div class="info">
+      <a href="{{ url_for('admin.produkt', pid=p.id) }}"><b>{{ p.nazev }}</b></a>
+      <span class="napoveda">{{ p.znacka }} · {{ pocty.get(p.id, 0) }} barev</span>
+      <span>
+        {% if p.cena %}{{ na_kc(p.cena) }} Kč bez DPH{% else %}<span class="stitek varovani">bez ceny</span>{% endif %}
+        {% if not p.overeno %}<span class="stitek">údaje neověřené</span>{% endif %}
+        {% if not p.viditelny %}<span class="stitek">skrytý</span>{% endif %}
+      </span>
+    </div>
+    <div class="sipky">
+      <form method="post" action="{{ url_for('admin.produkt_posun', pid=p.id) }}"><input type="hidden" name="_csrf" value="{{ csrf_token() }}"><input type="hidden" name="smer" value="nahoru"><button class="tl maly" aria-label="Posunout výš">↑</button></form>
+      <form method="post" action="{{ url_for('admin.produkt_posun', pid=p.id) }}"><input type="hidden" name="_csrf" value="{{ csrf_token() }}"><input type="hidden" name="smer" value="dolu"><button class="tl maly" aria-label="Posunout níž">↓</button></form>
+    </div>
+  </article>
+  {% endfor %}
+</div>
+{% endfor %}
+{% endblock %}

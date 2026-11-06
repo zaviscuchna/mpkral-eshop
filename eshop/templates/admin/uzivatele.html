@@ -1,0 +1,33 @@
+{% extends "admin/base.html" %}
+{% block titulek %}Uživatelé{% endblock %}
+{% block obsah %}
+<h1>Uživatelé</h1>
+{% if odkaz %}
+<section class="karta odkaz-box">
+  <h2>Odkaz pro nastavení hesla</h2>
+  <p>Pošlete ho tomu, pro koho je účet (třeba SMS). Platí 3 dny a jde použít jen jednou. Heslo si zvolí sám, nikdo jiný ho neuvidí.</p>
+  <input class="odkaz-pole" value="{{ odkaz }}" readonly data-oznacit>
+</section>
+{% endif %}
+<table class="tabulka">
+  <tr><th>Jméno</th><th>Přihlášení</th><th>Role</th><th>Naposledy</th><th></th></tr>
+  {% for u in seznam %}
+  <tr class="{{ 'skryty' if not u.aktivni }}">
+    <td>{{ u.jmeno }}</td><td>{{ u.login }}</td><td>{{ 'správce' if u.role == 'spravce' else 'obsluha' }}</td>
+    <td>{{ (u.posledni_prihlaseni or '–').replace('T', ' ') }}{% if not u.heslo %}<br><span class="napoveda">heslo ještě nenastavené</span>{% endif %}</td>
+    <td class="akce">
+      <form method="post" action="{{ url_for('admin.uzivatel_odkaz', uid=u.id) }}"><input type="hidden" name="_csrf" value="{{ csrf_token() }}"><button class="tl maly">Nový odkaz na heslo</button></form>
+      {% if u.id != uzivatel.id %}<form method="post" action="{{ url_for('admin.uzivatel_aktivni', uid=u.id) }}"><input type="hidden" name="_csrf" value="{{ csrf_token() }}"><button class="tl maly">{{ 'Vypnout' if u.aktivni else 'Zapnout' }}</button></form>{% endif %}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+<form method="post" class="formular karta uzky">
+  <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+  <h2>Nový uživatel</h2>
+  <label>Jméno<input name="jmeno" required maxlength="80" placeholder="např. Jana Králová"></label>
+  <label>Přihlašovací jméno<input name="login" required maxlength="40" autocapitalize="none" placeholder="např. jana"></label>
+  <label>Role<select name="role"><option value="obsluha">obsluha (produkty, objednávky, nastavení)</option><option value="spravce">správce (navíc uživatelé a záznam změn)</option></select></label>
+  <button class="tl hlavni">Vytvořit a získat odkaz</button>
+</form>
+{% endblock %}

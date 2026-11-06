@@ -1,0 +1,81 @@
+NÁVOD — ADMINISTRACE E-SHOPU M+P KRÁL
+=====================================
+
+Adresa:  https://mpkral.46.225.180.130.sslip.io/admin
+         (zatím zkušební adresa, později https://mpkral.cz/admin)
+Jméno:   mamka
+Heslo:   to, které si sama nastavíte (viz bod 1)
+
+Všechno, co uložíte, se na webu objeví samo během pár vteřin.
+Nic se nedá rozbít. Jediné, co je nevratné, je tlačítko „Smazat“,
+a to se vždycky ještě zeptá.
+
+
+1. PRVNÍ PŘIHLÁŠENÍ
+-------------------
+Matyáš vám pošle odkaz. Otevřete ho (platí 3 dny a jde použít jen jednou)
+a vymyslete si heslo — aspoň 10 znaků. Nejlíp krátká věta, kterou si
+zapamatujete, třeba „Na dílně šijeme modré bundy“.
+Pak už se přihlašujete na adrese nahoře.
+
+Po 5 špatných pokusech se přihlášení na 15 minut zablokuje. Stačí počkat.
+
+
+2. PŘIDAT NOVÝ PRODUKT
+----------------------
+  1. Nahoře klikněte na „Produkty“ → zelené tlačítko „+ Přidat produkt“.
+  2. Vyplňte název (např. Bunda King), kategorii a řadu, popis.
+  3. Cena: za kus BEZ DPH, v korunách (např. 590). Když cenu nevyplníte,
+     na webu bude „Cena na dotaz“.
+     Množstevní sleva (nepovinné): např. od 10 ks za 550 Kč.
+  4. Technické údaje (materiál, gramáž, velikosti) vyplňte, co víte.
+     Až je někdo zkontroluje, zaškrtněte „údaje jsou zkontrolované“.
+  5. „Uložit“.
+  6. Hned pod tím přidejte BARVU:
+     - název barvy, např. „modro-černá“
+     - fotky: přední (povinná), zadní a detail (nepovinné)
+     - „Přidat barvu“
+     Každá barva má své fotky. Další barvu přidáte stejně.
+
+Fotky můžete nahrát rovnou z mobilu (i z iPhonu). Program je sám
+zmenší a dá na bílý čtverec. Nejlépe vypadají fotky celého kusu
+na světlém pozadí, focené zepředu.
+
+
+3. ZMĚNIT CENU NEBO POPIS
+-------------------------
+„Produkty“ → klikněte na název produktu → přepište → „Uložit“.
+
+
+4. SCHOVAT PRODUKT (NEMAZAT)
+----------------------------
+Když se něco přestane vyrábět: otevřete produkt a odškrtněte
+„Zobrazit na webu“ → „Uložit“. Z webu zmizí, ale nic se nesmaže
+a můžete ho kdykoliv vrátit.
+U jedné barvy to jde stejně (tlačítko „Upravit“ u barvy).
+
+Pořadí na webu měníte šipkami ↑ ↓.
+
+
+5. OBJEDNÁVKY
+-------------
+Číslo u „Objednávky“ nahoře ukazuje nové objednávky.
+Klikněte na objednávku, uvidíte, co zákazník chce, kam a jak platí.
+Postupně měňte stav:
+
+  Přijatá → Potvrzená → Zaplacená → Ušitá, připravená → Odeslaná → Vyřízená
+
+Zákazník vidí stav na svém odkazu. Do „Interní poznámky“ si můžete psát
+cokoliv — zákazník ji nevidí.
+Platbu převodem poznáte podle variabilního symbolu = číslo objednávky.
+
+
+6. POPTÁVKY
+-----------
+Z formuláře „Napište nám“. Zavolejte nebo napište zákazníkovi
+a označte poptávku jako vyřízenou.
+
+
+7. KDYŽ SI NEVÍTE RADY
+----------------------
+Volejte Matyášovi. Nic nemažte „pro jistotu“ — radši schovat (bod 4).

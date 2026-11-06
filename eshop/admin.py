@@ -161,6 +161,16 @@ def _kontrola_hesla(h1, h2, login):
 def ucet():
     u = prihlaseny()
     chyba = None
+    if request.method == "POST" and request.form.get("akce") == "jmeno":
+        jmeno = " ".join(request.form.get("jmeno", "").split())[:60]
+        if not jmeno:
+            flash("Jméno nesmí být prázdné.", "chyba")
+        else:
+            db().execute("UPDATE uzivatel SET jmeno = ? WHERE id = ?", (jmeno, u["id"]))
+            zapis_audit(u["login"], "změna jména", jmeno)
+            db().commit()
+            flash("Jméno je uložené.", "ok")
+        return redirect(url_for("admin.ucet"))
     if request.method == "POST":
         if not check_password_hash(u["heslo"], request.form.get("stare", "")):
             chyba = "Současné heslo nesedí."

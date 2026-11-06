@@ -15,7 +15,7 @@ http:
         - https
       rule: Host(`mpkral.46.225.180.130.sslip.io`)
       middlewares:
-        - mpkral-hsts
+        - mpkral-hlavicky
       service: mpkral
       tls:
         certResolver: letsencrypt
@@ -25,9 +25,11 @@ http:
       redirectScheme:
         scheme: https
         permanent: true
-    mpkral-hsts:
+    mpkral-hlavicky:
       headers:
         stsSeconds: 31536000
+        customResponseHeaders:
+          Server: ""      # neprozrazovat, na čem web běží
 
   services:
     mpkral:

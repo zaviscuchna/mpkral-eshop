@@ -1,0 +1,16 @@
+{% extends "admin/base.html" %}
+{% block titulek %}Přihlášení{% endblock %}
+{% block obsah %}
+<div class="okenko">
+  <img class="velke-logo" src="/img/logo-mp.png" alt="M+P Král">
+  <h1>Přihlášení do administrace</h1>
+  {% if chyba %}<p class="zprava chyba">{{ chyba }}</p>{% endif %}
+  <form method="post" class="formular">
+    <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+    <label>Přihlašovací jméno<input name="login" autocomplete="username" autocapitalize="none" required autofocus></label>
+    <label>Heslo<input name="heslo" type="password" autocomplete="current-password" required></label>
+    <label class="zaskrtavatko"><input type="checkbox" name="zapamatovat" value="1"> Zapamatovat na tomto zařízení (7 dní)</label>
+    <button class="tl hlavni">Přihlásit</button>
+  </form>
+</div>
+{% endblock %}

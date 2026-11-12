@@ -1,0 +1,28 @@
+{% extends "admin/base.html" %}
+{% block titulek %}Objednávka {{ o.cislo }}{% endblock %}
+{% block obsah %}
+<p><a href="{{ url_for('admin.objednavky') }}">← Objednávky</a></p>
+<h1>Objednávka {{ o.cislo }} <span class="stav stav-{{ o.stav }}">{{ STAVY[o.stav] }}</span></h1>
+<p class="napoveda">Přijatá {{ o.vytvoreno.replace('T', ' ') }}{% if o.upraveno %} · naposledy upravená {{ o.upraveno.replace('T', ' ') }}{% endif %}</p>
+<div class="dva">
+  <section class="karta">
+    <h2>Zákazník</h2>
+    <p>{% if z.firma %}<b>{{ z.firma }}</b><br>{% endif %}{{ z.jmeno }}<br>{{ z.ulice }}<br>{{ z.psc }} {{ z.mesto }}</p>
+    <p>{% if z.ico %}IČO {{ z.ico }}<br>{% endif %}{% if z.dic %}DIČ {{ z.dic }}<br>{% endif %}
+       <a href="mailto:{{ z.email }}">{{ z.email }}</a><br><a href="tel:{{ z.telefon|replace(' ', '') }}">{{ z.telefon }}</a></p>
+    {% if z.dodaci %}<h3>Doručit na</h3><p>{{ z.dodaci.jmeno }}<br>{{ z.dodaci.ulice }}<br>{{ z.dodaci.psc }} {{ z.dodaci.mesto }}</p>{% endif %}
+    {% if o.poznamka %}<h3>Poznámka zákazníka</h3><p class="predformat">{{ o.poznamka }}</p>{% endif %}
+  </section>
+  <section class="karta">
+    <h2>Stav a poznámka</h2>
+    <form method="post" class="formular">
+      <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+      <label>Stav<select name="stav">{% for k, n in STAVY.items() %}<option value="{{ k }}" {{ 'selected' if o.stav == k }}>{{ n }}</option>{% endfor %}</select></label>
+      <label>Interní poznámka (zákazník ji nevidí)<textarea name="interni_poznamka" rows="4">{{ o.interni_poznamka }}</textarea></label>
+      <button class="tl hlavni">Uložit</button>
+    </form>
+    <p class="napoveda">Zákazník vidí stav na své stránce s objednávkou.</p>
+  </section>
+</div>
+<section class="karta souhrn-objednavky-admin">{{ souhrn|safe }}</section>
+{% endblock %}

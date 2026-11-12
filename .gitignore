@@ -1,3 +1,9 @@
 .DS_Store
 *.bak
 _*.html
+
+.venv
+.venv.nosync/
+instance/
+__pycache__/
+*.pyc

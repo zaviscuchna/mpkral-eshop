@@ -618,6 +618,82 @@ a { color: inherit; text-underline-offset: 3px; }
   letter-spacing: 0.1em; text-transform: uppercase; color: var(--ocel); line-height: 1.8;
 }
 @media (max-width: 760px) { .paticka-mrizka { grid-template-columns: 1fr; gap: 28px; } }
+.pravni-odkazy { margin: 36px 0 0; font-size: 14px; color: var(--ocel); }
+
+/* ---------------------------------------------------------------- ceny a objednávka */
+.produkt-cena { margin: 10px 0 0; font-size: 15px; }
+.produkt-cena b { font-size: 18px; font-weight: 700; letter-spacing: -0.01em; }
+.produkt-cena span { color: var(--ocel); font-size: 13px; }
+.produkt-cena.na-dotaz { color: var(--ocel); }
+.detail-cena { margin: 18px 0 6px; }
+.detail-cena .produkt-cena b { font-size: 28px; }
+.hladiny-cen { border-collapse: collapse; margin-top: 12px; min-width: 240px; }
+.hladiny-cen td { padding: 6px 24px 6px 0; border-bottom: 1px solid var(--linka); font-size: 15px; }
+.hladiny-cen td:first-child {
+  font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--ocel);
+}
+
+.volby { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 56px; }
+.volby fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+.volby legend {
+  padding: 0; margin-bottom: 10px; font-family: "IBM Plex Mono", monospace; font-size: 10px;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--ocel);
+}
+.volba {
+  display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center;
+  padding: 14px 0; border-bottom: 1px solid var(--linka); cursor: pointer; font-size: 15px;
+}
+.volba input { accent-color: var(--inkoust); width: 18px; height: 18px; margin: 0; }
+.volba b { font-weight: 600; white-space: nowrap; }
+@media (max-width: 760px) { .volby { grid-template-columns: 1fr; gap: 24px; } }
+
+.pole label span { text-transform: none; letter-spacing: 0; }
+.souhlas { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; line-height: 1.45; }
+.souhlas input { accent-color: var(--inkoust); width: 18px; height: 18px; margin: 2px 0 0; flex: none; }
+.souhrn-objednavky { border-top: 1px solid var(--inkoust); padding-top: 10px; }
+.souhrn-objednavky div { display: flex; justify-content: space-between; gap: 16px; padding: 7px 0; font-size: 15px; }
+.souhrn-objednavky div span:first-child { color: var(--ocel); }
+.souhrn-objednavky .celkem { border-top: 1px solid var(--linka); margin-top: 6px; padding-top: 12px; font-size: 20px; font-weight: 700; }
+.souhrn-objednavky .celkem span:first-child { color: var(--inkoust); }
+.souhrn-objednavky .mono { color: var(--ocel); }
+.chyba-formulare { margin: 0; min-height: 1em; color: var(--oranzova); font-weight: 600; }
+/* past na roboty: člověk pole nevidí, robot ho vyplní */
+.medovnik { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+/* potvrzení objednávky ze serveru */
+.potvrzeni { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 40px; align-items: start; }
+.potvrzeni .qr { background: #fff; padding: 14px; width: 100%; max-width: 260px; }
+.potvrzeni dl { display: grid; grid-template-columns: max-content 1fr; gap: 8px 20px; margin: 0; font-size: 15px; }
+.potvrzeni dt { color: var(--ocel); }
+.potvrzeni dd { margin: 0; font-weight: 600; }
+@media (max-width: 760px) { .potvrzeni { grid-template-columns: 1fr; } }
+
+.stav-objednavky { color: var(--ocel); }
+.dekujeme { margin: 8px 0 12px; }
+.nadpis-platby { font-size: 20px; margin: 32px 0 12px; }
+.souhrn-vpravo { max-width: 420px; margin-left: auto; }
+.polozky-objednavky { max-width: none; margin-top: 24px; }
+.polozky-objednavky .mono { color: var(--ocel); }
+
+/* právní texty */
+.pravni-text { max-width: 760px; font-family: "EB Garamond", Georgia, serif; font-size: 18px; line-height: 1.55; }
+.pravni-text h2 { font-family: inherit; font-size: 22px; margin: 32px 0 8px; text-transform: none; letter-spacing: 0; }
+.pravni-text .doplnit { background: color-mix(in srgb, var(--oranzova) 18%, transparent); padding: 0 3px; }
+.pravni-text h3 { font-family: inherit; font-size: 19px; margin: 24px 0 6px; }
+.pravni-text p.doplnit { padding: 10px 14px; }
+.pravni-text table { width: 100%; border-collapse: collapse; font-size: 16px; margin: 12px 0; display: block; overflow-x: auto; }
+.pravni-text th, .pravni-text td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--linka, #ddd); }
+.pravni-text th { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+.pravni-text .vzor { border-left: 3px solid currentColor; padding: 6px 0 6px 14px; }
+@media (max-width: 640px) {
+  .pravni-text table, .pravni-text tbody, .pravni-text tr, .pravni-text td { display: block; }
+  .pravni-text thead { display: none; }
+  .pravni-text tr { border-bottom: 1px solid var(--linka); padding: 8px 0; }
+  .pravni-text td { border: 0; padding: 4px 0; }
+  .pravni-text td:first-child { font-weight: 700; }
+  .pravni-text td[data-k]:not(:first-child)::before { content: attr(data-k) ": "; font-family: "IBM Plex Mono", monospace; font-size: 12px; text-transform: uppercase; }
+}
 
 /* ---------------------------------------------------------------- tisk */
 @media print {

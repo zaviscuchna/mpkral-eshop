@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>{% block titulek %}Administrace{% endblock %} · M+P Král</title>
+<link rel="icon" type="image/png" href="/img/favicon.png">
+<link rel="stylesheet" href="{{ url_for('admin.static', filename='admin.css') }}">
+<script src="{{ url_for('admin.static', filename='admin.js') }}" defer></script>
+</head>
+<body>
+{% if uzivatel %}
+<header class="lista">
+  <a class="logo" href="{{ url_for('admin.prehled') }}"><img src="/img/logo-mp.png" alt="M+P Král"><span>administrace</span></a>
+  <nav>
+    <a href="{{ url_for('admin.prehled') }}">Přehled</a>
+    <a href="{{ url_for('admin.objednavky') }}">Objednávky{% if pocet_novych %} <b class="bublina">{{ pocet_novych }}</b>{% endif %}</a>
+    <a href="{{ url_for('admin.poptavky') }}">Poptávky{% if pocet_poptavek %} <b class="bublina">{{ pocet_poptavek }}</b>{% endif %}</a>
+    <a href="{{ url_for('admin.produkty') }}">Produkty</a>
+    <a href="{{ url_for('admin.nastaveni') }}">Nastavení</a>
+    {% if uzivatel.role == 'spravce' %}<a href="{{ url_for('admin.uzivatele') }}">Uživatelé</a><a href="{{ url_for('admin.zaznam') }}">Záznam změn</a>{% endif %}
+  </nav>
+  <div class="vpravo">
+    <a href="/" target="_blank" rel="noopener">Zobrazit web ↗</a>
+    <a href="{{ url_for('admin.ucet') }}">{{ uzivatel.jmeno }}</a>
+    <form method="post" action="{{ url_for('admin.odhlasit') }}"><input type="hidden" name="_csrf" value="{{ csrf_token() }}"><button class="odkaz">Odhlásit</button></form>
+  </div>
+</header>
+{% endif %}
+<main class="obsah">
+  {% with zpravy = get_flashed_messages(with_categories=true) %}
+    {% for druh, text in zpravy %}<p class="zprava {{ druh }}">{{ text }}</p>{% endfor %}
+  {% endwith %}
+  {% block obsah %}{% endblock %}
+</main>
+</body>
+</html>

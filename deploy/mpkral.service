@@ -1,0 +1,35 @@
+[Unit]
+Description=M+P Kral - e-shop a administrace
+After=network.target
+
+[Service]
+Type=simple
+User=mpkral
+Group=mpkral
+WorkingDirectory=/opt/mpkral/app
+Environment=DATA_DIR=/opt/mpkral/data
+Environment=PROXY=1
+Environment=TZ=Europe/Prague
+Environment=PYTHONDONTWRITEBYTECODE=1
+Environment=HOME=/opt/mpkral/data
+# TESTOVACI=1, SMTP apod. -> /opt/mpkral/env (mimo git, prava 600)
+EnvironmentFile=-/opt/mpkral/env
+ExecStart=/opt/mpkral/venv/bin/gunicorn "eshop:create_app()" -b 0.0.0.0:5068 --preload --workers 2 --threads 4 --timeout 120 \
+  --error-logfile /opt/mpkral/data/gunicorn.log
+Restart=always
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/mpkral/data
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictNamespaces=true
+LockPersonality=true
+UMask=0027
+
+[Install]
+WantedBy=multi-user.target

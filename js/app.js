@@ -216,31 +216,29 @@
         if (n > 0) velikosti[o.dataset.ksOut] = (velikosti[o.dataset.ksOut] || 0) + n;
       });
 
+      var puvodni = tl.dataset.text || (tl.dataset.text = tl.textContent);
+      var kam = /košík/i.test(puvodni) ? "do košíku" : "do šanonu";
       if (!Object.keys(velikosti).length) {
         tl.textContent = "Zapište nejdřív počty";
-        setTimeout(function () { tl.textContent = "Přidat do šanonu"; }, 1600);
+        setTimeout(function () { tl.textContent = puvodni; }, 1600);
         return;
       }
 
-      var nazev, varianta, fotka;
-      if (karta) {
-        nazev = karta.dataset.rada;
-        varianta = karta.dataset.varianta || (karta.querySelector(".vzornik.aktivni") || {}).title || "";
-        var f1 = karta.querySelector("[data-predni]");
-        fotka = f1 ? f1.getAttribute("src") : "";
-      } else {
-        nazev = (document.getElementById("nazev-produktu") || {}).textContent || "Produkt";
-        varianta = "";
-        var f2 = document.getElementById("hlavni-fotka");
-        fotka = f2 ? f2.getAttribute("src") : "";
-      }
+      /* zvolená barva: v kartě i na stránce produktu je to aktivní vzorník */
+      var vz = (karta || document).querySelector(karta ? ".vzornik.aktivni" : "#varianty .vzornik.aktivni");
+      var d = {};
+      try { d = JSON.parse(vz && vz.dataset.varianta || "{}"); } catch (e) { d = {}; }
+      var nazev = d.rada || (karta ? karta.dataset.rada : (document.getElementById("nazev-produktu") || {}).textContent) || "Produkt";
+      var foto = karta ? karta.querySelector("[data-predni]") : document.getElementById("hlavni-fotka");
 
       var s = nacti();
-      s.push({ nazev: nazev, varianta: varianta, fotka: fotka, velikosti: velikosti, logo: false });
+      s.push({ rada_id: d.rada_id || (karta && karta.dataset.id) || "", varianta_id: d.id || "",
+               nazev: nazev, varianta: d.varianta || "", fotka: foto ? foto.getAttribute("src") : "",
+               velikosti: velikosti, logo: false });
       uloz(s);
 
-      tl.textContent = "✓ Přidáno do šanonu";
-      setTimeout(function () { tl.textContent = "Přidat do šanonu"; }, 1600);
+      tl.textContent = "✓ Přidáno " + kam;
+      setTimeout(function () { tl.textContent = puvodni; }, 1600);
     });
   });
 
@@ -417,9 +415,12 @@
     zHashe();
   }
 
-  /* ---------------------------------------------------------- stránka šanonu */
+  /* ---------------------------------------------------------- košík s cenami a objednávka */
   var obsah = document.getElementById("sanon-obsah");
-  if (obsah) {
+  var dataObchodu = document.getElementById("obchod-data");
+  if (obsah && obsah.hasAttribute("data-kosik") && dataObchodu) {
+    kosikAObjednavka(obsah, JSON.parse(dataObchodu.textContent));
+  } else if (obsah) {
     (function vykresliSanon() {
       var s = nacti();
       if (!s.length) {
@@ -466,6 +467,164 @@
     }
   }
 
+  /* jako na serveru: celé koruny bez desetin, jinak na haléře (souhrn pak sedí s potvrzením) */
+  function kc(n) {
+    var h = Math.round(n * 100) / 100, cele = Math.abs(h % 1) < 0.005;
+    return h.toLocaleString("cs-CZ", { minimumFractionDigits: cele ? 0 : 2, maximumFractionDigits: cele ? 0 : 2 })
+      .replace(/\s/g, "\u00a0") + "\u00a0Kč";
+  }
+
+  /* Cena za kus podle množstevní hladiny: rozhoduje součet kusů téže řady v košíku. */
+  function cenaKusu(info, ksRady) {
+    var c = info.cena || 0;
+    Object.keys(info.hladiny || {}).forEach(function (od) {
+      if (ksRady >= parseInt(od, 10) && info.hladiny[od]) c = info.hladiny[od];
+    });
+    return c;
+  }
+
+  function kosikAObjednavka(obsah, data) {
+    var sDph = function (c) { return data.platce ? c * (100 + data.sazba) / 100 : c; };
+    var formular = document.querySelector("[data-objednavka]");
+    var sekce = document.querySelector("[data-objednavka-sekce]");
+    var tlacitka = document.querySelector("[data-kosik-tlacitka]");
+
+    function polozky() {
+      /* jen položky, které na webu pořád jsou (řada mohla mezitím zmizet nebo změnit cenu) */
+      return nacti().filter(function (p) { return p.rada_id && data.ceny[p.rada_id]; });
+    }
+
+    function spocitej() {
+      var s = polozky(), ksRady = {}, zbozi = 0, naDotaz = 0;
+      s.forEach(function (p) { ksRady[p.rada_id] = (ksRady[p.rada_id] || 0) + kusy(p); });
+      var radky = s.map(function (p) {
+        var info = data.ceny[p.rada_id], ks = kusy(p), kus = cenaKusu(info, ksRady[p.rada_id]);
+        if (!kus) naDotaz++;
+        zbozi += kus * ks;
+        return { p: p, ks: ks, kus: kus };
+      });
+      var doprava = vybrana("doprava"), platba = vybrana("platba");
+      var bezDph = zbozi + (doprava ? doprava.cena || 0 : 0) + (platba ? platba.poplatek || 0 : 0);
+      return { radky: radky, zbozi: zbozi, doprava: doprava, platba: platba, bezDph: bezDph,
+               sDph: sDph(bezDph), naDotaz: naDotaz };
+    }
+
+    function vybrana(co) {
+      var seznam = co === "doprava" ? data.doprava : data.platby;
+      var v = document.querySelector('input[name="' + co + '"]:checked');
+      return v ? seznam.filter(function (x) { return x.id === v.value; })[0] : null;
+    }
+
+    function vykresliVolby() {
+      var dop = document.querySelector("[data-doprava]"), pl = document.querySelector("[data-platby]");
+      if (!dop || !pl) return;
+      dop.innerHTML = data.doprava.map(function (d, i) {
+        return '<label class="volba"><input type="radio" name="doprava" value="' + esc(d.id) + '"' + (i === 0 ? " checked" : "") + ">"
+          + "<span>" + esc(d.nazev) + "</span><b>" + (d.cena ? kc(sDph(d.cena)) : "zdarma") + "</b></label>";
+      }).join("");
+      function platby() {
+        var d = vybrana("doprava");
+        var mozne = data.platby.filter(function (p) { return !p.jen_doprava || !d || p.jen_doprava.indexOf(d.id) > -1; });
+        var drive = (vybrana("platba") || {}).id;
+        pl.innerHTML = mozne.map(function (p, i) {
+          var zvolit = drive ? p.id === drive : i === 0;
+          return '<label class="volba"><input type="radio" name="platba" value="' + esc(p.id) + '"' + (zvolit ? " checked" : "") + ">"
+            + "<span>" + esc(p.nazev) + "</span><b>" + (p.poplatek ? "+ " + kc(sDph(p.poplatek)) : "") + "</b></label>";
+        }).join("");
+        if (!vybrana("platba") && pl.querySelector("input")) pl.querySelector("input").checked = true;
+      }
+      platby();
+      dop.addEventListener("change", function () { platby(); vykresli(); });
+      pl.addEventListener("change", vykresli);
+    }
+
+    function vykresli() {
+      var v = spocitej();
+      if (!v.radky.length) {
+        obsah.innerHTML = '<div class="karta prazdno"><p>Košík je zatím prázdný.</p>'
+          + '<p><a href="katalog.html">Vybrat z katalogu →</a></p></div>';
+        if (sekce) sekce.hidden = true;
+        if (tlacitka) tlacitka.hidden = true;
+        return;
+      }
+      if (sekce) sekce.hidden = false;
+      if (tlacitka) tlacitka.hidden = false;
+      obsah.innerHTML = v.radky.map(function (r, i) {
+        var vel = Object.keys(r.p.velikosti).sort(function (a, b) { return a - b; });
+        var rozpis = vel.map(function (x) {
+          return '<span class="odznak">' + esc(x) + " × " + (parseInt(r.p.velikosti[x], 10) || 0) + "</span>";
+        }).join(" ");
+        var cena = r.kus ? kc(sDph(r.kus)) + " / ks · <b>" + kc(sDph(r.kus * r.ks)) + "</b>" : "cena na dotaz";
+        return '<article class="sanon-polozka karta">'
+          + '<div class="mini"><img src="' + bezpecnaCesta(r.p.fotka) + '" alt=""></div>'
+          + "<div><h3 style=\"margin:0 0 4px;font-size:17px\">" + esc(r.p.nazev) + "</h3>"
+          + '<p class="mono" style="color:var(--ocel);margin:0 0 8px">' + esc(r.p.varianta || "") + "</p>"
+          + "<div>" + rozpis + "</div>"
+          + '<p class="mono" style="margin:8px 0 0">' + r.ks + " ks · " + cena + "</p></div>"
+          + '<button type="button" class="tl tl-obrys" data-odebrat="' + i + '" style="padding:8px 12px">Odebrat</button>'
+          + "</article>";
+      }).join("");
+      obsah.querySelectorAll("[data-odebrat]").forEach(function (b) {
+        b.addEventListener("click", function () {
+          var t = polozky();
+          t.splice(parseInt(b.dataset.odebrat, 10), 1);
+          uloz(t);
+          vykresli();
+        });
+      });
+      var souhrn = document.querySelector("[data-souhrn]");
+      if (souhrn) {
+        var radek = function (a, b) { return "<div><span>" + a + "</span><span>" + b + "</span></div>"; };
+        souhrn.innerHTML = radek("Zboží", kc(sDph(v.zbozi)))
+          + radek("Doprava" + (v.doprava ? " · " + esc(v.doprava.nazev) : ""), v.doprava && v.doprava.cena ? kc(sDph(v.doprava.cena)) : "zdarma")
+          + (v.platba && v.platba.poplatek ? radek("Platba · " + esc(v.platba.nazev), kc(sDph(v.platba.poplatek))) : "")
+          + (data.platce ? radek("Bez DPH", kc(v.bezDph)) + radek("DPH " + data.sazba + " %", kc(v.sDph - v.bezDph)) : "")
+          + '<div class="celkem"><span>Celkem k úhradě</span><span>' + kc(v.sDph) + "</span></div>"
+          + (v.naDotaz ? '<p class="mono">U ' + v.naDotaz + " položek je cena na dotaz. Potvrdíme ji e-mailem před výrobou.</p>" : "");
+      }
+      vykresliPocty();
+    }
+
+    vykresliVolby();
+    vykresli();
+
+    var vyprazdnit = document.querySelector("[data-vyprazdnit]");
+    if (vyprazdnit) vyprazdnit.addEventListener("click", function () {
+      if (confirm("Opravdu vyprázdnit košík?")) { uloz([]); vykresli(); }
+    });
+
+    var jina = document.querySelector("[data-jina-adresa]"), dodaci = document.querySelector("[data-dodaci]");
+    if (jina && dodaci) jina.addEventListener("change", function () { dodaci.hidden = !jina.checked; });
+
+    if (!formular) return;
+    formular.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var chyba = formular.querySelector("[data-chyba]"), tl = formular.querySelector('button[type="submit"]');
+      var f = new FormData(formular), zakaznik = {};
+      ["firma", "ico", "dic", "jmeno", "email", "telefon", "ulice", "mesto", "psc",
+       "dod_jmeno", "dod_ulice", "dod_mesto", "dod_psc"].forEach(function (k) { zakaznik[k] = (f.get(k) || "").trim(); });
+      zakaznik.jina_adresa = !!f.get("jina_adresa");
+      var telo = {
+        polozky: polozky().map(function (p) { return { rada_id: p.rada_id, varianta_id: p.varianta_id, velikosti: p.velikosti }; }),
+        doprava: (vybrana("doprava") || {}).id, platba: (vybrana("platba") || {}).id,
+        zakaznik: zakaznik, poznamka: (f.get("poznamka") || "").trim(), souhlas: !!f.get("souhlas"), web: f.get("web") || ""
+      };
+      tl.disabled = true; chyba.textContent = "";
+      fetch("/api/objednavka", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(telo) })
+        .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+        .then(function (o) {
+          if (!o.ok) throw new Error(o.j.chyba || "Objednávku se nepodařilo odeslat.");
+          uloz([]);
+          location.href = o.j.odkaz;
+        })
+        .catch(function (err) {
+          chyba.textContent = (err && err.message && !/fetch|JSON|NetworkError/i.test(err.message))
+            ? err.message : "Objednávku se nepodařilo odeslat. Zkuste to znovu, nebo zavolejte.";
+          tl.disabled = false;
+        });
+    });
+  }
+
   /* ---------------------------------------------------------- fotky v kategorii */
   /* Po najetí na dlaždici se střídají fotky střihů z kategorie. */
   document.querySelectorAll(".kat-foto").forEach(function (ramec) {
@@ -491,12 +650,29 @@
   document.querySelectorAll("[data-poptavka]").forEach(function (f) {
     f.addEventListener("submit", function (e) {
       e.preventDefault();
-      var box = document.createElement("div");
-      box.className = "karta";
-      box.style.cssText = "padding:20px;margin-top:16px";
-      box.innerHTML = "<h3 style=\"margin:0 0 6px;font-size:18px\">Poptávku jsme přijali, ozveme se do 2 pracovních dnů.</h3>"
-        + '<p class="mono" style="color:var(--ocel);margin:0">Náčrt, formulář zatím neodesílá.</p>';
-      f.replaceWith(box);
+      var tl = f.querySelector('button[type="submit"]'), data = {};
+      new FormData(f).forEach(function (v, k) { data[k] = String(v).trim(); });
+      if (tl) tl.disabled = true;
+      function hotovo(poznamka) {
+        var box = document.createElement("div");
+        box.className = "karta";
+        box.style.cssText = "padding:20px;margin-top:16px";
+        box.innerHTML = "<h3 style=\"margin:0 0 6px;font-size:18px\">Poptávku jsme přijali, ozveme se do 2 pracovních dnů.</h3>"
+          + (poznamka ? '<p class="mono" style="color:var(--ocel);margin:0">' + poznamka + "</p>" : "");
+        f.replaceWith(box);
+      }
+      fetch("/api/poptavka", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) })
+        .then(function (r) {
+          if (r.status === 404 || r.status === 405) { hotovo("Náčrt, formulář zatím neodesílá."); return; }
+          return r.json().then(function (j) {
+            if (!r.ok) throw new Error(j.chyba || "Poptávku se nepodařilo odeslat.");
+            hotovo("");
+          });
+        })
+        .catch(function (err) {
+          if (tl) tl.disabled = false;
+          alert(err && err.message ? err.message : "Poptávku se nepodařilo odeslat, zkuste to prosím znovu.");
+        });
     });
   });
 

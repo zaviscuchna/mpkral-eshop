@@ -1,0 +1,95 @@
+{% extends "admin/base.html" %}
+{% block titulek %}{{ p.nazev if p else 'Nový produkt' }}{% endblock %}
+{% block obsah %}
+<p><a href="{{ url_for('admin.produkty') }}">← Produkty</a>{% if p %} · <a href="/produkt-{{ p.id }}.html" target="_blank" rel="noopener">zobrazit na webu ↗</a>{% endif %}</p>
+<h1>{{ p.nazev if p else 'Nový produkt' }}</h1>
+{% if chyba %}<p class="zprava chyba">{{ chyba }}</p>{% endif %}
+
+<form method="post" class="formular karta">
+  <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+  <label>Název<input name="nazev" value="{{ f.nazev or '' }}" maxlength="120" required placeholder="např. Bunda King"></label>
+  <div class="dva">
+    <label>Kategorie<select name="kategorie" required>
+      <option value="">vyberte…</option>
+      {% for k in KATEGORIE %}<option {{ 'selected' if f.kategorie == k }}>{{ k }}</option>{% endfor %}
+    </select></label>
+    <label>Řada<select name="znacka">{% for r in RADY %}<option {{ 'selected' if f.znacka == r }}>{{ r }}</option>{% endfor %}</select></label>
+  </div>
+  <label>Popis<textarea name="popis" rows="4" maxlength="3000">{{ f.popis or '' }}</textarea></label>
+
+  <h2>Cena</h2>
+  <p class="napoveda">Za kus <b>bez DPH</b>, v korunách. Prázdná cena = na webu „Cena na dotaz“.</p>
+  <div class="dva">
+    <label>Cena za kus bez DPH (Kč)<input name="cena" value="{{ f.cena or '' }}" inputmode="decimal" placeholder="např. 590"></label>
+    <span></span>
+  </div>
+  <p class="napoveda">Množstevní sleva (nepovinné): od kolika kusů téhož produktu platí nižší cena.</p>
+  {% for i in (1, 2) %}
+  <div class="dva">
+    <label>Od kolika kusů<input name="hl_od_{{ i }}" value="{{ f['hl_od_' ~ i] or '' }}" inputmode="numeric" placeholder="{{ '10' if i == 1 else '50' }}"></label>
+    <label>Cena za kus bez DPH (Kč)<input name="hl_cena_{{ i }}" value="{{ f['hl_cena_' ~ i] or '' }}" inputmode="decimal"></label>
+  </div>
+  {% endfor %}
+
+  <h2>Technické údaje</h2>
+  <div class="dva">
+    <label>Materiál<input name="material" value="{{ f.material or '' }}" placeholder="např. 100 % BA"></label>
+    <label>Gramáž<input name="gramaz" value="{{ f.gramaz or '' }}" placeholder="např. 250 g/m²"></label>
+  </div>
+  <div class="dva">
+    <label>Velikosti<input name="velikosti" value="{{ f.velikosti or '' }}" placeholder="např. 46–66"></label>
+    <label>Norma<input name="norma" value="{{ f.norma or '' }}" placeholder="např. EN ISO 13688"></label>
+  </div>
+  <div class="dva">
+    <label>Co to je (krátce)<input name="predmet" value="{{ f.predmet or '' }}" placeholder="např. blůza (horní díl)"></label>
+    <label>Kde se nosí<input name="pouziti" value="{{ f.pouziti or '' }}" placeholder="např. dílna, servis"></label>
+  </div>
+  <label class="zaskrtavatko"><input type="checkbox" name="overeno" value="1" {{ 'checked' if f.overeno }}> Technické údaje jsou zkontrolované a správné</label>
+  <label class="zaskrtavatko"><input type="checkbox" name="viditelny" value="1" {{ 'checked' if f.viditelny or not p and not chyba }}> Zobrazit na webu</label>
+  <button class="tl hlavni">{{ 'Uložit' if p else 'Založit produkt' }}</button>
+</form>
+
+{% if p %}
+<h2 id="barvy">Barvy a fotky</h2>
+<p class="napoveda">Každá barva má vlastní fotky. Stačí přední, zadní a detail jsou nepovinné. Fotky se samy zmenší a vyříznou do čtverce.</p>
+<div class="seznam-barev">
+  {% for v in varianty %}
+  <article class="barva {{ 'skryty' if not v.viditelna }}">
+    <div class="fotky-barvy">
+      {% for f_ in (v.foto_predni, v.foto_zadni, v.foto_detail) if f_ %}<img src="/{{ f_ }}" alt="" loading="lazy">{% endfor %}
+    </div>
+    <div class="info">
+      <b>{% if v.vzornik %}<img class="vzornik" src="/{{ v.vzornik }}" alt="">{% endif %}{{ v.nazev }}</b>
+      <span class="napoveda">{% if v.strih %}střih {{ v.strih }}{% endif %}{% if not v.viditelna %} · skrytá{% endif %}</span>
+    </div>
+    <div class="akce">
+      <a class="tl" href="{{ url_for('admin.barva', vid=v.id) }}">Upravit</a>
+      <form method="post" action="{{ url_for('admin.barva_posun', vid=v.id) }}"><input type="hidden" name="_csrf" value="{{ csrf_token() }}"><input type="hidden" name="smer" value="nahoru"><button class="tl maly" aria-label="Posunout výš">↑</button></form>
+      <form method="post" action="{{ url_for('admin.barva_posun', vid=v.id) }}"><input type="hidden" name="_csrf" value="{{ csrf_token() }}"><input type="hidden" name="smer" value="dolu"><button class="tl maly" aria-label="Posunout níž">↓</button></form>
+      <form method="post" action="{{ url_for('admin.barva_smazat', vid=v.id) }}" data-potvrdit="Opravdu smazat barvu {{ v.nazev }}? Fotky zmizí z webu."><input type="hidden" name="_csrf" value="{{ csrf_token() }}"><button class="tl nebezpecne">Smazat</button></form>
+    </div>
+  </article>
+  {% else %}<p class="napoveda">Produkt zatím nemá žádnou barvu, a proto není na webu vidět.</p>{% endfor %}
+</div>
+
+<form method="post" action="{{ url_for('admin.barva_nova', pid=p.id) }}" enctype="multipart/form-data" class="formular karta">
+  <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+  <h3>Přidat barvu</h3>
+  <div class="dva">
+    <label>Název barvy<input name="nazev" required maxlength="80" placeholder="např. modro-černá"></label>
+    <label>Číslo střihu (nepovinné)<input name="strih" maxlength="30" placeholder="např. 103/K"></label>
+  </div>
+  <div class="tri">
+    <label class="soubor">Přední fotka<input type="file" name="foto_predni" accept="image/*" required data-nahled></label>
+    <label class="soubor">Zadní fotka<input type="file" name="foto_zadni" accept="image/*" data-nahled></label>
+    <label class="soubor">Detail<input type="file" name="foto_detail" accept="image/*" data-nahled></label>
+  </div>
+  <button class="tl hlavni">Přidat barvu</button>
+</form>
+
+<form method="post" action="{{ url_for('admin.produkt_smazat', pid=p.id) }}" class="dole" data-potvrdit="Opravdu smazat celý produkt {{ p.nazev }} i se všemi barvami? Jestli ho chcete jen schovat, odškrtněte radši „Zobrazit na webu“.">
+  <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+  <button class="tl nebezpecne">Smazat produkt</button>
+</form>
+{% endif %}
+{% endblock %}

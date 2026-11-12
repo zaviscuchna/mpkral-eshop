@@ -1,0 +1,19 @@
+{% extends "admin/base.html" %}
+{% block titulek %}Objednávky{% endblock %}
+{% block obsah %}
+<h1>Objednávky</h1>
+<nav class="filtry">
+  <a href="{{ url_for('admin.objednavky') }}" class="{{ 'aktivni' if not stav }}">Všechny</a>
+  {% for k, n in STAVY.items() %}<a href="{{ url_for('admin.objednavky', stav=k) }}" class="{{ 'aktivni' if stav == k }}">{{ n }}</a>{% endfor %}
+</nav>
+{% if seznam %}
+<table class="tabulka">
+  <tr><th>Číslo</th><th>Kdy</th><th>Zákazník</th><th>Celkem</th><th>Stav</th></tr>
+  {% for o in seznam %}{% set z = zakaznik(o) %}
+  <tr><td><a href="{{ url_for('admin.objednavka', cislo=o.cislo) }}">{{ o.cislo }}</a></td><td>{{ o.vytvoreno[:16].replace('T', ' ') }}</td>
+      <td>{{ z.firma or z.jmeno }}<br><span class="napoveda">{{ z.email }}</span></td><td>{{ kc(o.celkem) }}{% if o.na_dotaz %}<br><span class="napoveda">+ položky na dotaz</span>{% endif %}</td>
+      <td><span class="stav stav-{{ o.stav }}">{{ STAVY[o.stav] }}</span></td></tr>
+  {% endfor %}
+</table>
+{% else %}<p class="napoveda">Žádné objednávky.</p>{% endif %}
+{% endblock %}

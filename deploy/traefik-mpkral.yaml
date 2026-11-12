@@ -1,0 +1,38 @@
+# /data/coolify/proxy/dynamic/mpkral.yaml — Traefik (Coolify) si soubor načte sám
+# Testovací adresa. Po přepnutí domény přidat do rule: || Host(`mpkral.cz`) || Host(`www.mpkral.cz`)
+http:
+  routers:
+    mpkral-http:
+      entryPoints:
+        - http
+      rule: Host(`mpkral.46.225.180.130.sslip.io`)
+      middlewares:
+        - mpkral-redirect-https
+      service: mpkral
+
+    mpkral-https:
+      entryPoints:
+        - https
+      rule: Host(`mpkral.46.225.180.130.sslip.io`)
+      middlewares:
+        - mpkral-hlavicky
+      service: mpkral
+      tls:
+        certResolver: letsencrypt
+
+  middlewares:
+    mpkral-redirect-https:
+      redirectScheme:
+        scheme: https
+        permanent: true
+    mpkral-hlavicky:
+      headers:
+        stsSeconds: 31536000
+        customResponseHeaders:
+          Server: ""      # neprozrazovat, na čem web běží
+
+  services:
+    mpkral:
+      loadBalancer:
+        servers:
+          - url: http://host.docker.internal:5068
